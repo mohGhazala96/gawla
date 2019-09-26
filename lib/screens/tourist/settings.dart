@@ -2,20 +2,238 @@ import 'package:flutter/material.dart';
 import '../../main.dart';
 import '../../data/DUMMYDATA.dart';
 import 'package:provider/provider.dart';
+import 'package:circular_profile_avatar/circular_profile_avatar.dart';
+import 'package:country_code_picker/country_code_picker.dart';
+import 'package:gawla/screens/tourist/tourist_homepage_screen.dart';
 
-class ToursitSettingsScreen extends StatelessWidget {
-  static const routeName = '/tourist-profile-screen';
-
+class SettingsScreen extends StatelessWidget {
+  static const routeName = '/settings-screen';
+  String imgurl = 'https://imgur.com/95klGlu.png';
+  String name = "Alexandre Froment-Curtil";
+  String email = "Alexandre@vodafone.eg";
+  String nationality = "Hungarian";
+  String number = "01010101010";
+  CountryCode countryCode = new CountryCode();
+  String password;
   @override
   Widget build(BuildContext context) {
-    final touristId = MyApp.profileID;
-    final tourists =
-        Provider.of<Data>(context).DUMMY_TOURSISTS.where((tourist) {
-      return tourist.profileID == touristId;
-    }).toList();
-
-    return Center(
-      child: Text('Tourist Settings page'),
+    return Scaffold(
+      body: Form(
+          child: Container(
+        margin: EdgeInsets.only(top: 80),
+        child: Column(
+          children: <Widget>[
+            Align(
+              alignment: Alignment.topCenter,
+              child: CircularProfileAvatar(
+                imgurl, //sets image path, it should be a URL string. default value is empty string, if path is empty it will display only initials
+                radius: 75, // sets radius, default 50.0
+                backgroundColor:
+                    Colors.white, // sets background color, default Colors.white
+                borderWidth: 4, // sets border, default 0.0
+                initialsText: Text(
+                  "AF",
+                  style: TextStyle(fontSize: 40, color: Colors.white),
+                ), // sets initials text, set your own style, default Text('')
+                borderColor:
+                    Colors.brown, // sets border color, default Colors.white
+                elevation:
+                    5.0, // sets elevation (shadow of the profile picture), default value is 0.0
+                // foregroundColor: Colors.brown.withOpacity(
+                //     0.5), //sets foreground colour, it works if showInitialTextAbovePicture = true , default Colors.transparent
+                cacheImage:
+                    true, // allow widget to cache image against provided url
+                onTap: () {
+                  print('adil');
+                }, // sets on tap
+                showInitialTextAbovePicture:
+                    false, // setting it true will show initials text above profile picture, default false
+              ),
+            ),
+            Expanded(
+              child: Container(
+                color: Colors.white,
+                margin: EdgeInsets.only(top: 50),
+                child: ListView(
+                  children: <Widget>[
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        margin: EdgeInsets.only(top: 30),
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: new BorderRadius.circular(15.0),
+                          border: new Border.all(
+                              color: Color(0xff707070), width: 2.0),
+                        ),
+                        child: TextFormField(
+                          initialValue: name,
+                          onSaved: (value) => name = value.trim(),
+                          style: TextStyle(color: Colors.black, fontSize: 17),
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(
+                              Icons.person,
+                              color: Color(0xff707070),
+                            ),
+                            hintStyle: TextStyle(
+                                color: Color(0xffd1d1d1), fontSize: 17),
+                            hintText: "Name",
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.transparent),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.transparent),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        margin: EdgeInsets.only(top: 20),
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: new BorderRadius.circular(15.0),
+                          border: new Border.all(
+                              color: Color(0xff707070), width: 2.0),
+                        ),
+                        child: TextFormField(
+                          initialValue: email,
+                          onSaved: (value) => email = value.trim(),
+                          style: TextStyle(color: Colors.black, fontSize: 17),
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(
+                              Icons.email,
+                              color: Color(0xff707070),
+                            ),
+                            hintStyle: TextStyle(
+                                color: Color(0xffd1d1d1), fontSize: 17),
+                            hintText: "Email Address",
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.transparent),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.transparent),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        margin: EdgeInsets.only(top: 20),
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: new BorderRadius.circular(15.0),
+                          border: new Border.all(
+                              color: Color(0xff707070), width: 2.0),
+                        ),
+                        child: Row(
+                          children: <Widget>[
+                            Container(
+                              child: new CountryCodePicker(
+                                onChanged: (x) {
+                                  countryCode = x;
+                                },
+                                // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
+                                initialSelection: 'EG',
+                                favorite: ['EG'],
+                                // optional. Shows only country name and flag
+                                showCountryOnly: false,
+                                // optional. aligns the flag and the Text left
+                                alignLeft: false,
+                              ),
+                            ),
+                            Expanded(
+                              child: TextFormField(
+                                initialValue: number,
+                                onSaved: (value) => number = value.trim(),
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 17),
+                                decoration: InputDecoration(
+                                  hintStyle: TextStyle(
+                                      color: Color(0xffd1d1d1), fontSize: 17),
+                                  hintText: "Phone Number",
+                                  focusedBorder: UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent),
+                                  ),
+                                  enabledBorder: UnderlineInputBorder(
+                                    borderSide:
+                                        BorderSide(color: Colors.transparent),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Container(
+                        margin: EdgeInsets.only(top: 20),
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: new BorderRadius.circular(15.0),
+                          border: new Border.all(
+                              color: Color(0xff707070), width: 2.0),
+                        ),
+                        child: TextFormField(
+                          onSaved: (value) => password = value.trim(),
+                          obscureText: true,
+                          style: TextStyle(color: Colors.black, fontSize: 17),
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(
+                              Icons.lock,
+                              color: Color(0xff707070),
+                            ),
+                            hintStyle: TextStyle(
+                                color: Color(0xffd1d1d1), fontSize: 17),
+                            hintText: "New Password",
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.transparent),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: Colors.transparent),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    ButtonTheme(
+                      minWidth: MediaQuery.of(context).size.width * 0.5,
+                      height: 45,
+                      buttonColor: Colors.white,
+                      child: RaisedButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(15.0)),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      ToursitHomePageScreen()));
+                        },
+                        child: Text(
+                          'SIGN IN',
+                          style: TextStyle(color: Color(0xff707070)),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      )),
     );
   }
 }

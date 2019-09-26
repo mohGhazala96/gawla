@@ -26,7 +26,7 @@ class MenuDrawer extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => ToursitProfileScreen()));
+                          builder: (context) => TouristProfileScreen()));
                 },
                 title: Text(
                   "Profile",
@@ -39,8 +39,7 @@ class MenuDrawer extends StatelessWidget {
                     color: Colors.white,
                   ),
                   onTap: () {
-                    Navigator.pushNamed(
-                        context, ToursitSettingsScreen.routeName);
+                    Navigator.pushNamed(context, SettingsScreen.routeName);
                   },
                   title: Text(
                     "Settings",

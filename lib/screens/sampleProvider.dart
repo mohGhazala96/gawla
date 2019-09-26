@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:gawla/data/DUMMYDATA.dart';
 
 class ProviderScreen extends StatelessWidget {
-  static const routeName = '/provider-screen';
+  static const routeName = 'provider-screen';
 
   @override
   Widget build(BuildContext context) {

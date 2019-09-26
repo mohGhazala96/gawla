@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gawla/screens/tourist/signup_tourist_screen.dart';
+import 'package:gawla/screens/tourist/tourist_homepage_screen.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -8,7 +10,7 @@ class SignIn extends StatefulWidget {
 class SignInScreen extends State<SignIn> {
   final formKey = GlobalKey<FormState>();
   String email, password;
-  static const routeName = '/signin-screen';
+  static const routeName = 'signin-screen';
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class SignInScreen extends State<SignIn> {
                 child: ListView(
                   children: [
                     Container(
-                      margin: EdgeInsets.only(top: 20),
+                      margin: EdgeInsets.only(top: 50),
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: new BorderRadius.circular(15.0)),
@@ -78,6 +80,14 @@ class SignInScreen extends State<SignIn> {
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 17),
                                 decoration: InputDecoration(
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Colors.transparent),
+                                    ),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Colors.transparent),
+                                    ),
                                     prefixIcon: Icon(
                                       Icons.lock,
                                       color: Color(0xff707070),
@@ -105,7 +115,13 @@ class SignInScreen extends State<SignIn> {
                                 shape: RoundedRectangleBorder(
                                     borderRadius:
                                         new BorderRadius.circular(15.0)),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (BuildContext context) =>
+                                              ToursitHomePageScreen()));
+                                },
                                 child: Text(
                                   'SIGN IN',
                                   style: TextStyle(color: Color(0xff707070)),
@@ -122,21 +138,29 @@ class SignInScreen extends State<SignIn> {
                             Container(
                                 margin: EdgeInsets.only(top: 20),
                                 child: GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (BuildContext context) =>
+                                                  SignUpTouristScreen()));
+                                    },
                                     child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Text(
-                                      "Are you new? ",
-                                      style:
-                                          TextStyle(color: Color(0xff707070)),
-                                    ),
-                                    Text(
-                                      "Sign up!",
-                                      style:
-                                          TextStyle(color: Color(0xff1C72B5)),
-                                    ),
-                                  ],
-                                )))
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(
+                                          "Are you new? ",
+                                          style: TextStyle(
+                                              color: Color(0xff707070)),
+                                        ),
+                                        Text(
+                                          "Sign up!",
+                                          style: TextStyle(
+                                              color: Color(0xff1C72B5)),
+                                        ),
+                                      ],
+                                    )))
                           ],
                         ),
                       ),
