@@ -23,7 +23,7 @@ import 'package:gawla/data/DUMMYDATA.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  static String profileID;
+  static String profileID = "1Tourist";
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<Data>(
@@ -55,9 +55,8 @@ class MyApp extends StatelessWidget {
           ),
           // home: CategoriesScreen(),
           initialRoute: 'tourguide-tourguide-profile-screen', // default is '/'
-
           routes: {
-            '/': (ctx) => SignIn(),
+            '/': (ctx) => ToursTouristScreen(),
             AddTourScreen.routeName: (ctx) => AddTourScreen(),
             ChatScreen.routeName: (ctx) => ChatScreen(),
             InboxScreen.routeName: (ctx) => InboxScreen(),

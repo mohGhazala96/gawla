@@ -11,7 +11,7 @@ class ToursTourGuideScreen extends StatelessWidget {
     final tourguideID = MyApp.profileID;
 
     final tours = Provider.of<Data>(context).DUMMY_TOURS.where((tour) {
-      return tour.tourguide.profileID == tourguideID;
+      return tour.tourguide == tourguideID;
     }).toList();
 
     return Center(

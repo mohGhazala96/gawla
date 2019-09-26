@@ -5,8 +5,8 @@ import 'tourist.dart';
 class Tour {
   String tourID;
   String name;
-  TourGuide tourguide;
-  List<Tourist> tourists;
+  String tourguide;
+  List<String> tourists;
   DateTime date;
   String location;
   List<String> places;
@@ -15,7 +15,7 @@ class Tour {
   String language;
   int price;
   int peopleAllowed;
-  List<Image> pictures;
+  List<String> pictures;
 
   Tour({
     @required this.tourID,

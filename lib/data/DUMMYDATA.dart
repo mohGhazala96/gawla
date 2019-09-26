@@ -58,8 +58,8 @@ class Data extends ChangeNotifier {
     Tour(
         tourID: "1Tour",
         name: "Pharonic Tour",
-        tourguide: tourguide2,
-        tourists: [tourist1, tourist2],
+        tourguide: "1TourGuide",
+        tourists: ["1Tourist", "2Tourist"],
         date: DateTime.now(),
         location: "Cairo",
         places: ["Giza"],
@@ -68,7 +68,21 @@ class Data extends ChangeNotifier {
         language: "English",
         price: 200,
         peopleAllowed: 5,
-        pictures: null)
+        pictures: ['images/egypt-cairo-pyramids-of-giza-and camels-2.jpg']),
+    Tour(
+        tourID: "2Tour",
+        name: "Musuem",
+        tourguide: "1TourGuide",
+        tourists: ["1Tourist", "2Tourist"],
+        date: DateTime.now(),
+        location: "Cairo",
+        places: ["Giza"],
+        description: "Enter Description here",
+        meetingPoint: "tahrir",
+        language: "English",
+        price: 150                                                ,
+        peopleAllowed: 5,
+        pictures: ['images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'])
   ];
 
   void addTour() {
