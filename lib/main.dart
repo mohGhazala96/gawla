@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gawla/screens/tourist/settings.dart';
 import './screens/tourguide/tour_tourguide_detailed_screen.dart';
 import './screens/tourist/tour_tourist_detailed_screen.dart';
 import './screens/tourguide/add_tour_screen.dart';
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
                 ),
           ),
           // home: CategoriesScreen(),
-          initialRoute: '/', // default is '/'
+          initialRoute: ToursitHomePageScreen.routeName, // default is '/'
           routes: {
             '/': (ctx) => SignInScreen(),
             AddTourScreen.routeName: (ctx) => AddTourScreen(),
@@ -69,7 +70,8 @@ class MyApp extends StatelessWidget {
             ToursitProfileScreen.routeName: (ctx) => ToursitProfileScreen(),
             ToursTouristScreen.routeName: (ctx) => ToursTouristScreen(),
             ToursTourGuideScreen.routeName: (ctx) => ToursTourGuideScreen(),
-            ProviderScreen.routeName: (ctx) => ProviderScreen()
+            ProviderScreen.routeName: (ctx) => ProviderScreen(),
+            ToursitSettingsScreen.routeName:(ctx)=>ToursitSettingsScreen()
           },
           onGenerateRoute: (settings) {
             print(settings.arguments);

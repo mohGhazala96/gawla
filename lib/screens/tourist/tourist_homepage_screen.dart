@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gawla/screens/common/menudrawer.dart';
 import '../../main.dart';
 import '../../data/DUMMYDATA.dart';
 import 'tourist_profile_screen.dart';
@@ -6,6 +7,7 @@ import 'tours_tourist_screen.dart';
 import 'package:provider/provider.dart';
 
 class ToursitHomePageScreen extends StatelessWidget {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   static const routeName = '/tourist-homepage-screen';
 
   @override
@@ -18,6 +20,8 @@ class ToursitHomePageScreen extends StatelessWidget {
     }).toList();
 
     return Scaffold(
+      drawer: MenuDrawer(),
+      key: _scaffoldKey,
       body: Container(
         color: Theme.of(context).primaryColor,
         child: Column(
@@ -27,7 +31,9 @@ class ToursitHomePageScreen extends StatelessWidget {
               child: Container(
                 margin: EdgeInsets.only(top: 25, left: 10),
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                     _scaffoldKey.currentState.openDrawer();
+                  },
                   child: Icon(Icons.menu),
                 ),
               ),
