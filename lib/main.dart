@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
                 ),
           ),
           // home: CategoriesScreen(),
-          initialRoute: '/', // default is '/'
+          initialRoute: 'tourist-profile-screen', // default is '/'
           routes: {
             '/': (ctx) => SignInScreen(),
             AddTourScreen.routeName: (ctx) => AddTourScreen(),
@@ -65,19 +65,19 @@ class MyApp extends StatelessWidget {
                 ToursGuideHomePageScreen(),
             TourGuideProfileScreen.routeName: (ctx) => TourGuideProfileScreen(),
             ToursitHomePageScreen.routeName: (ctx) => ToursitHomePageScreen(),
-            ToursitProfileScreen.routeName: (ctx) => ToursitProfileScreen(),
+            TouristProfileScreen.routeName: (ctx) => TouristProfileScreen(),
             ToursTouristScreen.routeName: (ctx) => ToursTouristScreen(),
             ToursTourGuideScreen.routeName: (ctx) => ToursTourGuideScreen(),
             ProviderScreen.routeName: (ctx) => ProviderScreen()
           },
-          onGenerateRoute: (settings) {
-            print(settings.arguments);
-          },
-          onUnknownRoute: (settings) {
-            return MaterialPageRoute(
-              builder: (ctx) => SignInScreen(),
-            );
-          },
+//          onGenerateRoute: (settings) {
+//            print(settings.arguments);
+//          },
+////          onUnknownRoute: (settings) {
+////            return MaterialPageRoute(
+////              builder: (ctx) => SignInScreen(),
+////            );
+//          },
         ));
   }
 }

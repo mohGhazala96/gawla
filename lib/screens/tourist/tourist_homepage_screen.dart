@@ -4,7 +4,7 @@ import '../../data/DUMMYDATA.dart';
 import 'package:provider/provider.dart';
 
 class ToursitHomePageScreen extends StatelessWidget {
-  static const routeName = '/tourist-homepage-screen';
+  static const routeName = 'tourist-homepage-screen';
 
   @override
   Widget build(BuildContext context) {
