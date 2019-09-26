@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gawla/screens/common/menudrawer.dart';
+import 'package:gawla/screens/tourist/tours_search_screen.dart';
 import '../../main.dart';
 import '../../data/DUMMYDATA.dart';
 import 'tourist_profile_screen.dart';
@@ -70,9 +71,8 @@ class ToursitHomePageScreen extends StatelessWidget {
                   children: <Widget>[
                     GestureDetector(
                       onTap: () {
-                        showDialog(
-                            context: context,
-                            builder: (BuildContext context) => SearchDialog());
+                      Navigator.pushNamed(
+                            context, ToursSearchScreen.routeName);
                       },
                       child: Icon(
                         Icons.search,
