@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import '../../data/DUMMYDATA.dart';
+import 'package:provider/provider.dart';
+
 class TourTouristDetailedScreen extends StatelessWidget {
   static const routeName = '/tour-tourist-detailed-screen';
 
   @override
   Widget build(BuildContext context) {
-
-   final routeArgs =
+    final routeArgs =
         ModalRoute.of(context).settings.arguments as Map<String, String>;
     final tourID = routeArgs['tourID'];
 
-    final tourDertailed = DUMMY_TOURS.where((tour) {
-      return tour.tourID==tourID;
+    final tourDertailed = Provider.of<Data>(context).DUMMY_TOURS.where((tour) {
+      return tour.tourID == tourID;
     }).toList();
 
     return Center(

@@ -3,6 +3,7 @@ import '../../main.dart';
 import '../../data/DUMMYDATA.dart';
 import 'tourist_profile_screen.dart';
 import 'tours_tourist_screen.dart';
+import 'package:provider/provider.dart';
 
 class ToursitHomePageScreen extends StatelessWidget {
   static const routeName = '/tourist-homepage-screen';
@@ -11,7 +12,8 @@ class ToursitHomePageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final touristId = MyApp.profileID;
 
-    final tourist = DUMMY_TOURSISTS.where((tourist) {
+
+    final tourist = Provider.of<Data>(context).DUMMY_TOURSISTS.where((tourist) {
       return tourist.profileID == touristId;
     }).toList();
 

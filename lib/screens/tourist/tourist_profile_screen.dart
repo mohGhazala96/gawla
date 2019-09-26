@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../main.dart';
 import '../../data/DUMMYDATA.dart';
+import 'package:provider/provider.dart';
 
 class ToursitProfileScreen extends StatelessWidget {
   static const routeName = '/tourist-profile-screen';
@@ -8,8 +9,9 @@ class ToursitProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final touristId = MyApp.profileID;
-    final tourists = DUMMY_TOURSISTS.where((tourist) {
-      return tourist.profileID==touristId;
+    final tourists =
+        Provider.of<Data>(context).DUMMY_TOURSISTS.where((tourist) {
+      return tourist.profileID == touristId;
     }).toList();
 
     return Center(
