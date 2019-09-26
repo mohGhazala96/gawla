@@ -80,7 +80,7 @@ class Data extends ChangeNotifier {
         description: "Enter Description here",
         meetingPoint: "tahrir",
         language: "English",
-        price: 150,
+        price: 150                                                ,
         peopleAllowed: 5,
         pictures: ['images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'])
   ];
