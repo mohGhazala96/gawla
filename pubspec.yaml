@@ -11,6 +11,12 @@ dependencies:
 
   cupertino_icons: ^0.1.2
   provider: ^3.1.0
+  dots_indicator: ^1.0.0
+  date_picker_timeline: ^1.0.0
+  flushbar: ^1.9.0
+  circular_profile_avatar: ^1.0.2
+  country_code_picker: ^1.1.7
+  font_awesome_flutter: ^8.5.0
 
 dev_dependencies:
   flutter_test:
@@ -18,8 +24,10 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
   assets:
     - images/
+
   fonts:
     - family: Poppins
       fonts:

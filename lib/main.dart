@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gawla/screens/tourguide/tourist_profile_screen.dart';
 import 'package:gawla/screens/tourist/settings.dart';
 import './screens/tourguide/tour_tourguide_detailed_screen.dart';
 import './screens/tourist/tour_tourist_detailed_screen.dart';
@@ -15,6 +16,7 @@ import './screens/tourist/tourist_homepage_screen.dart';
 import './screens/tourist/tourist_profile_screen.dart';
 import './screens/tourguide/tours_tourguide_screen.dart';
 import './screens/tourist/tours_tourist_screen.dart';
+import './screens/tourist/tourguide_profile_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:gawla/data/DUMMYDATA.dart';
 import 'package:gawla/screens/sampleProvider.dart';
@@ -22,7 +24,7 @@ import './screens/tourist/tours_search_screen.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  static String profileID="1Tourist";
+  static String profileID = "1Tourist";
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<Data>(
@@ -55,7 +57,7 @@ class MyApp extends StatelessWidget {
           // home: CategoriesScreen(),
           initialRoute: ToursSearchScreen.routeName, // default is '/'
           routes: {
-            '/': (ctx) => ToursTouristScreen(),
+            '/': (ctx) => ToursSearchScreen(),
             AddTourScreen.routeName: (ctx) => AddTourScreen(),
             ChatScreen.routeName: (ctx) => ChatScreen(),
             InboxScreen.routeName: (ctx) => InboxScreen(),
@@ -68,12 +70,15 @@ class MyApp extends StatelessWidget {
                 TourTouristDetailedScreen(),
             ToursGuideHomePageScreen.routeName: (ctx) =>
                 ToursGuideHomePageScreen(),
-            TourGuideProfileScreen.routeName: (ctx) => TourGuideProfileScreen(),
+            TourGuideTourGuideProfileScreen.routeName: (ctx) =>
+                TourGuideTourGuideProfileScreen(),
             ToursitHomePageScreen.routeName: (ctx) => ToursitHomePageScreen(),
-            ToursitProfileScreen.routeName: (ctx) => ToursitProfileScreen(),
+            TouristProfileScreen.routeName: (ctx) => TouristProfileScreen(),
+            ToursTouristScreen.routeName: (ctx) => ToursTouristScreen(),
             ToursTourGuideScreen.routeName: (ctx) => ToursTourGuideScreen(),
-            ToursitSettingsScreen.routeName: (ctx) => ToursitSettingsScreen()
+            SettingsScreen.routeName: (ctx) => SettingsScreen()
           },
+
           onGenerateRoute: (settings) {
             print(settings.arguments);
           },

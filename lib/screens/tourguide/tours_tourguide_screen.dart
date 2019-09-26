@@ -4,7 +4,7 @@ import '../../main.dart';
 import 'package:provider/provider.dart';
 
 class ToursTourGuideScreen extends StatelessWidget {
-  static const routeName = '/tours-tourguide-screen';
+  static const routeName = 'tours-tourguide-screen';
 
   @override
   Widget build(BuildContext context) {

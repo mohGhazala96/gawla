@@ -5,10 +5,11 @@ import '../../data/DUMMYDATA.dart';
 import 'tourist_profile_screen.dart';
 import 'tours_tourist_screen.dart';
 import 'package:provider/provider.dart';
+import 'tourist_profile_screen.dart';
 
 class ToursitHomePageScreen extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  static const routeName = '/tourist-homepage-screen';
+  static const routeName = 'tourist-homepage-screen';
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +82,7 @@ class ToursitHomePageScreen extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         Navigator.pushNamed(
-                            context, ToursitProfileScreen.routeName);
+                            context, TouristProfileScreen.routeName);
                       },
                       child: Icon(
                         Icons.person,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SignUpTourGuideScreen extends StatelessWidget {
-  static const routeName = '/signup_tourguide_screen';
+  static const routeName = 'signup_tourguide_screen';
 
   @override
   Widget build(BuildContext context) {
