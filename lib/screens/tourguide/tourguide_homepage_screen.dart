@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../main.dart';
 import '../../data/DUMMYDATA.dart';
+import 'package:provider/provider.dart';
 
 class ToursGuideHomePageScreen extends StatelessWidget {
   static const routeName = '/tourguide-homepage-screen';
@@ -9,7 +10,8 @@ class ToursGuideHomePageScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final tourGuideId = MyApp.profileID;
 
-    final tourguide = DUMMY_TOURGUIDES.where((tourGuide) {
+    final tourguide =
+        Provider.of<Data>(context).DUMMY_TOURGUIDES.where((tourGuide) {
       return tourGuide.profileID == tourGuideId;
     }).toList();
 
