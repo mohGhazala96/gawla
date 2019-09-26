@@ -73,7 +73,7 @@ class Data extends ChangeNotifier {
         tourID: "2Tour",
         name: "Musuem",
         tourguide: "1TourGuide",
-        tourists: ["1Tourist", "2Tourist"],
+        tourists: [ "2Tourist"],
         date: DateTime.now(),
         location: "Alexandria",
         places: ["Giza"],
@@ -84,7 +84,13 @@ class Data extends ChangeNotifier {
         peopleAllowed: 5,
         pictures: ['images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg','images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'])
   ];
+  void addTouristToTour(String tourID, String touristID){
+        var tour = DUMMY_TOURS.where((tour)=> tourID==tour.tourID).toList()[0];
+        tour.tourists.add(touristID);
+        
+        notifyListeners();
 
+  }
   void addTour() {
     DUMMY_TOURS.add(Tour(name: 'NewTOUR'));
     notifyListeners();

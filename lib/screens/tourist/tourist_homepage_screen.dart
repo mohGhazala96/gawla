@@ -82,7 +82,7 @@ class ToursitHomePageScreen extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         Navigator.pushNamed(
-                            context, TouristProfileScreen.routeName);
+                            context, ToursTouristScreen.routeName);
                       },
                       child: Icon(
                         Icons.person,

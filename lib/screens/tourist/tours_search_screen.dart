@@ -18,11 +18,7 @@ class _ToursSearchScreenState extends State<ToursSearchScreen> {
   Widget build(BuildContext context) {
     final touristId = MyApp.profileID;
     print(touristId);
-    final tours = Provider.of<Data>(context).DUMMY_TOURS.where((tour) {
-      print(tour.tourists);
-      return tour.tourists.contains(touristId);
-    }).toList();
-    
+    final tours = Provider.of<Data>(context).DUMMY_TOURS;
     return Scaffold(
         body: Column(
       children: <Widget>[
@@ -62,7 +58,7 @@ class _ToursSearchScreenState extends State<ToursSearchScreen> {
                       tourData.name,
                       tourData.pictures[0],
                       tourData.peopleAllowed,
-                      tourData.price),
+                      tourData.price,"false"),
                 )
                 .toList(),
             gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
