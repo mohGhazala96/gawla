@@ -3,7 +3,6 @@ import 'package:flutter/widgets.dart';
 import '../../main.dart';
 import '../../data/DUMMYDATA.dart';
 import 'package:provider/provider.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gawla/widgets/diagonally_cut_colored_image.dart';
 
 // ADD FONTS TO TEXTS
@@ -27,10 +26,9 @@ class TouristProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final touristId = MyApp.profileID;
-    final tourists =
-        Provider.of<Data>(context).DUMMY_TOURSISTS.where((tourist) {
+    final tourist = Provider.of<Data>(context).DUMMY_TOURSISTS.where((tourist) {
       return tourist.profileID == touristId;
-    }).toList();
+    }).toList()[0];
 
     return SafeArea(
       child: Scaffold(
@@ -66,7 +64,7 @@ class TouristProfileScreen extends StatelessWidget {
                             Column(
                               children: <Widget>[
                                 Text(
-                                  'Alexander Olav',
+                                  tourist.name,
                                   style: TextStyle(fontSize: 24.0),
                                 ),
                                 Text(
@@ -98,7 +96,7 @@ class TouristProfileScreen extends StatelessWidget {
                               width: 60.0,
                             ),
                             Text(
-                              'Norwegian',
+                              tourist.nationality,
                               style: TextStyle(fontSize: 16.0),
                             ),
                             SizedBox(
@@ -125,7 +123,7 @@ class TouristProfileScreen extends StatelessWidget {
                               width: 92.0,
                             ),
                             Text(
-                              'Male',
+                              tourist.gender ? 'MALE' : 'FEMALE',
                               style: TextStyle(fontSize: 16.0),
                             ),
                           ],
@@ -163,7 +161,7 @@ class TouristProfileScreen extends StatelessWidget {
                               width: 121.0,
                             ),
                             Text(
-                              '27',
+                              tourist.age.toString(),
                               style: TextStyle(fontSize: 16.0),
                             ),
                           ],
@@ -182,7 +180,7 @@ class TouristProfileScreen extends StatelessWidget {
                               width: 70.0,
                             ),
                             Text(
-                              '+20 01015740042',
+                              '+20 ${tourist.phoneNumber}',
                               style: TextStyle(fontSize: 16.0),
                             ),
                           ],

@@ -12,7 +12,7 @@ class Data extends ChangeNotifier {
       nationality: "Egyptian",
       age: 42,
       gender: true,
-      phoneNumber: "+20101895078523",
+      phoneNumber: "0101895078523",
       experience: "enter experienece here",
       languages: ["Arabic", "English", "Spanish"],
       rating: 5,
@@ -25,7 +25,7 @@ class Data extends ChangeNotifier {
       nationality: "German",
       age: 35,
       gender: true,
-      phoneNumber: "+4901835463",
+      phoneNumber: "901835463",
       experience: "enter experienece here",
       languages: ["Deutsch", "English", "Spanish"],
       rating: 4,
@@ -80,9 +80,11 @@ class Data extends ChangeNotifier {
         description: "Enter Description here",
         meetingPoint: "tahrir",
         language: "English",
-        price: 150                                                ,
+        price: 150,
         peopleAllowed: 5,
-        pictures: ['images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'])
+        pictures: [
+          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
+        ])
   ];
 
   void addTour() {

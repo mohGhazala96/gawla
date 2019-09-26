@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gawla/data/DUMMYDATA.dart';
+import 'package:provider/provider.dart';
+import '../../main.dart';
 
 class TouristTourguideProfileScreen extends StatelessWidget {
   static const routeName = 'tourist-tourguide-profile-screen';
@@ -13,6 +16,12 @@ class TouristTourguideProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tourguideId = '2TourGuide';
+    final tourguide =
+        Provider.of<Data>(context).DUMMY_TOURGUIDES.where((tourguide) {
+      return tourguide.profileID == tourguideId;
+    }).toList()[0];
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.amber,
@@ -45,7 +54,7 @@ class TouristTourguideProfileScreen extends StatelessWidget {
                         Column(
                           children: <Widget>[
                             Text(
-                              'Karim Hisham',
+                              tourguide.name,
                               style: TextStyle(fontSize: 24.0),
                             ),
                             Text(
@@ -116,7 +125,7 @@ class TouristTourguideProfileScreen extends StatelessWidget {
                           width: 60.0,
                         ),
                         Text(
-                          'Egyptain',
+                          tourguide.nationality,
                           style: TextStyle(fontSize: 16.0),
                         ),
                         SizedBox(
@@ -143,7 +152,7 @@ class TouristTourguideProfileScreen extends StatelessWidget {
                           width: 92.0,
                         ),
                         Text(
-                          'Male',
+                          tourguide.gender ? 'MALE' : 'FEMALE',
                           style: TextStyle(fontSize: 16.0),
                         ),
                       ],

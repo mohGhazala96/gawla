@@ -56,7 +56,7 @@ class MyApp extends StatelessWidget {
           // home: CategoriesScreen(),
           initialRoute: 'tourguide-tourguide-profile-screen', // default is '/'
           routes: {
-            '/': (ctx) => ToursTouristScreen(),
+            '/': (ctx) => SignIn(),
             AddTourScreen.routeName: (ctx) => AddTourScreen(),
             ChatScreen.routeName: (ctx) => ChatScreen(),
             InboxScreen.routeName: (ctx) => InboxScreen(),
