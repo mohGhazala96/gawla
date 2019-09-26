@@ -40,10 +40,10 @@ class MyApp extends StatelessWidget {
               color: Color.fromRGBO(20, 51, 51, 1),
             ),
             title: TextStyle(
-              fontFamily: 'Poppins',
-              fontSize: 70,
-              fontWeight: FontWeight.w900,
-            ),
+                fontFamily: 'Poppins',
+                fontSize: 70,
+                fontWeight: FontWeight.w900,
+                letterSpacing: 10),
             subtitle: TextStyle(
               fontFamily: 'Poppins',
               fontSize: 20,

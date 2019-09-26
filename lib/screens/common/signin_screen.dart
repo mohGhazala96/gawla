@@ -16,9 +16,8 @@ class SignInScreen extends State<SignIn> {
         body: Form(
       key: formKey,
       child: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+        child: Row(
+          children: <Widget>[
             Align(
               alignment: Alignment.topCenter,
               child: Container(
@@ -29,29 +28,70 @@ class SignInScreen extends State<SignIn> {
                 ),
               ),
             ),
-            Align(
-              alignment: Alignment.center,
-              child: Container(
-                margin: EdgeInsets.only(top: 160),
-                child: TextFormField(
-                  onSaved: (value) => password = value.trim(),
-                  obscureText: true,
-                  style: TextStyle(color: Colors.white, fontSize: 17),
-                  decoration: InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.lock,
+            Container(
+              child: ListView(
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(top: 160),
+                    decoration: BoxDecoration(
                         color: Colors.white,
-                      ),
-                      labelStyle:
-                          TextStyle(color: Color(0xffd1d1d1), fontSize: 17),
-                      labelText: "Password",
-                      enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white)),
-                      focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white))),
-                ),
+                        borderRadius: new BorderRadius.circular(15.0)),
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Container(
+                              child: TextFormField(
+                                onSaved: (value) => email = value.trim(),
+                                obscureText: true,
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 17),
+                                decoration: InputDecoration(
+                                  prefixIcon: Icon(
+                                    Icons.mail,
+                                    color: Color(0xff707070),
+                                  ),
+                                  labelStyle: TextStyle(
+                                      color: Color(0xffd1d1d1), fontSize: 17),
+                                  labelText: "Email",
+                                  enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                          color: Color(0xff817f7f),
+                                          width: 0.2)),
+                                  // focusedBorder: UnderlineInputBorder(
+                                  //     borderSide:
+                                  //         BorderSide(color: Color(0xff817f7f)))
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Container(
+                            child: TextFormField(
+                              onSaved: (value) => password = value.trim(),
+                              obscureText: true,
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 17),
+                              decoration: InputDecoration(
+                                  prefixIcon: Icon(
+                                    Icons.lock,
+                                    color: Color(0xff707070),
+                                  ),
+                                  labelStyle: TextStyle(
+                                      color: Color(0xffd1d1d1), fontSize: 17),
+                                  labelText: "Password"),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
               ),
-            )
+            ),
           ],
         ),
       ),
