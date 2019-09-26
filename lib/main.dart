@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gawla/screens/tourguide/tourist_profile_screen.dart';
 import 'package:gawla/screens/tourist/settings.dart';
 import './screens/tourguide/tour_tourguide_detailed_screen.dart';
 import './screens/tourist/tour_tourist_detailed_screen.dart';
@@ -15,9 +16,9 @@ import './screens/tourist/tourist_homepage_screen.dart';
 import './screens/tourist/tourist_profile_screen.dart';
 import './screens/tourguide/tours_tourguide_screen.dart';
 import './screens/tourist/tours_tourist_screen.dart';
+import './screens/tourist/tourguide_profile_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:gawla/data/DUMMYDATA.dart';
-import 'package:gawla/screens/sampleProvider.dart';
 
 void main() => runApp(MyApp());
 
@@ -53,7 +54,7 @@ class MyApp extends StatelessWidget {
                 )),
           ),
           // home: CategoriesScreen(),
-          initialRoute: 'tourist-profile-screen', // default is '/'
+          initialRoute: 'tourguide-tourguide-profile-screen', // default is '/'
 
           routes: {
             '/': (ctx) => SignIn(),
@@ -69,12 +70,17 @@ class MyApp extends StatelessWidget {
                 TourTouristDetailedScreen(),
             ToursGuideHomePageScreen.routeName: (ctx) =>
                 ToursGuideHomePageScreen(),
-            TourGuideProfileScreen.routeName: (ctx) => TourGuideProfileScreen(),
+            TourGuideTourGuideProfileScreen.routeName: (ctx) =>
+                TourGuideTourGuideProfileScreen(),
             ToursitHomePageScreen.routeName: (ctx) => ToursitHomePageScreen(),
             TouristProfileScreen.routeName: (ctx) => TouristProfileScreen(),
             ToursTouristScreen.routeName: (ctx) => ToursTouristScreen(),
             ToursTourGuideScreen.routeName: (ctx) => ToursTourGuideScreen(),
-            ToursitSettingsScreen.routeName: (ctx) => ToursitSettingsScreen()
+            ToursitSettingsScreen.routeName: (ctx) => ToursitSettingsScreen(),
+            TouristTourguideProfileScreen.routeName: (ctx) =>
+                TouristTourguideProfileScreen(),
+            TourGuideTouristProfileScreen.routeName: (ctx) =>
+                TourGuideTouristProfileScreen()
           },
 
           onGenerateRoute: (settings) {

@@ -11,7 +11,7 @@ dependencies:
 
   cupertino_icons: ^0.1.2
   provider: ^3.1.0
-  country_pickers: ^1.1.0
+  font_awesome_flutter: ^8.5.0
 
 dev_dependencies:
   flutter_test:
@@ -20,7 +20,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-<<<<<<< HEAD
   # To add assets to your application, add an assets section, like this:
   assets:
     - images/
