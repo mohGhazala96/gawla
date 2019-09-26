@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import '../../widgets/TourItem.dart';
 
 class ToursSearchScreen extends StatefulWidget {
-  static const routeName = '/tours-tourist-screen';
+  static const routeName = '/tours-search-tourist-screen';
 
   @override
   _ToursSearchScreenState createState() => _ToursSearchScreenState();
