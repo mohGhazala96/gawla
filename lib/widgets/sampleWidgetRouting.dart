@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../screens/tourist/tours_tourist_screen.dart';
+import '../screens/tourist/tours_search_screen.dart';
 
 class SampleItem extends StatelessWidget {
   final String id;
@@ -10,7 +10,7 @@ class SampleItem extends StatelessWidget {
 
   void selectItem(BuildContext ctx) {
     Navigator.of(ctx).pushNamed(
-      ToursTouristScreen.routeName,
+      ToursSearchScreen.routeName,
       arguments: {
         'id': id,
         'title': title,

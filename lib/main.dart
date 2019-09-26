@@ -18,7 +18,7 @@ import './screens/tourist/tours_tourist_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:gawla/data/DUMMYDATA.dart';
 import 'package:gawla/screens/sampleProvider.dart';
-
+import './screens/tourist/tours_search_screen.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
                 )),
           ),
           // home: CategoriesScreen(),
-          initialRoute: ToursTouristScreen.routeName, // default is '/'
+          initialRoute: ToursSearchScreen.routeName, // default is '/'
           routes: {
             '/': (ctx) => ToursTouristScreen(),
             AddTourScreen.routeName: (ctx) => AddTourScreen(),
@@ -71,7 +71,6 @@ class MyApp extends StatelessWidget {
             TourGuideProfileScreen.routeName: (ctx) => TourGuideProfileScreen(),
             ToursitHomePageScreen.routeName: (ctx) => ToursitHomePageScreen(),
             ToursitProfileScreen.routeName: (ctx) => ToursitProfileScreen(),
-            ToursTouristScreen.routeName: (ctx) => ToursTouristScreen(),
             ToursTourGuideScreen.routeName: (ctx) => ToursTourGuideScreen(),
             ToursitSettingsScreen.routeName: (ctx) => ToursitSettingsScreen()
           },

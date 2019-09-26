@@ -75,7 +75,7 @@ class Data extends ChangeNotifier {
         tourguide: "1TourGuide",
         tourists: ["1Tourist", "2Tourist"],
         date: DateTime.now(),
-        location: "Cairo",
+        location: "Alexandria",
         places: ["Giza"],
         description: "Enter Description here",
         meetingPoint: "tahrir",

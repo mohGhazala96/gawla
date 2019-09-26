@@ -17,6 +17,22 @@ class MenuDrawer extends StatelessWidget {
               Container(
                 height: 30,
               ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  margin: EdgeInsets.only(left: 17),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(
+                      Icons.menu,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                  ),
+                ),
+              ),
               ListTile(
                 leading: Icon(
                   Icons.person,
@@ -64,6 +80,30 @@ class MenuDrawer extends StatelessWidget {
                 title: Text("About",
                     style: TextStyle(color: Colors.white, fontSize: 17)),
               ),
+              Container(
+                color: Colors.white,
+                margin: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.51),
+                height: 1,
+                width: MediaQuery.of(context).size.width * 0.5,
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  // margin: EdgeInsets.only(
+                  //     top: MediaQuery.of(context).size.height * 0.52,
+                  //     bottom: 1),
+                  child: RaisedButton(
+                    color: Colors.black,
+                    onPressed: () {},
+                    child: Text(
+                      "Sign out",
+                      style: TextStyle(color: Colors.white, fontSize: 17),
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),
