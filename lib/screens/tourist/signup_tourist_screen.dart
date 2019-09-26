@@ -3,7 +3,7 @@ import 'package:gawla/screens/common/signin_screen.dart';
 import 'package:gawla/screens/tourist/tourist_homepage_screen.dart';
 
 class SignUpTouristScreen extends StatefulWidget {
-  static const routeName = '/signup_tourist_screen';
+  static const routeName = 'signup_tourist_screen';
 
   @override
   _SignUpTouristScreenState createState() => _SignUpTouristScreenState();

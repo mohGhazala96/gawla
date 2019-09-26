@@ -10,7 +10,7 @@ class SignIn extends StatefulWidget {
 class SignInScreen extends State<SignIn> {
   final formKey = GlobalKey<FormState>();
   String email, password;
-  static const routeName = '/signin-screen';
+  static const routeName = 'signin-screen';
 
   @override
   Widget build(BuildContext context) {

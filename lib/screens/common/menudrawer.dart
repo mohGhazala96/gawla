@@ -26,7 +26,7 @@ class MenuDrawer extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => ToursitProfileScreen()));
+                          builder: (context) => TouristProfileScreen()));
                 },
                 title: Text(
                   "Profile",

@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import '../../widgets/TourItem.dart';
 
 class ToursTouristScreen extends StatelessWidget {
-  static const routeName = '/tours-tourist-screen';
+  static const routeName = 'tours-tourist-screen';
 
   
 
