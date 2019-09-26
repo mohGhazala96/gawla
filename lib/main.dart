@@ -25,62 +25,61 @@ class MyApp extends StatelessWidget {
   static String profileID;
   @override
   Widget build(BuildContext context) {
-
-    return ChangeNotifierProvider<Data>(
-        builder: (context) => Data(),
-        child: MaterialApp(
-          title: 'Gawla',
-          theme: ThemeData(
-            primarySwatch: Colors.amber,
-            accentColor: Colors.amber,
-            canvasColor: Color.fromRGBO(255, 254, 229, 1),
-            // fontFamily: 'Raleway',
-            textTheme: ThemeData.light().textTheme.copyWith(
-                body1: TextStyle(
-                  color: Color.fromRGBO(20, 51, 51, 1),
-                ),
-                body2: TextStyle(
-                  color: Color.fromRGBO(20, 51, 51, 1),
-                )
-                // title: TextStyle(
-                //   fontSize: 20,
-                //   fontFamily: 'RobotoCondensed',
-                //   fontWeight: FontWeight.bold,
-                // )
-                ),
-          ),
-          // home: CategoriesScreen(),
-          initialRoute: ToursitHomePageScreen.routeName, // default is '/'
-          routes: {
-            '/': (ctx) => SignInScreen(),
-            AddTourScreen.routeName: (ctx) => AddTourScreen(),
-            ChatScreen.routeName: (ctx) => ChatScreen(),
-            InboxScreen.routeName: (ctx) => InboxScreen(),
-            SearchToursScreen.routeName: (ctx) => SearchToursScreen(),
-            SignUpTourGuideScreen.routeName: (ctx) => SignUpTourGuideScreen(),
-            SignUpTouristScreen.routeName: (ctx) => SignUpTouristScreen(),
-            TourTourGuideDetailedScreen.routeName: (ctx) =>
-                TourTourGuideDetailedScreen(),
-            TourTouristDetailedScreen.routeName: (ctx) =>
-                TourTouristDetailedScreen(),
-            ToursGuideHomePageScreen.routeName: (ctx) =>
-                ToursGuideHomePageScreen(),
-            TourGuideProfileScreen.routeName: (ctx) => TourGuideProfileScreen(),
-            ToursitHomePageScreen.routeName: (ctx) => ToursitHomePageScreen(),
-            ToursitProfileScreen.routeName: (ctx) => ToursitProfileScreen(),
-            ToursTouristScreen.routeName: (ctx) => ToursTouristScreen(),
-            ToursTourGuideScreen.routeName: (ctx) => ToursTourGuideScreen(),
-            ProviderScreen.routeName: (ctx) => ProviderScreen(),
-            ToursitSettingsScreen.routeName:(ctx)=>ToursitSettingsScreen()
-          },
-          onGenerateRoute: (settings) {
-            print(settings.arguments);
-          },
-          onUnknownRoute: (settings) {
-            return MaterialPageRoute(
-              builder: (ctx) => SignInScreen(),
-            );
-          },
-        ));
+    return MaterialApp(
+      title: 'Gawla',
+      theme: ThemeData(
+        primarySwatch: Colors.amber,
+        accentColor: Colors.amber,
+        canvasColor: Color(0xffFECC33),
+        fontFamily: 'Poppins',
+        textTheme: ThemeData.light().textTheme.copyWith(
+            body1: TextStyle(
+              color: Color.fromRGBO(20, 51, 51, 1),
+            ),
+            body2: TextStyle(
+              color: Color.fromRGBO(20, 51, 51, 1),
+            ),
+            title: TextStyle(
+              fontFamily: 'Poppins',
+              fontSize: 70,
+              fontWeight: FontWeight.w900,
+            ),
+            subtitle: TextStyle(
+              fontFamily: 'Poppins',
+              fontSize: 20,
+              fontWeight: FontWeight.w900,
+            )),
+      ),
+      // home: CategoriesScreen(),
+      initialRoute: ToursitHomePageScreen.routeName, // default is '/'
+      routes: {
+        '/': (ctx) => SignIn(),
+        AddTourScreen.routeName: (ctx) => AddTourScreen(),
+        ChatScreen.routeName: (ctx) => ChatScreen(),
+        InboxScreen.routeName: (ctx) => InboxScreen(),
+        SearchToursScreen.routeName: (ctx) => SearchToursScreen(),
+        SignUpTourGuideScreen.routeName: (ctx) => SignUpTourGuideScreen(),
+        SignUpTouristScreen.routeName: (ctx) => SignUpTouristScreen(),
+        TourTourGuideDetailedScreen.routeName: (ctx) =>
+            TourTourGuideDetailedScreen(),
+        TourTouristDetailedScreen.routeName: (ctx) =>
+            TourTouristDetailedScreen(),
+        ToursGuideHomePageScreen.routeName: (ctx) => ToursGuideHomePageScreen(),
+        TourGuideProfileScreen.routeName: (ctx) => TourGuideProfileScreen(),
+        ToursitHomePageScreen.routeName: (ctx) => ToursitHomePageScreen(),
+        ToursitProfileScreen.routeName: (ctx) => ToursitProfileScreen(),
+        ToursTouristScreen.routeName: (ctx) => ToursTouristScreen(),
+        ToursTourGuideScreen.routeName: (ctx) => ToursTourGuideScreen(),
+        ToursitSettingsScreen.routeName: (ctx) => ToursitSettingsScreen()
+      },
+      onGenerateRoute: (settings) {
+        print(settings.arguments);
+      },
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(
+          builder: (ctx) => SignIn(),
+        );
+      },
+    );
   }
 }
