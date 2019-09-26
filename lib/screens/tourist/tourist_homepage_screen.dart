@@ -15,10 +15,6 @@ class ToursitHomePageScreen extends StatelessWidget {
     final touristId = MyApp.profileID;
 
 
-    final tourist = Provider.of<Data>(context).DUMMY_TOURSISTS.where((tourist) {
-      return tourist.profileID == touristId;
-    }).toList();
-
     return Scaffold(
       drawer: MenuDrawer(),
       key: _scaffoldKey,
