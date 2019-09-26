@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gawla/screens/tourist/settings.dart';
 import './screens/tourguide/tour_tourguide_detailed_screen.dart';
 import './screens/tourist/tour_tourist_detailed_screen.dart';
 import './screens/tourguide/add_tour_screen.dart';
@@ -31,26 +32,31 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.amber,
             accentColor: Colors.amber,
-            canvasColor: Color.fromRGBO(255, 254, 229, 1),
-            // fontFamily: 'Raleway',
+            canvasColor: Color(0xffFECC33),
+            fontFamily: 'Poppins',
             textTheme: ThemeData.light().textTheme.copyWith(
                 body1: TextStyle(
                   color: Color.fromRGBO(20, 51, 51, 1),
                 ),
                 body2: TextStyle(
                   color: Color.fromRGBO(20, 51, 51, 1),
-                )
-                // title: TextStyle(
-                //   fontSize: 20,
-                //   fontFamily: 'RobotoCondensed',
-                //   fontWeight: FontWeight.bold,
-                // )
                 ),
+                title: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 70,
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: 10),
+                subtitle: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 20,
+                  fontWeight: FontWeight.w900,
+                )),
           ),
           // home: CategoriesScreen(),
           initialRoute: 'tourist-profile-screen', // default is '/'
+
           routes: {
-            '/': (ctx) => SignInScreen(),
+            '/': (ctx) => SignIn(),
             AddTourScreen.routeName: (ctx) => AddTourScreen(),
             ChatScreen.routeName: (ctx) => ChatScreen(),
             InboxScreen.routeName: (ctx) => InboxScreen(),
@@ -68,16 +74,17 @@ class MyApp extends StatelessWidget {
             TouristProfileScreen.routeName: (ctx) => TouristProfileScreen(),
             ToursTouristScreen.routeName: (ctx) => ToursTouristScreen(),
             ToursTourGuideScreen.routeName: (ctx) => ToursTourGuideScreen(),
-            ProviderScreen.routeName: (ctx) => ProviderScreen()
+            ToursitSettingsScreen.routeName: (ctx) => ToursitSettingsScreen()
           },
-//          onGenerateRoute: (settings) {
-//            print(settings.arguments);
-//          },
-////          onUnknownRoute: (settings) {
-////            return MaterialPageRoute(
-////              builder: (ctx) => SignInScreen(),
-////            );
-//          },
+
+          onGenerateRoute: (settings) {
+            print(settings.arguments);
+          },
+          onUnknownRoute: (settings) {
+            return MaterialPageRoute(
+              builder: (ctx) => SignIn(),
+            );
+          },
         ));
   }
 }
