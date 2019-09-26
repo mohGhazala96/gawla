@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
                 )),
           ),
           // home: CategoriesScreen(),
-          initialRoute: ToursitHomePageScreen.routeName, // default is '/'
+          initialRoute: '/', // default is '/'
           routes: {
             '/': (ctx) => SignIn(),
             AddTourScreen.routeName: (ctx) => AddTourScreen(),
