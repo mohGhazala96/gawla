@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../screens/tourist/tour_tourist_detailed_screen.dart';
 import '../widgets/greystripe.dart';
-
 class TourItem extends StatelessWidget {
   final String tourID;
   final String tourName;

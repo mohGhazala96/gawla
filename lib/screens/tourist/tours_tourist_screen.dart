@@ -13,9 +13,7 @@ class ToursTouristScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final touristId = MyApp.profileID;
-    print(touristId);
     final tours = Provider.of<Data>(context).DUMMY_TOURS.where((tour) {
-      print(tour.tourists);
       return tour.tourists.contains(touristId);
     }).toList();
 
