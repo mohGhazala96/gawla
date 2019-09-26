@@ -22,7 +22,7 @@ import 'package:gawla/screens/sampleProvider.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  static String profileID="1Tourist";
+  static String profileID = "1Tourist";
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<Data>(
@@ -53,9 +53,9 @@ class MyApp extends StatelessWidget {
                 )),
           ),
           // home: CategoriesScreen(),
-          initialRoute: ToursTouristScreen.routeName, // default is '/'
+          initialRoute: '/', // default is '/'
           routes: {
-            '/': (ctx) => ToursTouristScreen(),
+            '/': (ctx) => SignIn(),
             AddTourScreen.routeName: (ctx) => AddTourScreen(),
             ChatScreen.routeName: (ctx) => ChatScreen(),
             InboxScreen.routeName: (ctx) => InboxScreen(),
@@ -73,7 +73,7 @@ class MyApp extends StatelessWidget {
             ToursitProfileScreen.routeName: (ctx) => ToursitProfileScreen(),
             ToursTouristScreen.routeName: (ctx) => ToursTouristScreen(),
             ToursTourGuideScreen.routeName: (ctx) => ToursTourGuideScreen(),
-            ToursitSettingsScreen.routeName: (ctx) => ToursitSettingsScreen()
+            SettingsScreen.routeName: (ctx) => SettingsScreen()
           },
           onGenerateRoute: (settings) {
             print(settings.arguments);
