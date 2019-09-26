@@ -1,8 +1,10 @@
+import 'package:country_pickers/country.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import '../../main.dart';
 import '../../data/DUMMYDATA.dart';
 import 'package:provider/provider.dart';
+import 'package:country_pickers/country_pickers.dart';
 
 // ADD FONTS TO TEXTS
 
@@ -58,6 +60,73 @@ class TouristProfileScreen extends StatelessWidget {
                       )
                     ],
                   )
+                ],
+              ),
+              SizedBox(
+                height: 30.0,
+              ),
+              Divider(
+                thickness: 2.0,
+                color: Colors.black,
+              ),
+              SizedBox(
+                height: 30.0,
+              ),
+              Row(
+                children: <Widget>[
+                  Text(
+                    'Nationality:',
+                    style:
+                        TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    width: 24.0,
+                  ),
+                  Text(
+                    'Norwegian',
+                    style: TextStyle(fontSize: 16.0),
+                  ),
+                  SizedBox(
+                    width: 24.0,
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 30.0,
+              ),
+              Row(
+                children: <Widget>[
+                  Text(
+                    'Gender:',
+                    style:
+                        TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    width: 24.0,
+                  ),
+                  Text(
+                    'Male',
+                    style: TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 30.0,
+              ),
+              Row(
+                children: <Widget>[
+                  Text(
+                    'Languages:',
+                    style:
+                        TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    width: 24.0,
+                  ),
+                  Text(
+                    'Norwegian',
+                    style: TextStyle(fontSize: 16.0),
+                  ),
                 ],
               )
             ],
