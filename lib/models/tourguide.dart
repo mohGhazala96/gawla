@@ -12,7 +12,7 @@ class TourGuide {
   String phoneNumber;
   String experience;
   double rating;
-  Image displayPicture;
+  String displayPicture;
   List<String> languages;
   List<Chat> chats;
   int since;

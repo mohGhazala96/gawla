@@ -9,7 +9,7 @@ class Tourist {
   String nationality;
   bool gender; //0 female / 1 male
   String phoneNumber;
-  Image displayPicture;
+  String displayPicture;
   List<Chat> chats;
 
   Tourist(

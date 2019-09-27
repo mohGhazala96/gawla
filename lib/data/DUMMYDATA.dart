@@ -150,7 +150,9 @@ class Data extends ChangeNotifier {
   void addTouristToTour(String tourID, String touristID) {
     var tour = DUMMY_TOURS.where((tour) => tourID == tour.tourID).toList()[0];
     tour.tourists.add(touristID);
- 
+        notifyListeners();
+
+
   }
 
 
