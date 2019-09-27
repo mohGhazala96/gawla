@@ -35,28 +35,19 @@ class TouristProfileScreen extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        key: scaffoldKey,
-        drawer: MenuDrawer(),
         backgroundColor: Colors.amber,
         body: Container(
           child: ListView(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(top: 15.0),
+                padding: const EdgeInsets.only(top: 20.0, left: 10.0),
                 child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Container(
-                    margin: EdgeInsets.only(left: 17),
-                    child: GestureDetector(
-                      onTap: () {
-                        scaffoldKey.currentState.openDrawer();
-                      },
-                      child: Icon(
-                        Icons.menu,
-                        color: Colors.black,
-                        size: 30,
-                      ),
-                    ),
+                  alignment: Alignment.topLeft,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(Icons.arrow_back_ios),
                   ),
                 ),
               ),
@@ -121,14 +112,6 @@ class TouristProfileScreen extends StatelessWidget {
                           tourist.nationality,
                           style: TextStyle(fontSize: 16.0),
                         ),
-                        SizedBox(
-                          width: 50.0,
-                        ),
-                        SizedBox(
-                          child: Image.asset('images/country_flag.png'),
-                          height: 40.0,
-                          width: 40.0,
-                        )
                       ],
                     ),
                     SizedBox(

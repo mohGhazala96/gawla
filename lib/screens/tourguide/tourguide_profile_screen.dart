@@ -133,7 +133,7 @@ class TourGuideTourGuideProfileScreen extends StatelessWidget {
                           fontSize: 16.0, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
-                      width: 60.0,
+                      width: 61.0,
                     ),
                     Text(
                       tourguide.nationality,
@@ -142,11 +142,6 @@ class TourGuideTourGuideProfileScreen extends StatelessWidget {
                     SizedBox(
                       width: 20.0,
                     ),
-                    SizedBox(
-                      child: Image.asset('images/country_flag.png'),
-                      height: 50.0,
-                      width: 50.0,
-                    )
                   ],
                 ),
                 SizedBox(
@@ -160,7 +155,7 @@ class TourGuideTourGuideProfileScreen extends StatelessWidget {
                           fontSize: 16.0, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
-                      width: 92.0,
+                      width: 94.0,
                     ),
                     Text(
                       tourguide.gender ? 'MALE' : 'FEMALE',
@@ -179,7 +174,7 @@ class TourGuideTourGuideProfileScreen extends StatelessWidget {
                           fontSize: 16.0, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
-                      width: 62.0,
+                      width: 63.0,
                     ),
                     Text(
                       'Arabic, English',
@@ -198,7 +193,7 @@ class TourGuideTourGuideProfileScreen extends StatelessWidget {
                           fontSize: 16.0, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
-                      width: 121.0,
+                      width: 122.0,
                     ),
                     Text(
                       tourguide.age.toString(),
