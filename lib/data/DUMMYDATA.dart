@@ -53,7 +53,7 @@ class Data extends ChangeNotifier {
       age: 26,
       gender: false,
       phoneNumber: "91313333",
-      displayPicture: null,
+      displayPicture: 'images/karim.jpg',
       chats: null);
   static Tourist tourist2 = Tourist(
       profileID: "2Tourist",
@@ -63,7 +63,7 @@ class Data extends ChangeNotifier {
       age: 53,
       gender: false,
       phoneNumber: "91313333",
-      displayPicture: null,
+      displayPicture: 'images/karim.jpg',
       chats: null);
   var DUMMY_TOURGUIDES = [tourguide1, tourguide2];
   var DUMMY_TOURSISTS = [tourist1, tourist2];
@@ -87,9 +87,8 @@ class Data extends ChangeNotifier {
         pictures: [
           'images/egypt-cairo-pyramids-of-giza-and camels-2.jpg',
           'images/egypt-cairo-pyramids-of-giza-and camels-2.jpg',
-          'images/egypt-cairo-pyramids-of-giza-and camels-2.jpg'
         ],
-        rating: 4.8),
+        rating: 4.8,tourGuidePic: 'images/karim.jpg'),
     Tour(
         tourID: "2Tour",
         name: "Musuem",
@@ -108,7 +107,7 @@ class Data extends ChangeNotifier {
         pictures: [
           'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
           'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
-        ])
+        ],rating: 4.2,tourGuidePic: 'images/karim.jpg')
   ];
   var DUMMY_VIEW_TOURS = [
     Tour(
