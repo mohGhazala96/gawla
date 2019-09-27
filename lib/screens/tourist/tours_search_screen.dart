@@ -59,7 +59,7 @@ class _ToursSearchScreenState extends State<ToursSearchScreen> {
                     tourData.pictures[0],
                     tourData.peopleAllowed,
                     tourData.price,
-                    "false"),
+                    "false",true),
               )
               .toList(),
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(

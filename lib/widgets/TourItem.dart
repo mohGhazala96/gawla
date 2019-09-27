@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:gawla/screens/tourguide/tour_tourguide_detailed_screen.dart';
 import '../screens/tourist/tour_tourist_detailed_screen.dart';
 import '../widgets/greystripe.dart';
+
 class TourItem extends StatelessWidget {
   final String tourID;
   final String tourName;
@@ -8,20 +10,32 @@ class TourItem extends StatelessWidget {
   final int numberOfPeople;
   final int price;
   final String isBooked;
+  final bool isTourist;
 
-  TourItem(this.tourID, this.tourName, this.displayImage,this.numberOfPeople,this.price,this.isBooked);
+  TourItem(this.tourID, this.tourName, this.displayImage, this.numberOfPeople,
+      this.price, this.isBooked, this.isTourist);
 
   void selectCategory(BuildContext ctx) {
     print(displayImage);
-    Navigator.of(ctx).pushNamed(
-      TourTouristDetailedScreen.routeName,
-      arguments: {
-        'tourID': tourID,
-        'tourname': tourName,
-        'image': displayImage,
-        'isbooked':isBooked
-      },
-    );
+    if (this.isTourist)
+      Navigator.of(ctx).pushNamed(
+        TourTouristDetailedScreen.routeName,
+        arguments: {
+          'tourID': tourID,
+          'tourname': tourName,
+          'image': displayImage,
+          'isbooked': isBooked
+        },
+      );
+    else {
+      Navigator.of(ctx).pushNamed(
+        TourTourGuideDetailedScreen.routeName,
+        arguments: {
+          'tourID': tourID,
+          'tourname': tourName,
+        },
+      );
+    }
   }
 
   @override
@@ -44,14 +58,12 @@ class TourItem extends StatelessWidget {
           ),
           Container(
             child: GreyStripe(
-              capacity: numberOfPeople, 
+              capacity: numberOfPeople,
               price: price,
-              title:tourName,
-              
+              title: tourName,
             ),
             alignment: Alignment(0.0, 1.0),
           ),
-        
         ]),
         decoration: BoxDecoration(
           color: Color.fromARGB(255, 0, 0, 0),

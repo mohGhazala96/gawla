@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gawla/main.dart';
 import 'package:gawla/screens/common/menudrawer.dart';
 import 'package:provider/provider.dart';
 import 'package:gawla/data/DUMMYDATA.dart';
@@ -15,7 +16,7 @@ class TourGuideTourGuideProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tourguideId = '1TourGuide';
+    final tourguideId = MyApp.profileID;
     final tourguide =
         Provider.of<Data>(context).DUMMY_TOURGUIDES.where((tourguide) {
       return tourguide.profileID == tourguideId;
