@@ -150,11 +150,13 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
                       child: new SingleChildScrollView(
                           child: Column(
                         children: <Widget>[
-                          Text(
-                            tour.description,
-                            style: TextStyle(
-                              fontSize: 16.0,
-                            ),
+                          Column(
+                            children: <Widget>[
+                              Text('Description: ${tour.description}'),
+                              Text('Location: ${tour.location}'),
+                              Text('Meeting Point: ${tour.meetingPoint}'),
+                              Text('Language: ${tour.language}')
+                            ],
                           ),
                           ListTile(
                             leading: CircleAvatar(
@@ -172,21 +174,24 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
                                   fontSize: 16.0, fontWeight: FontWeight.bold),
                             ),
                             subtitle: Text(tour.tourguideName),
-                          ),ListTile(
-                leading: Icon(
-                  Icons.question_answer,
-                  color: Colors.black,
-                  size: 50,
-                ),
-                onTap: () {  Navigator.of(context).pushNamed(
-      ChatScreen.routeName,
-      
-    );},
-                title: Text("Tour's Chat",
-                    style: TextStyle(color: Colors.black, fontSize: 16,fontWeight: FontWeight.bold)),
-              )
-                           
-
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.question_answer,
+                              color: Colors.black,
+                              size: 50,
+                            ),
+                            onTap: () {
+                              Navigator.of(context).pushNamed(
+                                ChatScreen.routeName,
+                              );
+                            },
+                            title: Text("Tour's Chat",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold)),
+                          )
                         ],
                       )),
                     ),
@@ -223,7 +228,7 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
           Align(
             alignment: Alignment.bottomLeft,
             child: Padding(
-              padding: const EdgeInsets.only(left: 10.0,top: 10),
+              padding: const EdgeInsets.only(left: 10.0, top: 10),
               child: Text(
                 '\$${tour.price}',
                 style: TextStyle(

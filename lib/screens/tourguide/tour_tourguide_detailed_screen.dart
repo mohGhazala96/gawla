@@ -12,14 +12,13 @@ class TourTourGuideDetailedScreen extends StatefulWidget {
   static const routeName = 'tour-tourguide-detailed-screen';
 
   @override
-  _TourTourGuideDetailedScreenState createState() => _TourTourGuideDetailedScreenState();
+  _TourTourGuideDetailedScreenState createState() =>
+      _TourTourGuideDetailedScreenState();
 }
 
-class _TourTourGuideDetailedScreenState extends State<TourTourGuideDetailedScreen> {
+class _TourTourGuideDetailedScreenState
+    extends State<TourTourGuideDetailedScreen> {
   @override
-
-
-
   void visitTourist(BuildContext ctx, String touristName) {
     Navigator.of(ctx).pushNamed(
       TourGuideTouristProfileScreen.routeName,
@@ -27,38 +26,33 @@ class _TourTourGuideDetailedScreenState extends State<TourTourGuideDetailedScree
     );
   }
 
- 
-
   @override
   Widget build(BuildContext context) {
     final routeArgs =
         ModalRoute.of(context).settings.arguments as Map<String, String>;
     final tourID = routeArgs['tourID'];
 
-
     final tourDertailed = Provider.of<Data>(context).DUMMY_TOURS.where((tour) {
       return tour.tourID == tourID;
     }).toList();
-     
-    List<Widget> list = new List<Widget>();
 
+    List<Widget> list = new List<Widget>();
 
     var tour = tourDertailed[0];
     print(tourDertailed[0].tourID);
 
-    for(var i = 0; i < tour.tourists.length; i++){
-  list.add(GestureDetector(
-          onTap: () =>visitTourist(context, tour.tourists[i]),
-
-      child: CircleAvatar(
-        radius: 30,
-        backgroundColor: Colors.amber,
-        backgroundImage: AssetImage((tour.tourGuidePic)),
-      ),
-  ),
-   
-  );
-}
+    for (var i = 0; i < tour.tourists.length; i++) {
+      list.add(
+        GestureDetector(
+          onTap: () => visitTourist(context, tour.tourists[i]),
+          child: CircleAvatar(
+            radius: 30,
+            backgroundColor: Colors.amber,
+            backgroundImage: AssetImage((tour.tourGuidePic)),
+          ),
+        ),
+      );
+    }
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -110,40 +104,43 @@ class _TourTourGuideDetailedScreenState extends State<TourTourGuideDetailedScree
                     SizedBox(
                       height: 10.0,
                     ),
-                    
                     Container(
-                      height:  300 ,
+                      height: 300,
                       child: new SingleChildScrollView(
                           child: Column(
                         children: <Widget>[
-                          Text(
-                            tour.description,
-                            style: TextStyle(
-                              fontSize: 16.0,
-                            ),
+                          Column(
+                            children: <Widget>[
+                              Text('Description: ${tour.description}'),
+                              Text('Location: ${tour.location}'),
+                              Text('Meeting Point: ${tour.meetingPoint}'),
+                              Text('Language: ${tour.language}')
+                            ],
                           ),
                           Text(
-                              "Tourists:",
-                              textAlign: TextAlign.start,
-                              style: TextStyle(
-                                  fontSize: 16.0, fontWeight: FontWeight.bold),
+                            "Tourists:",
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                                fontSize: 16.0, fontWeight: FontWeight.bold),
+                          ),
+                          new Row(children: list),
+                          ListTile(
+                            leading: Icon(
+                              Icons.question_answer,
+                              color: Colors.black,
+                              size: 50,
                             ),
-                          new Row(children: list)
-                          , ListTile(
-                leading: Icon(
-                  Icons.question_answer,
-                  color: Colors.black,
-                  size: 50,
-                ),
-                onTap: () {  Navigator.of(context).pushNamed(
-      ChatScreen.routeName,
-      
-    );},
-                title: Text("Tour's Chat",
-                    style: TextStyle(color: Colors.black, fontSize: 16,fontWeight: FontWeight.bold)),
-              )
-                           
-
+                            onTap: () {
+                              Navigator.of(context).pushNamed(
+                                ChatScreen.routeName,
+                              );
+                            },
+                            title: Text("Tour's Chat",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold)),
+                          )
                         ],
                       )),
                     ),
@@ -180,7 +177,7 @@ class _TourTourGuideDetailedScreenState extends State<TourTourGuideDetailedScree
           Align(
             alignment: Alignment.bottomLeft,
             child: Padding(
-              padding: const EdgeInsets.only(left: 10.0,top: 10),
+              padding: const EdgeInsets.only(left: 10.0, top: 10),
               child: Text(
                 '\$${tour.price}',
                 style: TextStyle(
@@ -191,10 +188,8 @@ class _TourTourGuideDetailedScreenState extends State<TourTourGuideDetailedScree
               ),
             ),
           ),
-         
         ],
       ),
     );
-    }
   }
-
+}
