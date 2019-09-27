@@ -11,7 +11,7 @@ class ProviderScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Center(
-          child: Text(Provider.of<Data>(context).DUMMY_TOURS.last.name),
+          child: Text(Provider.of<Data>(context).dummyTours.last.name),
         ),
         RaisedButton(
           onPressed: () {

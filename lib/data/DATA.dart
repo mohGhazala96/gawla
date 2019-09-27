@@ -80,8 +80,6 @@ class DATA extends ChangeNotifier {
       review: 'Exceptional TourGuide. Gave Me The Experience of my Life',
       rate: 5);
 
-
-
   static TourGuide tourguide1 = TourGuide(
       name: 'angela',
       profileID: 'angelaID',
@@ -233,67 +231,66 @@ class DATA extends ChangeNotifier {
         'images/milka.jpg'
       ]);
 
-  var DUMMY_TOURSISTS = [tourist1, tourist2, tourist3, tourist4, tourist5];
-  var DUMMY_TOURGUIDES = [tourguide1, tourguide2, tourguide3];
-  var DUMMY_TOURS = [tour1, tour2, tour3, tour3, tour4];
-  var DUMMY_VIEW_TOURS = [tour1, tour2, tour3, tour4];
+  var dummyTourists = [tourist1, tourist2, tourist3, tourist4, tourist5];
+  var dummyTourGuides = [tourguide1, tourguide2, tourguide3];
+  var dummyTours = [tour1, tour2, tour3, tour3, tour4];
+  var dummyViewTours = [tour1, tour2, tour3, tour4];
 
   void addTouristToTour(String tourID, String touristID) {
-    var tour = DUMMY_TOURS.where((tour) => tourID == tour.tourID).toList()[0];
+    var tour = dummyTours.where((tour) => tourID == tour.tourID).toList()[0];
     tour.tourists.add(touristID);
     notifyListeners();
   }
 
   void addTour() {
-    DUMMY_TOURS.add(Tour(name: 'NewTOUR'));
+    dummyTours.add(Tour(name: 'NewTOUR'));
     notifyListeners();
   }
 
   void updateDummyData(List<Tour> list) {
-    DUMMY_VIEW_TOURS = list;
+    dummyViewTours = list;
     notifyListeners();
-    TourGuide getTourGuideByID(String id) {
-      return DUMMY_TOURGUIDES.where((tourguide) {
-        return tourguide.profileID == id;
-      }).toList()[0];
-    }
+    // TourGuide getTourGuideByID(String id) {
+    //   return dummyTourGuides.where((tourguide) {
+    //     return tourguide.profileID == id;
+    //   }).toList()[0];
+    // }
 
-    Tourist getTouristByID(String id) {
-      return DUMMY_TOURSISTS.where((tourist) {
-        return tourist.profileID == id;
-      }).toList()[0];
-    }
+    // Tourist getTouristByID(String id) {
+    //   return dummyTourists.where((tourist) {
+    //     return tourist.profileID == id;
+    //   }).toList()[0];
+    // }
   }
 
-
   Tourist getTouristByID(String id) {
-    return DUMMY_TOURSISTS.where((tourist) {
+    return dummyTourists.where((tourist) {
       return tourist.profileID == id;
     }).toList()[0];
   }
 
   Tour getTourByID(String id) {
-    return DUMMY_TOURS.where((tour) {
+    return dummyTours.where((tour) {
       return tour.tourID == id;
     }).toList()[0];
   }
 
   String getUserName(String id) {
-    int isTourguide = DUMMY_TOURGUIDES
+    int isTourguide = dummyTourGuides
         .where((tourguide) {
           return tourguide.profileID == id;
         })
         .toList()
         .length;
     if (isTourguide > 0) {
-      return DUMMY_TOURGUIDES
+      return dummyTourGuides
           .where((tourguide) {
             return tourguide.profileID == id;
           })
           .toList()[0]
           .name;
     } else {
-      return DUMMY_TOURSISTS
+      return dummyTourists
           .where((tourist) {
             return tourist.profileID == id;
           })
@@ -303,7 +300,7 @@ class DATA extends ChangeNotifier {
   }
 
   bool isTourist(String id) {
-    int tourist = DUMMY_TOURSISTS
+    int tourist = dummyTourists
         .where((tourist) {
           return tourist.profileID == id;
         })

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gawla/models/question.dart';
 import 'package:gawla/screens/tourist/tourist_homepage_screen.dart';
-import 'package:gawla/models/FAQ.dart';
 import 'package:gawla/data/DUMMYDATA.dart';
 import 'package:provider/provider.dart';
 

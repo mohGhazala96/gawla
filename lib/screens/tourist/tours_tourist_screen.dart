@@ -3,7 +3,6 @@ import 'package:gawla/widgets/TourItem.dart';
 import 'package:provider/provider.dart';
 import '../../data/DUMMYDATA.dart';
 import '../../main.dart';
-import 'tourist_homepage_screen.dart';
 
 class ToursTouristScreen extends StatelessWidget {
   static const routeName = 'tours-tourist-screen';
@@ -11,23 +10,22 @@ class ToursTouristScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final touristId = MyApp.profileID;
-    final tours = Provider.of<Data>(context).DUMMY_TOURS.where((tour) {
+    final tours = Provider.of<Data>(context).dummyTours.where((tour) {
       return tour.tourists.contains(touristId);
     }).toList();
-    print("aaaadd"+tours[0].name  +" "+touristId );
-    print("aaaadd"+tours[1].name     +" "+touristId );
+    print("aaaadd" + tours[0].name + " " + touristId);
+    print("aaaadd" + tours[1].name + " " + touristId);
 
     return Scaffold(
         body: new Column(children: <Widget>[
       Row(
         children: <Widget>[
-          
           Padding(
             padding: const EdgeInsets.only(top: 30, left: 10),
             child: Text('My Bookings',
                 style: TextStyle(
                     fontSize: 40,
-                    color: Colors.white,
+                    color: Colors.black,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.bold)),
           )
@@ -44,7 +42,8 @@ class ToursTouristScreen extends StatelessWidget {
                   tourData.pictures[0],
                   tourData.peopleAllowed,
                   tourData.price,
-                  "true",true),
+                  "true",
+                  true),
             )
             .toList(),
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(

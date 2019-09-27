@@ -7,9 +7,9 @@ class Message {
   bool isTourist; // 1 tourist, 0 tourguide
   String sender;
   Message(
-      {@required this.id,
+      {this.id,
       @required this.text,
-      @required this.date,
-      @required this.isTourist,
+      this.date,
+      this.isTourist,
       @required this.sender});
 }

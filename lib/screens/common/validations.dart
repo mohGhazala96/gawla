@@ -1,8 +1,6 @@
-import 'package:gawla/data/DUMMYDATA.dart';
 import 'package:gawla/main.dart';
 import 'package:gawla/models/tourguide.dart';
 import 'package:gawla/models/tourist.dart';
-import 'package:provider/provider.dart';
 
 List<bool> signInValidation(String email, String password,
     List<TourGuide> tourGuides, List<Tourist> tourists) {

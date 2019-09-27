@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gawla/main.dart';
-import 'package:gawla/models/message.dart';
 import 'package:bubble/bubble.dart';
 import 'package:gawla/models/tour.dart';
-import 'package:gawla/screens/common/menudrawer.dart';
 import 'package:provider/provider.dart';
 import 'package:gawla/widgets/diagonally_cut_colored_image.dart';
 import 'package:gawla/data/DUMMYDATA.dart';
@@ -20,16 +18,16 @@ class ChatScreen extends StatelessWidget {
     String msgText;
     final _controller = TextEditingController();
 
-    var linearGradient = const BoxDecoration(
-      gradient: const LinearGradient(
-        begin: FractionalOffset.centerRight,
-        end: FractionalOffset.bottomLeft,
-        colors: <Color>[
-          const Color(0xFF413070),
-          const Color(0xFF2B264A),
-        ],
-      ),
-    );
+    // var linearGradient = const BoxDecoration(
+    //   gradient: const LinearGradient(
+    //     begin: FractionalOffset.centerRight,
+    //     end: FractionalOffset.bottomLeft,
+    //     colors: <Color>[
+    //       const Color(0xFF413070),
+    //       const Color(0xFF2B264A),
+    //     ],
+    //   ),
+    // );
 
     print(user + 'sjsjsjj');
 

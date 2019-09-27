@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gawla/data/DUMMYDATA.dart';
-import 'package:gawla/screens/common/menudrawer.dart';
 import 'package:provider/provider.dart';
 //import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
 
@@ -23,25 +22,37 @@ class TouristTourguideProfileScreen extends StatelessWidget {
     final tourguideId = routeArgs['id'];
 
     final tourguide =
-        Provider.of<Data>(context).DUMMY_TOURGUIDES.where((tourguide) {
+        Provider.of<Data>(context).dummyTourGuides.where((tourguide) {
       return tourguide.profileID == tourguideId;
     }).toList()[0];
 
     List<Widget> listOfLanaguges = new List<Widget>();
     for (var i = 0; i < tourguide.languages.length; i++) {
       listOfLanaguges.add(new Text(
-        tourguide.languages[i]+" ",
+        tourguide.languages[i] + " ",
         style: TextStyle(fontSize: 16.0),
       ));
     }
-      var flagCode = "eg";
-      switch (tourguide.nationality){
-      case 'egyptian': flagCode='eg'; break;
-      case 'american': flagCode='us';break;
-      case 'french': flagCode='fr';break;
-      case 'dutch': flagCode='bq';break;
-      case 'kenyian': flagCode='ke';break;
-      case 'turkish': flagCode='tr';break;
+    var flagCode = "eg";
+    switch (tourguide.nationality) {
+      case 'egyptian':
+        flagCode = 'eg';
+        break;
+      case 'american':
+        flagCode = 'us';
+        break;
+      case 'french':
+        flagCode = 'fr';
+        break;
+      case 'dutch':
+        flagCode = 'bq';
+        break;
+      case 'kenyian':
+        flagCode = 'ke';
+        break;
+      case 'turkish':
+        flagCode = 'tr';
+        break;
     }
 
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
@@ -82,7 +93,8 @@ class TouristTourguideProfileScreen extends StatelessWidget {
                         child: CircleAvatar(
                           radius: 44,
                           backgroundColor: Colors.amber,
-                          child:   Image.asset('images/flags/'+flagCode+'.png'),
+                          child:
+                              Image.asset('images/flags/' + flagCode + '.png'),
                         ),
                       ),
                       SizedBox(

@@ -93,9 +93,6 @@ class MyApp extends StatelessWidget {
                 TourGuideTouristProfileScreen()
           },
 
-          onGenerateRoute: (settings) {
-            print(settings.arguments);
-          },
           onUnknownRoute: (settings) {
             return MaterialPageRoute(
               builder: (ctx) => SignIn(),
