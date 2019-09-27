@@ -72,7 +72,7 @@ class Data extends ChangeNotifier {
       experience: "enter experienece here",
       languages: ["Arabic", "English", "Spanish"],
       rating: 5,
-      displayPicture: null,
+      displayPicture: 'images/karim.jpg',
       chats: null);
   static TourGuide tourguide2 = TourGuide(
       profileID: '2TourGuide',
@@ -86,7 +86,7 @@ class Data extends ChangeNotifier {
       experience: "enter experienece here",
       languages: ["Deutsch", "English", "Spanish"],
       rating: 4,
-      displayPicture: null,
+      displayPicture: 'images/karim.jpg',
       chats: null);
 
   static Tourist tourist1 = Tourist(
@@ -111,10 +111,10 @@ class Data extends ChangeNotifier {
       phoneNumber: "91313333",
       displayPicture: 'images/karim.jpg',
       chats: null);
-  var DUMMY_TOURGUIDES = [tourguide1, tourguide2];
-  var DUMMY_TOURSISTS = [tourist1, tourist2];
+  var dummyTourGuides = [tourguide1, tourguide2];
+  var dummyTourists = [tourist1, tourist2];
 
-  var DUMMY_TOURS = [
+  var dummyTours = [
     Tour(
         tourID: "1Tour",
         name: "Pharonic Tour",
@@ -201,7 +201,7 @@ class Data extends ChangeNotifier {
         rating: 4.2,
         tourGuidePic: 'images/karim.jpg'),
   ];
-  var DUMMY_VIEW_TOURS = [
+  var dummyViewTours = [
     Tour(
         tourID: "1Tour",
         name: "Pharonic Tour",
@@ -260,30 +260,30 @@ class Data extends ChangeNotifier {
         tourGuidePic: 'images/karim.jpg')
   ];
   void addTouristToTour(String tourID, String touristID) {
-    var tour = DUMMY_TOURS.where((tour) => tourID == tour.tourID).toList()[0];
+    var tour = dummyTours.where((tour) => tourID == tour.tourID).toList()[0];
     tour.tourists.add(touristID);
     notifyListeners();
   }
 
   void addTour() {
-    DUMMY_TOURS.add(Tour(name: 'NewTOUR'));
+    dummyTours.add(Tour(name: 'NewTOUR'));
     notifyListeners();
   }
 
   void updateDummyData(List<Tour> list) {
-    DUMMY_VIEW_TOURS = list;
+    dummyViewTours = list;
     notifyListeners();
-    TourGuide getTourGuideByID(String id) {
-      return DUMMY_TOURGUIDES.where((tourguide) {
-        return tourguide.profileID == id;
-      }).toList()[0];
-    }
+    // TourGuide getTourGuideByID(String id) {
+    //   return dummyTourGuides.where((tourguide) {
+    //     return tourguide.profileID == id;
+    //   }).toList()[0];
+    // }
 
-    Tourist getTouristByID(String id) {
-      return DUMMY_TOURSISTS.where((tourist) {
-        return tourist.profileID == id;
-      }).toList()[0];
-    }
+    // Tourist getTouristByID(String id) {
+    //   return dummyTourists.where((tourist) {
+    //     return tourist.profileID == id;
+    //   }).toList()[0];
+    // }
   }
 
   FAQ getFAQ() {
@@ -291,33 +291,33 @@ class Data extends ChangeNotifier {
   }
 
   Tourist getTouristByID(String id) {
-    return DUMMY_TOURSISTS.where((tourist) {
+    return dummyTourists.where((tourist) {
       return tourist.profileID == id;
     }).toList()[0];
   }
 
   Tour getTourByID(String id) {
-    return DUMMY_TOURS.where((tour) {
+    return dummyTours.where((tour) {
       return tour.tourID == id;
     }).toList()[0];
   }
 
   String getUserName(String id) {
-    int isTourguide = DUMMY_TOURGUIDES
+    int isTourguide = dummyTourGuides
         .where((tourguide) {
           return tourguide.profileID == id;
         })
         .toList()
         .length;
     if (isTourguide > 0) {
-      return DUMMY_TOURGUIDES
+      return dummyTourGuides
           .where((tourguide) {
             return tourguide.profileID == id;
           })
           .toList()[0]
           .name;
     } else {
-      return DUMMY_TOURSISTS
+      return dummyTourists
           .where((tourist) {
             return tourist.profileID == id;
           })
@@ -327,7 +327,7 @@ class Data extends ChangeNotifier {
   }
 
   bool isTourist(String id) {
-    int tourist = DUMMY_TOURSISTS
+    int tourist = dummyTourists
         .where((tourist) {
           return tourist.profileID == id;
         })

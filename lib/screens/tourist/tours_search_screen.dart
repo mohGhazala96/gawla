@@ -17,7 +17,7 @@ class _ToursSearchScreenState extends State<ToursSearchScreen> {
   Widget build(BuildContext context) {
     final touristId = MyApp.profileID;
     print(touristId);
-    final tours = Provider.of<Data>(context).DUMMY_TOURS;
+    final tours = Provider.of<Data>(context).dummyTours;
     List<Tour> viewList = List.of(tours);
 
     return Scaffold(
@@ -56,7 +56,7 @@ class _ToursSearchScreenState extends State<ToursSearchScreen> {
           padding:
               const EdgeInsets.only(right: 20, left: 20, top: 30, bottom: 0),
           children: Provider.of<Data>(context)
-              .DUMMY_VIEW_TOURS
+              .dummyViewTours
               .map(
                 (tourData) => TourItem(
                     tourData.tourID,

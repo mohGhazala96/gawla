@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gawla/main.dart';
-import 'package:gawla/screens/common/menudrawer.dart';
 import 'package:provider/provider.dart';
 import 'package:gawla/data/DUMMYDATA.dart';
 
@@ -18,17 +17,29 @@ class TourGuideTourGuideProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final tourguideId = MyApp.profileID;
     final tourguide =
-        Provider.of<Data>(context).DUMMY_TOURGUIDES.where((tourguide) {
+        Provider.of<Data>(context).dummyTourGuides.where((tourguide) {
       return tourguide.profileID == tourguideId;
     }).toList()[0];
-   var flagCode = "eg";
-      switch (tourguide.nationality){
-      case 'egyptian': flagCode='eg'; break;
-      case 'american': flagCode='us';break;
-      case 'french': flagCode='fr';break;
-      case 'dutch': flagCode='bq';break;
-      case 'kenyian': flagCode='ke';break;
-      case 'turkish': flagCode='tr';break;
+    var flagCode = "eg";
+    switch (tourguide.nationality) {
+      case 'egyptian':
+        flagCode = 'eg';
+        break;
+      case 'american':
+        flagCode = 'us';
+        break;
+      case 'french':
+        flagCode = 'fr';
+        break;
+      case 'dutch':
+        flagCode = 'bq';
+        break;
+      case 'kenyian':
+        flagCode = 'ke';
+        break;
+      case 'turkish':
+        flagCode = 'tr';
+        break;
     }
     return SafeArea(
       child: Scaffold(
@@ -151,7 +162,7 @@ class TourGuideTourGuideProfileScreen extends StatelessWidget {
                       width: 20.0,
                     ),
                     SizedBox(
-                          child:   Image.asset('images/flags/'+flagCode+'.png'),
+                      child: Image.asset('images/flags/' + flagCode + '.png'),
                       height: 50.0,
                       width: 50.0,
                     )

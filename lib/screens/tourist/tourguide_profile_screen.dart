@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gawla/data/DUMMYDATA.dart';
-import 'package:gawla/screens/common/menudrawer.dart';
 import 'package:provider/provider.dart';
 //import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
 
@@ -23,7 +22,7 @@ class TouristTourguideProfileScreen extends StatelessWidget {
     final tourguideId = routeArgs['id'];
 
     final tourguide =
-        Provider.of<Data>(context).DUMMY_TOURGUIDES.where((tourguide) {
+        Provider.of<Data>(context).dummyTourGuides.where((tourguide) {
       return tourguide.profileID == tourguideId;
     }).toList()[0];
 

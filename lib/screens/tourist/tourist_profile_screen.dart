@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:gawla/screens/common/menudrawer.dart';
 import '../../main.dart';
 import '../../data/DUMMYDATA.dart';
 import 'package:provider/provider.dart';
@@ -28,11 +27,10 @@ class TouristProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var flagCode = "eg";
     final touristId = MyApp.profileID;
-    final tourist = Provider.of<Data>(context).DUMMY_TOURSISTS.where((tourist) {
+    final tourist = Provider.of<Data>(context).dummyTourists.where((tourist) {
       return tourist.profileID == touristId;
     }).toList()[0];
 
-    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     switch (tourist.nationality) {
       case 'egyptian':
         flagCode = 'eg';

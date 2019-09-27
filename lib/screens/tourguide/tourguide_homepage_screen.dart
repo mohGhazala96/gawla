@@ -3,18 +3,15 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gawla/screens/common/menudrawer.dart';
 import 'package:gawla/screens/tourguide/add_tour_screen.dart';
 import 'package:gawla/screens/tourguide/tours_tourguide_screen.dart';
-import 'package:gawla/screens/tourist/tours_search_screen.dart';
-import 'package:gawla/screens/tourist/tours_tourist_screen.dart';
 import '../../main.dart';
-import '../../data/DUMMYDATA.dart';
-import 'package:provider/provider.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 
 class ToursGuideHomePageScreen extends StatefulWidget {
   static const routeName = 'tourguide-homepage-screen';
 
   @override
-  _ToursGuideHomePageScreenState createState() => _ToursGuideHomePageScreenState();
+  _ToursGuideHomePageScreenState createState() =>
+      _ToursGuideHomePageScreenState();
 }
 
 class _ToursGuideHomePageScreenState extends State<ToursGuideHomePageScreen> {
@@ -22,15 +19,15 @@ class _ToursGuideHomePageScreenState extends State<ToursGuideHomePageScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final tourGuideId = MyApp.profileID;
+    // final tourGuideId = MyApp.profileID;
 
-    final tourguide =
-        Provider.of<Data>(context).DUMMY_TOURGUIDES.where((tourGuide) {
-      return tourGuide.profileID == tourGuideId;
-    }).toList();
+    // final tourguide =
+    //     Provider.of<Data>(context).dummyTourGuides.where((tourGuide) {
+    //   return tourGuide.profileID == tourGuideId;
+    // }).toList();
 
-        final String logoAssetName = 'images/logo.svg';
-return SafeArea(
+    final String logoAssetName = 'images/logo.svg';
+    return SafeArea(
       bottom: true,
       top: true,
       child: Scaffold(
@@ -38,7 +35,7 @@ return SafeArea(
           padding: EdgeInsets.only(bottom: 20),
           color: Colors.black,
           child: FancyBottomNavigation(
-            initialSelection:MyApp.globalIndexPage,
+            initialSelection: MyApp.globalIndexPage,
             barBackgroundColor: Colors.black,
             textColor: Colors.white,
             tabs: [
@@ -47,9 +44,8 @@ return SafeArea(
               TabData(iconData: Icons.event, title: "My Tours")
             ],
             onTabChangedListener: (position) {
-              setState( () {
+              setState(() {
                 MyApp.globalIndexPage = position;
-                
               });
             },
           ),
@@ -57,7 +53,7 @@ return SafeArea(
         drawer: MenuDrawer(),
         key: _scaffoldKey,
         body: Container(
-          child: MyApp.globalIndexPage  == 0
+          child: MyApp.globalIndexPage == 0
               ? Column(
                   children: <Widget>[
                     Align(
@@ -88,7 +84,7 @@ return SafeArea(
                     )
                   ],
                 )
-              : MyApp.globalIndexPage  == 1 ? AddTour() : ToursTourGuideScreen(),
+              : MyApp.globalIndexPage == 1 ? AddTour() : ToursTourGuideScreen(),
         ),
       ),
     );

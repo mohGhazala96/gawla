@@ -4,10 +4,8 @@ import 'package:gawla/models/tourist.dart';
 import '../../main.dart';
 import '../../data/DUMMYDATA.dart';
 import 'package:provider/provider.dart';
-import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:gawla/screens/tourist/tourist_homepage_screen.dart';
-import '../../data/DUMMYDATA.dart';
 
 class SettingsScreen extends StatelessWidget {
   static const routeName = '/settings-screen';
@@ -21,13 +19,12 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var currentUserId = MyApp.profileID;
-    var touristOut =
-        Provider.of<Data>(context).DUMMY_TOURSISTS.where((tourist) {
+    var touristOut = Provider.of<Data>(context).dummyTourists.where((tourist) {
       return tourist.profileID == currentUserId;
     }).toList();
 
     var tourguideOut =
-        Provider.of<Data>(context).DUMMY_TOURGUIDES.where((tourguide) {
+        Provider.of<Data>(context).dummyTourGuides.where((tourguide) {
       return tourguide.profileID == currentUserId;
     }).toList();
 
@@ -46,7 +43,6 @@ class SettingsScreen extends StatelessWidget {
       nationality = tourGuide.nationality;
       number = tourGuide.phoneNumber;
     }
-    
 
     return Scaffold(
       body: Form(
@@ -71,15 +67,14 @@ class SettingsScreen extends StatelessWidget {
               ),
             ),
             Align(
-              
               alignment: Alignment.topCenter,
               child: Column(
                 children: <Widget>[
                   CircleAvatar(
-                              radius: 70,
-                              backgroundColor: Colors.amber,
-                              backgroundImage: AssetImage(imgurl),
-                            ),
+                    radius: 70,
+                    backgroundColor: Colors.amber,
+                    backgroundImage: AssetImage(imgurl),
+                  ),
 
                   // CircularProfileAvatar(
                   //   imgurl, //sets image path, it should be a URL string. default value is empty string, if path is empty it will display only initials

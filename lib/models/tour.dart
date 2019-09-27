@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'tourguide.dart';
-import 'tourist.dart';
 import 'package:gawla/models/message.dart';
 
 class Tour {
@@ -24,20 +22,20 @@ class Tour {
   List<String> touristsPictures;
 
   Tour(
-      {@required this.tourID,
+      {this.tourID,
       @required this.name,
-      @required this.tourguide,
+      this.tourguide,
       this.tourguideName,
       this.tourists,
-      @required this.date,
-      @required this.location,
-      @required this.places,
-      @required this.description,
-      @required this.meetingPoint,
-      @required this.language,
-      @required this.price,
+      this.date,
+      this.location,
+      this.places,
+      this.description,
+      this.meetingPoint,
+      this.language,
+      this.price,
       this.peopleAllowed,
-      @required this.pictures,
+      this.pictures,
       this.rating,
       this.tourGuidePic,
       this.messages,

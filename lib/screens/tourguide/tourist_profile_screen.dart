@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:gawla/screens/common/menudrawer.dart';
-import '../../main.dart';
 import '../../data/DUMMYDATA.dart';
 import 'package:provider/provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -31,19 +29,31 @@ class TourGuideTouristProfileScreen extends StatelessWidget {
     final routeArgs =
         ModalRoute.of(context).settings.arguments as Map<String, String>;
 
-    final tourist = Provider.of<Data>(context).DUMMY_TOURSISTS.where((tourist) {
+    final tourist = Provider.of<Data>(context).dummyTourists.where((tourist) {
       print(routeArgs['id']);
       return tourist.profileID == routeArgs['id'];
     }).toList();
-        print(tourist[0].name+"aaassss");
-      var flagCode = "eg";
-      switch (tourist[0].nationality){
-      case 'egyptian': flagCode='eg'; break;
-      case 'american': flagCode='us';break;
-      case 'french': flagCode='fr';break;
-      case 'dutch': flagCode='bq';break;
-      case 'kenyian': flagCode='ke';break;
-      case 'turkish': flagCode='tr';break;
+    print(tourist[0].name + "aaassss");
+    var flagCode = "eg";
+    switch (tourist[0].nationality) {
+      case 'egyptian':
+        flagCode = 'eg';
+        break;
+      case 'american':
+        flagCode = 'us';
+        break;
+      case 'french':
+        flagCode = 'fr';
+        break;
+      case 'dutch':
+        flagCode = 'bq';
+        break;
+      case 'kenyian':
+        flagCode = 'ke';
+        break;
+      case 'turkish':
+        flagCode = 'tr';
+        break;
     }
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     return SafeArea(
@@ -131,7 +141,8 @@ class TourGuideTouristProfileScreen extends StatelessWidget {
                           width: 20.0,
                         ),
                         SizedBox(
-                          child:   Image.asset('images/flags/'+flagCode+'.png'),
+                          child:
+                              Image.asset('images/flags/' + flagCode + '.png'),
                           height: 40.0,
                           width: 40.0,
                         )

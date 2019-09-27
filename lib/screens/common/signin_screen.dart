@@ -134,9 +134,9 @@ class SignInScreen extends State<SignIn> {
                                         email,
                                         password,
                                         Provider.of<Data>(context)
-                                            .DUMMY_TOURGUIDES,
+                                            .dummyTourGuides,
                                         Provider.of<Data>(context)
-                                            .DUMMY_TOURSISTS);
+                                            .dummyTourists);
                                     print(result);
                                     if (result[0] == true &&
                                         result[1] == true) {

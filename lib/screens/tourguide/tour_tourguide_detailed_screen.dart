@@ -1,4 +1,3 @@
-import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:gawla/screens/common/chat_screen.dart';
 import 'package:gawla/screens/tourguide/tourguide_homepage_screen.dart';
@@ -32,7 +31,7 @@ class _TourTourGuideDetailedScreenState
         ModalRoute.of(context).settings.arguments as Map<String, String>;
     final tourID = routeArgs['tourID'];
 
-    final tourDertailed = Provider.of<Data>(context).DUMMY_TOURS.where((tour) {
+    final tourDertailed = Provider.of<Data>(context).dummyTours.where((tour) {
       return tour.tourID == tourID;
     }).toList();
 

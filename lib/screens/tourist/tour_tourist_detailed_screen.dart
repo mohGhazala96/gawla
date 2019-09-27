@@ -5,7 +5,6 @@ import '../../data/DUMMYDATA.dart';
 import '../../widgets/RatingBar.dart';
 import 'package:provider/provider.dart';
 import '../../main.dart';
-import '../../models/tourguide.dart';
 import '../../widgets/PhotoListState.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flushbar/flushbar.dart';
@@ -73,7 +72,7 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
     else
       isButtonDisabled = false;
 
-    final tourDertailed = Provider.of<Data>(context).DUMMY_TOURS.where((tour) {
+    final tourDertailed = Provider.of<Data>(context).dummyTours.where((tour) {
       return tour.tourID == tourID;
     }).toList();
 
