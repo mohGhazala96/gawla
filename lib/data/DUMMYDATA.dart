@@ -116,7 +116,7 @@ class Data extends ChangeNotifier {
         tourID: "1Tour",
         name: "Pharonic Tour",
         tourguide: "1TourGuide",
-        tourguideName: "Hend",
+        tourguideName: "Mohamed",
         tourists: ["1Tourist", "2Tourist"],
         date: "1/10.2019",
         location: "Cairo",

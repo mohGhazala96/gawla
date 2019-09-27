@@ -44,7 +44,7 @@ return SafeArea(
             tabs: [
               TabData(iconData: Icons.home, title: "Home"),
               TabData(iconData: Icons.add, title: "Add"),
-              TabData(iconData: Icons.event, title: "My Bookings")
+              TabData(iconData: Icons.event, title: "My Tours")
             ],
             onTabChangedListener: (position) {
               setState( () {
