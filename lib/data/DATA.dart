@@ -1,10 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:gawla/models/message.dart';
+import 'package:gawla/models/notification.dart';
+import 'package:gawla/models/notifications.dart';
 import 'package:gawla/models/review.dart';
 import 'package:gawla/models/tour.dart';
 import 'package:gawla/models/tourguide.dart';
 import 'package:gawla/models/tourist.dart';
 
-class DATA {
+class DATA extends ChangeNotifier {
   static Tourist tourist1 = Tourist(
       name: 'kairm',
       age: 21,
@@ -78,17 +81,35 @@ class DATA {
       review: 'Exceptional TourGuide. Gave Me The Experience of my Life',
       rate: 5);
 
+  static NotificationForDay nfd1 = NotificationForDay(
+      date: "28th of September",
+      notificationsForDay: [
+        "Egyptian Museum @ 10:00 AM",
+        "Library of Alexandria @ 2:30 PM"
+      ]);
+  static NotificationForDay nfd2 = NotificationForDay(
+      date: "29th of September",
+      notificationsForDay: ["Karnak Temple @ 11:00 AM"]);
+  static NotificationForDay nfd3 = NotificationForDay(
+      date: "30th of September",
+      notificationsForDay: [
+        "Abou-Simbel Temple @ 9:00 AM",
+        "Philae Temple @ 3:30 PM"
+      ]);
+  static Notifications notifications1 =
+      Notifications(notifications: [nfd1, nfd2, nfd3]);
+
   static TourGuide tourguide1 = TourGuide(
       name: 'angela',
       profileID: 'angelaID',
       phoneNumber: '01515740042',
       password: '123456',
-      nationality: 'mexican',
-      gender: false,
+      nationality: 'egyptain',
+      gender: true,
       email: 'angela@gmail.com',
       age: 29,
       bio: 'A Passionate Tourguide who travelled to more than 50 countries!',
-      languages: ['english', 'spanish'],
+      languages: ['english', 'spanish', 'arabic'],
       since: 2018,
       displayPicture: 'images/angela.jpg',
       rating: 4.75,
@@ -124,7 +145,7 @@ class DATA {
       languages: ['english', 'arabic'],
       since: 2019,
       displayPicture: 'images/hassan.jpg',
-      rating: 2.5,
+      rating: 4.5,
       reviews: [review3, review4]);
 
   static Message message1 = Message(
@@ -153,12 +174,14 @@ class DATA {
       description:
           'We will explore the Pyramids, Sphinx and a lot more of the magical land of Egypt',
       places: ['Pyramids', 'Sphinx'],
-      pictures: ['images/img3', 'images/img8'],
-      rating: 4.0,
+      pictures: ['images/img3.png', 'images/img8.png'],
+      rating: 4.5,
       peopleAllowed: 15,
       tourguideName: 'hassan',
       messages: [message1, message2, message3],
-      tourists: ['johnID', 'margreetID']);
+      tourists: ['johnID', 'margreetID'],
+      tourGuidePic: 'images/hassan.jpg',
+      touristsPictures: ['images/john.jpg', 'images/margreet.jpg']);
 
   static Tour tour2 = Tour(
       name: 'Luxor Trip',
@@ -170,9 +193,152 @@ class DATA {
       language: 'english',
       description: 'We will explore the mysterious land of Luxor',
       places: ['Pyramids', 'Sphinx'],
-      pictures: ['images/img5', 'images/img12', 'images/14'],
-      rating: 5.0,
+      pictures: ['images/img5.jpg', 'images/img12.jpg', 'images/img14.jpg'],
+      rating: 2.2,
       peopleAllowed: 20,
       tourguideName: 'inanc',
-      tourists: ['karimID', 'stanID', 'milkaID']);
+      tourists: ['karimID', 'stanID', 'milkaID'],
+      tourGuidePic: 'images/inanc.jpg',
+      touristsPictures: [
+        'images/karim.jpg',
+        'images/stan.jpg',
+        'images/milka.jpg'
+      ]);
+
+  static Tour tour3 = Tour(
+      name: 'Cairo Trip',
+      tourguide: 'hassanID',
+      tourID: 'luxorID',
+      price: 6000,
+      meetingPoint: 'Cairo University Campus',
+      location: 'Cairo',
+      language: 'english',
+      description:
+          'We will visit the Egyptain museum and have a wonderful Nile cruise',
+      places: ['Nile', 'Egyptain Museum'],
+      pictures: [
+        'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
+        'images/img9.png',
+      ],
+      rating: 4.5,
+      peopleAllowed: 20,
+      tourguideName: 'hassan',
+      tourists: ['karimID', 'stanID'],
+      tourGuidePic: 'images/hassan.jpg',
+      touristsPictures: ['images/karim.jpg', 'images/stan.jpg']);
+
+  static Tour tour4 = Tour(
+      name: 'Sharm El Sheikh Trip',
+      tourguide: 'angelaID',
+      tourID: 'sharmID',
+      price: 6000,
+      meetingPoint: 'Talaat Harb Square',
+      location: 'Luxor',
+      language: 'english',
+      description:
+          'We will explore the island of dreams known as Sharm EL Sheikh',
+      places: ['Sue Square', 'Beach'],
+      pictures: ['images/img7.jpg'],
+      rating: 4.75,
+      peopleAllowed: 20,
+      tourguideName: 'inanc',
+      tourists: ['karimID', 'stanID', 'milkaID'],
+      tourGuidePic: 'inanc.jpg',
+      touristsPictures: [
+        'images/karim.jpg',
+        'images/stan.jpg',
+        'images/milka.jpg'
+      ]);
+
+  var DUMMY_TOURSISTS = [tourist1, tourist2, tourist3, tourist4, tourist5];
+  var DUMMY_TOURGUIDES = [tourguide1, tourguide2, tourguide3];
+  var DUMMY_TOURS = [tour1, tour2, tour3, tour3, tour4];
+  var DUMMY_VIEW_TOURS = [tour1, tour2, tour3, tour4];
+
+  void addTouristToTour(String tourID, String touristID) {
+    var tour = DUMMY_TOURS.where((tour) => tourID == tour.tourID).toList()[0];
+    tour.tourists.add(touristID);
+    notifyListeners();
+  }
+
+  void addTour() {
+    DUMMY_TOURS.add(Tour(name: 'NewTOUR'));
+    notifyListeners();
+  }
+
+  void updateDummyData(List<Tour> list) {
+    DUMMY_VIEW_TOURS = list;
+    notifyListeners();
+    TourGuide getTourGuideByID(String id) {
+      return DUMMY_TOURGUIDES.where((tourguide) {
+        return tourguide.profileID == id;
+      }).toList()[0];
+    }
+
+    Tourist getTouristByID(String id) {
+      return DUMMY_TOURSISTS.where((tourist) {
+        return tourist.profileID == id;
+      }).toList()[0];
+    }
+  }
+
+  Notifications getNotifications() {
+    return notifications1;
+  }
+
+  Tourist getTouristByID(String id) {
+    return DUMMY_TOURSISTS.where((tourist) {
+      return tourist.profileID == id;
+    }).toList()[0];
+  }
+
+  Tour getTourByID(String id) {
+    return DUMMY_TOURS.where((tour) {
+      return tour.tourID == id;
+    }).toList()[0];
+  }
+
+  String getUserName(String id) {
+    int isTourguide = DUMMY_TOURGUIDES
+        .where((tourguide) {
+          return tourguide.profileID == id;
+        })
+        .toList()
+        .length;
+    if (isTourguide > 0) {
+      return DUMMY_TOURGUIDES
+          .where((tourguide) {
+            return tourguide.profileID == id;
+          })
+          .toList()[0]
+          .name;
+    } else {
+      return DUMMY_TOURSISTS
+          .where((tourist) {
+            return tourist.profileID == id;
+          })
+          .toList()[0]
+          .name;
+    }
+  }
+
+  bool isTourist(String id) {
+    int tourist = DUMMY_TOURSISTS
+        .where((tourist) {
+          return tourist.profileID == id;
+        })
+        .toList()
+        .length;
+
+    if (tourist > 0) {
+      return true;
+    }
+    return false;
+  }
+
+  void addMessage(Tour tour, String sender, String text) {
+    Message message = Message(sender: sender, text: text);
+    tour.messages.add(message);
+    notifyListeners();
+  }
 }
