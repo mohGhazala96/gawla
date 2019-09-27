@@ -27,6 +27,7 @@ class Tour {
       {@required this.tourID,
       @required this.name,
       @required this.tourguide,
+      this.tourguideName,
       this.tourists,
       @required this.date,
       @required this.location,
