@@ -29,7 +29,7 @@ class Data extends ChangeNotifier {
       experience: "enter experienece here",
       languages: ["Arabic", "English", "Spanish"],
       rating: 5,
-      displayPicture: null,
+      displayPicture: 'images/karim.jpg',
       chats: null);
   static TourGuide tourguide2 = TourGuide(
       profileID: '2TourGuide',
@@ -42,7 +42,7 @@ class Data extends ChangeNotifier {
       experience: "enter experienece here",
       languages: ["Deutsch", "English", "Spanish"],
       rating: 4,
-      displayPicture: null,
+      displayPicture: 'images/karim.jpg',
       chats: null);
 
   static Tourist tourist1 = Tourist(
@@ -83,7 +83,7 @@ class Data extends ChangeNotifier {
         price: 200,
         peopleAllowed: 5,
         pictures: ['images/egypt-cairo-pyramids-of-giza-and camels-2.jpg','images/egypt-cairo-pyramids-of-giza-and camels-2.jpg','images/egypt-cairo-pyramids-of-giza-and camels-2.jpg'],
-        rating: 4.8),
+        rating: 4.8,tourGuidePic: 'images/karim.jpg'),
     Tour(
         tourID: "2Tour",
         name: "Musuem",
@@ -98,7 +98,7 @@ class Data extends ChangeNotifier {
         language: "English",
         price: 150,
         peopleAllowed: 5,
-        pictures: ['images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg','images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'],rating: 4)
+        pictures: ['images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg','images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'],rating: 4,tourGuidePic: 'images/karim.jpg')
   ];
   void addTouristToTour(String tourID, String touristID){
         var tour = DUMMY_TOURS.where((tour)=> tourID==tour.tourID).toList()[0];

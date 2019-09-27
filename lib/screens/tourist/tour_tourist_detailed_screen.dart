@@ -21,14 +21,13 @@ class TourTouristDetailedScreen extends StatefulWidget {
 class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
   bool isButtonDisabled = false;
   bool isClicked = false;
-  void visitTourGuide(BuildContext ctx,String tourGuideId){
+  void visitTourGuide(BuildContext ctx, String tourGuideId) {
     Navigator.of(ctx).pushNamed(
       TouristTourguideProfileScreen.routeName,
-      arguments: {
-        'id': tourGuideId
-      },
+      arguments: {'id': tourGuideId},
     );
   }
+
   void showFlushBar(BuildContext context, String tourID) {
     Flushbar(
       flushbarPosition: FlushbarPosition.BOTTOM,
@@ -145,7 +144,7 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
                       ],
                     ),
                     Container(
-                      height: 300,
+                      height: isButtonDisabled? 300:240,
                       child: new SingleChildScrollView(
                           child: Column(
                         children: <Widget>[
@@ -155,20 +154,22 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
                               fontSize: 16.0,
                             ),
                           ),
-                          
                           ListTile(
-                            
-                            leading: Icon(
-                              Icons.face,
-                              color: Theme.of(context).primaryColor,
+                            leading: CircleAvatar(
+                              radius: 30,
+                              backgroundColor: Colors.amber,
+                              backgroundImage: AssetImage(tour.tourGuidePic),
                             ),
-                            onTap: () {visitTourGuide( context,tour.tourguide);},
-                            title:  Text(
-                            "By:" + tour.tourguideName,
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                                fontSize: 16.0, fontWeight: FontWeight.bold),
-                          ) ,
+                            onTap: () {
+                              visitTourGuide(context, tour.tourguide);
+                            },
+                            title: Text(
+                              "Tour By:",
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                  fontSize: 16.0, fontWeight: FontWeight.bold),
+                            ),
+                            subtitle: Text(tour.tourguideName),
                           )
                         ],
                       )),

@@ -18,6 +18,7 @@ class Tour {
   int peopleAllowed;
   List<String> pictures;
   double rating;
+  String tourGuidePic;
 
   Tour({
     @required this.tourID,
@@ -34,6 +35,7 @@ class Tour {
     @required this.price,
     this.peopleAllowed,
     @required this.pictures,
-    this.rating
+    this.rating,
+    this.tourGuidePic
   });
 }
