@@ -5,7 +5,6 @@ import '../../main.dart';
 import '../../data/DUMMYDATA.dart';
 import 'package:provider/provider.dart';
 import 'package:gawla/widgets/diagonally_cut_colored_image.dart';
-import 'package:country_icons/country_icons.dart';
 
 // ADD FONTS TO TEXTS
 
@@ -34,13 +33,25 @@ class TouristProfileScreen extends StatelessWidget {
     }).toList()[0];
 
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-    switch (tourist.nationality){
-      case 'egyptian': flagCode='eg'; break;
-      case 'american': flagCode='us';break;
-      case 'french': flagCode='fr';break;
-      case 'dutch': flagCode='bq';break;
-      case 'kenyian': flagCode='ke';break;
-      case 'turkish': flagCode='tr';break;
+    switch (tourist.nationality) {
+      case 'egyptian':
+        flagCode = 'eg';
+        break;
+      case 'american':
+        flagCode = 'us';
+        break;
+      case 'french':
+        flagCode = 'fr';
+        break;
+      case 'dutch':
+        flagCode = 'bq';
+        break;
+      case 'kenyian':
+        flagCode = 'ke';
+        break;
+      case 'turkish':
+        flagCode = 'tr';
+        break;
     }
 
     return SafeArea(
@@ -126,7 +137,8 @@ class TouristProfileScreen extends StatelessWidget {
                           width: 50.0,
                         ),
                         SizedBox(
-                          child:   Image.asset('images/flags/'+flagCode+'.png'),
+                          child:
+                              Image.asset('images/flags/' + flagCode + '.png'),
                           height: 40.0,
                           width: 40.0,
                         )
