@@ -21,8 +21,12 @@ import 'package:provider/provider.dart';
 import 'package:gawla/data/DUMMYDATA.dart';
 import 'package:gawla/screens/sampleProvider.dart';
 import './screens/tourist/tours_search_screen.dart';
-void main() => runApp(MyApp());
+import 'package:flutter/services.dart';
 
+void main() {
+  SystemChrome.setEnabledSystemUIOverlays([]);
+  runApp(MyApp());
+}
 class MyApp extends StatelessWidget {
   static String profileID = "1Tourist";
   @override
@@ -55,7 +59,7 @@ class MyApp extends StatelessWidget {
                 )),
           ),
           // home: CategoriesScreen(),
-          initialRoute: AddTourScreen.routeName, // default is '/'
+          initialRoute:'/', // default is '/'
           routes: {
             '/': (ctx) => SignIn(),
             AddTourScreen.routeName: (ctx) => AddTour(),
@@ -75,7 +79,7 @@ class MyApp extends StatelessWidget {
             TourGuideTourGuideProfileScreen.routeName: (ctx) =>
                 TourGuideTourGuideProfileScreen(),
             ToursSearchScreen.routeName: (ctx) => ToursSearchScreen(),
-            ToursitHomePageScreen.routeName: (ctx) => ToursitHomePageScreen(),
+            ToursitHomePageScreen.routeName: (ctx) => ToursitHomePage(),
             TouristProfileScreen.routeName: (ctx) => TouristProfileScreen(),
             ToursTouristScreen.routeName: (ctx) => ToursTouristScreen(),
             ToursTourGuideScreen.routeName: (ctx) => ToursTourGuideScreen(),
