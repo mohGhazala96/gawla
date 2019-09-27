@@ -18,14 +18,23 @@ class TouristTourguideProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      final routeArgs = ModalRoute.of(context).settings.arguments as Map<String, String>;
+    final routeArgs =
+        ModalRoute.of(context).settings.arguments as Map<String, String>;
     final tourguideId = routeArgs['id'];
-    
-    print("aa");
+
     final tourguide =
         Provider.of<Data>(context).DUMMY_TOURGUIDES.where((tourguide) {
       return tourguide.profileID == tourguideId;
     }).toList()[0];
+
+    List<Widget> listOfLanaguges = new List<Widget>();
+    for (var i = 0; i < tourguide.languages.length; i++) {
+      listOfLanaguges.add(new Text(
+        tourguide.languages[i]+" ",
+        style: TextStyle(fontSize: 16.0),
+      ));
+    }
+
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
     return SafeArea(
@@ -98,7 +107,7 @@ class TouristTourguideProfileScreen extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                '4.95',
+                                tourguide.rating.toString(),
                                 style: TextStyle(
                                   fontSize: 18.0,
                                 ),
@@ -135,7 +144,7 @@ class TouristTourguideProfileScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                    tourguide.experience,
                   ),
                   SizedBox(
                     height: 36.0,
@@ -196,10 +205,7 @@ class TouristTourguideProfileScreen extends StatelessWidget {
                       SizedBox(
                         width: 62.0,
                       ),
-                      Text(
-                        'Arabic, English',
-                        style: TextStyle(fontSize: 16.0),
-                      ),
+                      new Row(children: listOfLanaguges),
                     ],
                   ),
                   SizedBox(
@@ -216,7 +222,7 @@ class TouristTourguideProfileScreen extends StatelessWidget {
                         width: 121.0,
                       ),
                       Text(
-                        '21',
+                        tourguide.age.toString(),
                         style: TextStyle(fontSize: 16.0),
                       ),
                     ],
@@ -244,12 +250,11 @@ class TouristTourguideProfileScreen extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           FlutterOpenWhatsapp.sendSingleMessage(
-                              '0201226110046', '');
+                              tourguide.phoneNumber, '');
                         },
                         child: Icon(
                           FontAwesomeIcons.whatsapp,
-                                      color: Colors.green,
-
+                          color: Colors.green,
                           size: 40.0,
                         ),
                       )

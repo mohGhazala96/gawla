@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:gawla/models/tourguide.dart';
+import 'package:gawla/models/tourist.dart';
 import '../../main.dart';
 import '../../data/DUMMYDATA.dart';
 import 'package:provider/provider.dart';
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:gawla/screens/tourist/tourist_homepage_screen.dart';
+import '../../data/DUMMYDATA.dart';
 
 class SettingsScreen extends StatelessWidget {
   static const routeName = '/settings-screen';
@@ -17,6 +20,34 @@ class SettingsScreen extends StatelessWidget {
   String password;
   @override
   Widget build(BuildContext context) {
+    var currentUserId = MyApp.profileID;
+    var touristOut =
+        Provider.of<Data>(context).DUMMY_TOURSISTS.where((tourist) {
+      return tourist.profileID == currentUserId;
+    }).toList();
+
+    var tourguideOut =
+        Provider.of<Data>(context).DUMMY_TOURGUIDES.where((tourguide) {
+      return tourguide.profileID == currentUserId;
+    }).toList();
+
+    if (tourguideOut.length == 0) {
+      Tourist tourist = touristOut[0];
+      imgurl = tourist.displayPicture;
+      name = tourist.name;
+      email = tourist.email;
+      nationality = tourist.nationality;
+      number = tourist.phoneNumber;
+    } else {
+      TourGuide tourGuide = tourguideOut[0];
+      imgurl = tourGuide.displayPicture;
+      name = tourGuide.name;
+      email = tourGuide.email;
+      nationality = tourGuide.nationality;
+      number = tourGuide.phoneNumber;
+    }
+    ;
+
     return Scaffold(
       body: Form(
           child: Container(
