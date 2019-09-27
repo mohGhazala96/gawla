@@ -21,6 +21,7 @@ class Tour {
   double rating;
   String tourGuidePic;
   List<Message> messages;
+  List<String> touristsPictures;
 
   Tour(
       {@required this.tourID,
@@ -39,5 +40,6 @@ class Tour {
       @required this.pictures,
       this.rating,
       this.tourGuidePic,
-      this.messages});
+      this.messages,
+      this.touristsPictures});
 }

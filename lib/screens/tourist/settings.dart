@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:gawla/models/tourguide.dart';
+import 'package:gawla/models/tourist.dart';
 import '../../main.dart';
 import '../../data/DUMMYDATA.dart';
 import 'package:provider/provider.dart';
 import 'package:circular_profile_avatar/circular_profile_avatar.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:gawla/screens/tourist/tourist_homepage_screen.dart';
+import '../../data/DUMMYDATA.dart';
 
 class SettingsScreen extends StatelessWidget {
   static const routeName = '/settings-screen';
@@ -17,6 +20,34 @@ class SettingsScreen extends StatelessWidget {
   String password;
   @override
   Widget build(BuildContext context) {
+    var currentUserId = MyApp.profileID;
+    var touristOut =
+        Provider.of<Data>(context).DUMMY_TOURSISTS.where((tourist) {
+      return tourist.profileID == currentUserId;
+    }).toList();
+
+    var tourguideOut =
+        Provider.of<Data>(context).DUMMY_TOURGUIDES.where((tourguide) {
+      return tourguide.profileID == currentUserId;
+    }).toList();
+
+    if (tourguideOut.length == 0) {
+      Tourist tourist = touristOut[0];
+      imgurl = tourist.displayPicture;
+      name = tourist.name;
+      email = tourist.email;
+      nationality = tourist.nationality;
+      number = tourist.phoneNumber;
+    } else {
+      TourGuide tourGuide = tourguideOut[0];
+      imgurl = tourGuide.displayPicture;
+      name = tourGuide.name;
+      email = tourGuide.email;
+      nationality = tourGuide.nationality;
+      number = tourGuide.phoneNumber;
+    }
+    
+
     return Scaffold(
       body: Form(
           child: Container(
@@ -40,37 +71,44 @@ class SettingsScreen extends StatelessWidget {
               ),
             ),
             Align(
+              
               alignment: Alignment.topCenter,
               child: Column(
                 children: <Widget>[
-                  CircularProfileAvatar(
-                    imgurl, //sets image path, it should be a URL string. default value is empty string, if path is empty it will display only initials
-                    radius: 75, // sets radius, default 50.0
-                    backgroundColor: Colors
-                        .white, // sets background color, default Colors.white
-                    borderWidth: 4, // sets border, default 0.0
-                    initialsText: Text(
-                      "AF",
-                      style: TextStyle(fontSize: 40, color: Colors.white),
-                    ), // sets initials text, set your own style, default Text('')
-                    borderColor:
-                        Colors.brown, // sets border color, default Colors.white
-                    elevation:
-                        5.0, // sets elevation (shadow of the profile picture), default value is 0.0
-                    // foregroundColor: Colors.brown.withOpacity(
-                    //     0.5), //sets foreground colour, it works if showInitialTextAbovePicture = true , default Colors.transparent
-                    cacheImage:
-                        true, // allow widget to cache image against provided url
-                    onTap: () {
-                      print('adil');
-                    }, // sets on tap
-                    showInitialTextAbovePicture:
-                        false, // setting it true will show initials text above profile picture, default false
-                  ),
+                  CircleAvatar(
+                              radius: 70,
+                              backgroundColor: Colors.amber,
+                              backgroundImage: AssetImage(imgurl),
+                            ),
+
+                  // CircularProfileAvatar(
+                  //   imgurl, //sets image path, it should be a URL string. default value is empty string, if path is empty it will display only initials
+                  //   radius: 75, // sets radius, default 50.0
+                  //   backgroundColor: Colors
+                  //       .white, // sets background color, default Colors.white
+                  //   borderWidth: 4, // sets border, default 0.0
+                  //   initialsText: Text(
+                  //     "AF",
+                  //     style: TextStyle(fontSize: 40, color: Colors.white),
+                  //   ), // sets initials text, set your own style, default Text('')
+                  //   borderColor:
+                  //       Colors.brown, // sets border color, default Colors.white
+                  //   elevation:
+                  //       5.0, // sets elevation (shadow of the profile picture), default value is 0.0
+                  //   // foregroundColor: Colors.brown.withOpacity(
+                  //   //     0.5), //sets foreground colour, it works if showInitialTextAbovePicture = true , default Colors.transparent
+                  //   cacheImage:
+                  //       true, // allow widget to cache image against provided url
+                  //   onTap: () {
+                  //     print('adil');
+                  //   }, // sets on tap
+                  //   showInitialTextAbovePicture:
+                  //       false, // setting it true will show initials text above profile picture, default false
+                  // ),
                   Container(
                       margin: EdgeInsets.only(top: 20),
                       child: Text(
-                        "Click on your avatar to select a new one ;)",
+                        "Click on your avatar to select a new one!",
                         textAlign: TextAlign.center,
                         style:
                             TextStyle(color: Color(0xff707070), fontSize: 14),
