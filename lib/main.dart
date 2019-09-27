@@ -27,6 +27,7 @@ void main() {
   SystemChrome.setEnabledSystemUIOverlays([]);
   runApp(MyApp());
 }
+
 class MyApp extends StatelessWidget {
   static String profileID = "1TourGuide";
   @override
@@ -59,11 +60,11 @@ class MyApp extends StatelessWidget {
                 )),
           ),
           // home: CategoriesScreen(),
-          initialRoute:'/', // default is '/'
+          initialRoute: "tourist-homepage-screen", // default is '/'
           routes: {
             '/': (ctx) => ToursTourGuideScreen(),
             AddTourScreen.routeName: (ctx) => AddTour(),
-            ChatScreen.routeName: (ctx) => ChatScreen(),
+//            ChatScreen.routeName: (ctx) => ChatScreen(),
             InboxScreen.routeName: (ctx) => InboxScreen(),
             SearchToursScreen.routeName: (ctx) => SearchToursScreen(),
             SignUpTourGuideScreen.routeName: (ctx) => SignUpTourGuideScreen(),
@@ -79,7 +80,7 @@ class MyApp extends StatelessWidget {
             TourGuideTourGuideProfileScreen.routeName: (ctx) =>
                 TourGuideTourGuideProfileScreen(),
             ToursSearchScreen.routeName: (ctx) => ToursSearchScreen(),
-            ToursitHomePageScreen.routeName: (ctx) => ToursitHomePage(),
+            TouristHomePageScreen.routeName: (ctx) => TouristHomePage(),
             TouristProfileScreen.routeName: (ctx) => TouristProfileScreen(),
             ToursTouristScreen.routeName: (ctx) => ToursTouristScreen(),
             ToursTourGuideScreen.routeName: (ctx) => ToursTourGuideScreen(),
