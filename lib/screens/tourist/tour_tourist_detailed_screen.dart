@@ -12,21 +12,26 @@ class TourTouristDetailedScreen extends StatefulWidget {
   static const routeName = '/tour-tourist-detailed-screen';
 
   @override
-  _TourTouristDetailedScreenState createState() => _TourTouristDetailedScreenState();
+  _TourTouristDetailedScreenState createState() =>
+      _TourTouristDetailedScreenState();
 }
 
 class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
-  bool isButtonDisabled= false;
-  bool isClicked=false;
+  bool isButtonDisabled = false;
+  bool isClicked = false;
   void showFlushBar(BuildContext context, String tourID) {
-   Flushbar(
+    Flushbar(
       flushbarPosition: FlushbarPosition.BOTTOM,
       flushbarStyle: FlushbarStyle.FLOATING,
       reverseAnimationCurve: Curves.decelerate,
       forwardAnimationCurve: Curves.elasticOut,
       backgroundColor: Colors.red,
-      boxShadows: [BoxShadow(color: Colors.blue[800], offset: Offset(0.0, 2.0), blurRadius: 3.0)],
-      backgroundGradient: LinearGradient(colors: [Colors.blueGrey, Colors.black]),
+      boxShadows: [
+        BoxShadow(
+            color: Colors.blue[800], offset: Offset(0.0, 2.0), blurRadius: 3.0)
+      ],
+      backgroundGradient:
+          LinearGradient(colors: [Colors.blueGrey, Colors.black]),
       isDismissible: false,
       duration: Duration(seconds: 2),
       icon: Icon(
@@ -37,10 +42,13 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
       progressIndicatorBackgroundColor: Colors.blueGrey,
       messageText: Text(
         "You successfuly booked this tour!",
-        style: TextStyle(fontSize: 18.0, color: Colors.white, fontFamily: "ShadowsIntoLightTwo"),
+        style: TextStyle(
+            fontSize: 18.0,
+            color: Colors.white,
+            fontFamily: "ShadowsIntoLightTwo"),
       ),
     )..show(context);
-     Provider.of<Data>(context).addTouristToTour(tourID, MyApp.profileID);
+    Provider.of<Data>(context).addTouristToTour(tourID, MyApp.profileID);
   }
 
   @override
@@ -49,9 +57,9 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
         ModalRoute.of(context).settings.arguments as Map<String, String>;
     final tourID = routeArgs['tourID'];
     final isBooked = routeArgs['isbooked'];
-    if(isBooked=="true" || isClicked)
+    if (isBooked == "true" || isClicked)
       isButtonDisabled = true;
-      else
+    else
       isButtonDisabled = false;
 
     final tourDertailed = Provider.of<Data>(context).DUMMY_TOURS.where((tour) {
@@ -61,6 +69,7 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
     var tour = tourDertailed[0];
     print(tourDertailed[0].tourID);
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Stack(
         children: <Widget>[
           Positioned(
@@ -96,9 +105,9 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        RatingBar(rating: 5),
+                        RatingBar(rating: tour.rating),
                         Text(
-                          "5",
+                          tour.rating.toString(),
                           style: TextStyle(
                             color: Colors.grey.withOpacity(0.6),
                             fontSize: 18.0,
@@ -112,23 +121,42 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        DatePickerTimeline(
-                          DateTime.now(),
-                          onDateChange: (date) {
-                            // New date selected
-                            print(date.month.toString());
-                          },
-                        ),
+                        !isButtonDisabled?
+                          DatePickerTimeline(
+                            DateTime.now(),
+                            onDateChange: (date) {
+                              print(date.month.toString());
+                            },
+                          ):Text("Boooked On :  "+tour.date, style: TextStyle(fontWeight: FontWeight.bold),),
                       ],
                     ),
-                    SingleChildScrollView(
-                      child: Text(
+                           Container(
+               height: 300,
+                               
+
+              
+                      child:   
+         new SingleChildScrollView( child:Column( 
+           children: <Widget>[   Text(
+                        
                         tour.description,
+                        
                         style: TextStyle(
                           fontSize: 16.0,
                         ),
-                      ),
-                    ),
+                      
+                    ),Text(
+                        
+                        "By:"+tour.tourguideName,
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold
+                        ),
+                      
+                    )],
+         )),
+                           ),
                   ],
                 ),
               ),
@@ -140,11 +168,6 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
                 child: Container(
                     child: PhotoList(tour.pictures),
                     height: MediaQuery.of(context).size.height / 3)
-//  Image.asset(
-//                 tour.pictures[0],‰
-//                 fit: BoxFit.fill,
-//                 height: MediaQuery.of(context).size.height / 3,
-//               ),
                 ),
           ),
           Align(
@@ -154,7 +177,7 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
               child: Text(
                 '\$${tour.price}',
                 style: TextStyle(
-                  color: Colors.orange,
+                  color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold,
                   fontSize: 35.0,
                 ),
@@ -174,33 +197,23 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
               ),
               child: Center(
                 child: FlatButton(
-                  
-                  onPressed: isButtonDisabled? null: () {
-                    setState(() {
-                      showFlushBar(context,tourID);
+                  onPressed: isButtonDisabled
+                      ? null
+                      : () {
+                          setState(() {
+                            showFlushBar(context, tourID);
 
-                      isClicked=true;
-
-
-                    });
-                },
-                  child:  Text( 
-                    isButtonDisabled?'Booked':
-                  'Book Now',
-                  style: TextStyle(
-                      fontSize: 23.0,
-                      fontWeight: FontWeight.bold,
-                      color: isButtonDisabled?Colors.grey:Colors.white)),
-                //
-                
+                            isClicked = true;
+                          });
+                        },
+                  child: Text(isButtonDisabled ? 'Booked' : 'Book Now',
+                      style: TextStyle(
+                          fontSize: 23.0,
+                          fontWeight: FontWeight.bold,
+                          color:
+                              isButtonDisabled ? Colors.grey : Colors.white)),
+                  //
                 ),
-                // child: Text(
-                //   'Book Now',
-                //   style: TextStyle(
-                //       fontSize: 23.0,
-                //       fontWeight: FontWeight.bold,
-                //       color: Colors.white),
-                // ),
               ),
             ),
           )

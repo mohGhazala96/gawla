@@ -20,20 +20,20 @@ class ToursitHomePageScreen extends StatelessWidget {
       drawer: MenuDrawer(),
       key: _scaffoldKey,
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.bottomLeft,
-            end: Alignment.topRight,
-            stops: [0.25,0.5,0.75,1],
-            colors: [
-              Color(0xbbfe9933),
-              Color(0xfffeaa33),
-              Color(0xfffebb33),
-              Color(0xfffecc33)
-            ]
-          )
-        ),
-        //color: Theme.of(context).primaryColor,
+        // decoration: BoxDecoration(
+        //   gradient: LinearGradient(
+        //     begin: Alignment.bottomLeft,
+        //     end: Alignment.topRight,
+        //     stops: [0.25,0.5,0.75,1],
+        //     colors: [
+        //       Color(0xbbfe9933),
+        //       Color(0xfffeaa33),
+        //       Color(0xfffebb33),
+        //       Color(0xfffecc33)
+        //     ]
+        //   )
+        // ),
+        // cn: Theme.of(context).primaryColor,
         child: Column(
           children: <Widget>[
             Align(
