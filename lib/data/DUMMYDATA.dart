@@ -54,6 +54,7 @@ class Data extends ChangeNotifier {
       chats: null);
   var DUMMY_TOURGUIDES = [tourguide1, tourguide2];
   var DUMMY_TOURSISTS = [tourist1, tourist2];
+
   var DUMMY_TOURS = [
     Tour(
         tourID: "1Tour",
@@ -68,31 +69,80 @@ class Data extends ChangeNotifier {
         language: "English",
         price: 200,
         peopleAllowed: 5,
-        pictures: ['images/egypt-cairo-pyramids-of-giza-and camels-2.jpg','images/egypt-cairo-pyramids-of-giza-and camels-2.jpg','images/egypt-cairo-pyramids-of-giza-and camels-2.jpg']),
+        pictures: [
+          'images/egypt-cairo-pyramids-of-giza-and camels-2.jpg',
+          'images/egypt-cairo-pyramids-of-giza-and camels-2.jpg',
+          'images/egypt-cairo-pyramids-of-giza-and camels-2.jpg'
+        ]),
     Tour(
         tourID: "2Tour",
         name: "Musuem",
         tourguide: "1TourGuide",
-        tourists: [ "2Tourist"],
+        tourists: ["2Tourist"],
         date: DateTime.now(),
         location: "Alexandria",
         places: ["Giza"],
         description: "Enter Description here",
         meetingPoint: "tahrir",
         language: "English",
-        price: 150                                                ,
+        price: 150,
         peopleAllowed: 5,
-        pictures: ['images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg','images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'])
+        pictures: [
+          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
+          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
+        ])
   ];
-  void addTouristToTour(String tourID, String touristID){
-        var tour = DUMMY_TOURS.where((tour)=> tourID==tour.tourID).toList()[0];
-        tour.tourists.add(touristID);
-        
-        notifyListeners();
+  var DUMMY_VIEW_TOURS = [
+    Tour(
+        tourID: "1Tour",
+        name: "Pharonic Tour",
+        tourguide: "1TourGuide",
+        tourists: ["1Tourist", "2Tourist"],
+        date: DateTime.now(),
+        location: "Cairo",
+        places: ["Giza"],
+        description: "Enter Description here",
+        meetingPoint: "tahrir",
+        language: "English",
+        price: 200,
+        peopleAllowed: 5,
+        pictures: [
+          'images/egypt-cairo-pyramids-of-giza-and camels-2.jpg',
+          'images/egypt-cairo-pyramids-of-giza-and camels-2.jpg',
+          'images/egypt-cairo-pyramids-of-giza-and camels-2.jpg'
+        ]),
+    Tour(
+        tourID: "2Tour",
+        name: "Musuem",
+        tourguide: "1TourGuide",
+        tourists: ["2Tourist"],
+        date: DateTime.now(),
+        location: "Alexandria",
+        places: ["Giza"],
+        description: "Enter Description here",
+        meetingPoint: "tahrir",
+        language: "English",
+        price: 150,
+        peopleAllowed: 5,
+        pictures: [
+          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
+          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
+        ])
+  ];
+  void addTouristToTour(String tourID, String touristID) {
+    var tour = DUMMY_TOURS.where((tour) => tourID == tour.tourID).toList()[0];
+    tour.tourists.add(touristID);
 
+    notifyListeners();
   }
+
   void addTour() {
     DUMMY_TOURS.add(Tour(name: 'NewTOUR'));
+    notifyListeners();
+  }
+
+  void updateDummyData(List<Tour> list){
+    DUMMY_VIEW_TOURS = list;
     notifyListeners();
   }
 }
