@@ -33,7 +33,7 @@ class SettingsScreen extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext context) =>
-                                  ToursitHomePageScreen()));
+                                  TouristHomePage()));
                     },
                     child: Icon(Icons.arrow_back_ios,
                         color: Colors.black, size: 35.0)),
@@ -261,7 +261,7 @@ class SettingsScreen extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          ToursitHomePageScreen()));
+                                          TouristHomePage()));
                             },
                             child: Text(
                               'SAVE CHANGES',

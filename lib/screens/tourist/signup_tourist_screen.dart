@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gawla/screens/common/signin_screen.dart';
 import 'package:gawla/screens/tourist/tourist_homepage_screen.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:country_code_picker/country_code_picker.dart';
 
 class SignUpTouristScreen extends StatefulWidget {
   static const routeName = 'signup_tourist_screen';
@@ -13,10 +15,13 @@ class SignUpTouristScreen extends StatefulWidget {
 class _SignUpTouristScreenState extends State<SignUpTouristScreen> {
   final formKey = GlobalKey<FormState>();
 
-  String email, password, fName, lName, phoneNumber, countryCode;
+  String email, password, fName, lName, phoneNumber;
+  CountryCode countryCode = new CountryCode();
 
   @override
   Widget build(BuildContext context) {
+    final String logoAssetName = 'images/logo.svg';
+
     return Scaffold(
         body: Form(
       key: formKey,
@@ -26,11 +31,11 @@ class _SignUpTouristScreenState extends State<SignUpTouristScreen> {
             Align(
               alignment: Alignment.topCenter,
               child: Container(
-                margin: EdgeInsets.only(top: 160),
-                child: Text(
-                  'GAWLA',
-                  style: Theme.of(context).textTheme.title,
-                ),
+                width: MediaQuery.of(context).size.width * 0.8,
+                height: MediaQuery.of(context).size.height * 0.2,
+                margin: EdgeInsets.only(top: 120),
+                child: SvgPicture.asset(logoAssetName,
+                    semanticsLabel: 'Gawla Logo'),
               ),
             ),
             Expanded(
@@ -39,7 +44,7 @@ class _SignUpTouristScreenState extends State<SignUpTouristScreen> {
                 child: ListView(
                   children: [
                     Container(
-                      margin: EdgeInsets.only(top: 50),
+                      margin: EdgeInsets.only(top: 10),
                       child: Column(
                         children: <Widget>[
                           Container(
@@ -55,11 +60,13 @@ class _SignUpTouristScreenState extends State<SignUpTouristScreen> {
                                     width:
                                         MediaQuery.of(context).size.width * 0.4,
                                     child: TextFormField(
+                                      textCapitalization:
+                                          TextCapitalization.words,
                                       onSaved: (value) => fName = value.trim(),
-                                      obscureText: true,
                                       style: TextStyle(
-                                          color: Colors.white, fontSize: 17),
+                                          color: Colors.black, fontSize: 17),
                                       decoration: InputDecoration(
+                                        prefix: SizedBox(width: 16),
                                         focusedBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
                                               color: Colors.transparent),
@@ -72,7 +79,7 @@ class _SignUpTouristScreenState extends State<SignUpTouristScreen> {
                                           color: Color(0xffd1d1d1),
                                           fontSize: 17,
                                         ),
-                                        hintText: "   First Name",
+                                        hintText: "First Name",
                                       ),
                                     ),
                                     decoration: BoxDecoration(
@@ -88,11 +95,13 @@ class _SignUpTouristScreenState extends State<SignUpTouristScreen> {
                                     width:
                                         MediaQuery.of(context).size.width * 0.4,
                                     child: TextFormField(
+                                      textCapitalization:
+                                          TextCapitalization.words,
                                       onSaved: (value) => lName = value.trim(),
-                                      obscureText: true,
                                       style: TextStyle(
-                                          color: Colors.white, fontSize: 17),
+                                          color: Colors.black, fontSize: 17),
                                       decoration: InputDecoration(
+                                          prefix: SizedBox(width: 16),
                                           focusedBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                                 color: Colors.transparent),
@@ -109,7 +118,7 @@ class _SignUpTouristScreenState extends State<SignUpTouristScreen> {
                                           hintStyle: TextStyle(
                                               color: Color(0xffd1d1d1),
                                               fontSize: 17),
-                                          hintText: "  Last Name"),
+                                          hintText: "Last Name"),
                                     ),
                                   ),
                                 ),
@@ -125,10 +134,12 @@ class _SignUpTouristScreenState extends State<SignUpTouristScreen> {
                               alignment: Alignment.center,
                               child: Container(
                                 child: TextFormField(
+                                  keyboardType: TextInputType.emailAddress,
                                   onSaved: (value) => email = value.trim(),
                                   style: TextStyle(
                                       color: Colors.black, fontSize: 17),
                                   decoration: InputDecoration(
+                                      prefix: SizedBox(width: 16),
                                       border: UnderlineInputBorder(
                                           borderSide:
                                               BorderSide(color: Colors.amber)),
@@ -147,7 +158,45 @@ class _SignUpTouristScreenState extends State<SignUpTouristScreen> {
                                       hintStyle: TextStyle(
                                           color: Color(0xffd1d1d1),
                                           fontSize: 17),
-                                      hintText: "   Email"),
+                                      hintText: "Email"),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(top: 20),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: new BorderRadius.circular(15.0)),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Container(
+                                child: TextFormField(
+                                  obscureText: true,
+                                  onSaved: (value) => password = value.trim(),
+                                  style: TextStyle(
+                                      color: Colors.black, fontSize: 17),
+                                  decoration: InputDecoration(
+                                      prefix: SizedBox(width: 16),
+                                      border: UnderlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: Colors.amber)),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: Colors.transparent),
+                                      ),
+                                      enabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: Colors.transparent),
+                                      ),
+                                      suffixIcon: Icon(
+                                        Icons.lock,
+                                        color: Color(0xff707070),
+                                      ),
+                                      hintStyle: TextStyle(
+                                          color: Color(0xffd1d1d1),
+                                          fontSize: 17),
+                                      hintText: "Password"),
                                 ),
                               ),
                             ),
@@ -164,28 +213,18 @@ class _SignUpTouristScreenState extends State<SignUpTouristScreen> {
                                   alignment: Alignment.center,
                                   child: Container(
                                     width: MediaQuery.of(context).size.width *
-                                        0.15,
-                                    child: TextFormField(
-                                      onSaved: (value) =>
-                                          countryCode = value.trim(),
-                                      obscureText: true,
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 17),
-                                      decoration: InputDecoration(
-                                        focusedBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.transparent),
-                                        ),
-                                        enabledBorder: UnderlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.transparent),
-                                        ),
-                                        hintStyle: TextStyle(
-                                          color: Color(0xffd1d1d1),
-                                          fontSize: 17,
-                                        ),
-                                        hintText: "   +??",
-                                      ),
+                                        0.25,
+                                    child: new CountryCodePicker(
+                                      onChanged: (x) {
+                                        countryCode = x;
+                                      },
+                                      // Initial selection and favorite can be one of code ('IT') OR dial_code('+39')
+                                      initialSelection: 'EG',
+                                      favorite: ['EG'],
+                                      // optional. Shows only country name and flag
+                                      showCountryOnly: false,
+                                      // optional. aligns the flag and the Text left
+                                      alignLeft: true,
                                     ),
                                     decoration: BoxDecoration(
                                         border: Border(
@@ -198,13 +237,14 @@ class _SignUpTouristScreenState extends State<SignUpTouristScreen> {
                                   alignment: Alignment.center,
                                   child: Container(
                                     width: MediaQuery.of(context).size.width *
-                                        0.65,
+                                        0.55,
                                     child: TextFormField(
+                                      keyboardType: TextInputType.number,
                                       onSaved: (value) => lName = value.trim(),
-                                      obscureText: true,
                                       style: TextStyle(
-                                          color: Colors.white, fontSize: 17),
+                                          color: Colors.black, fontSize: 17),
                                       decoration: InputDecoration(
+                                          prefix: SizedBox(width: 16),
                                           focusedBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                                 color: Colors.transparent),
@@ -221,7 +261,7 @@ class _SignUpTouristScreenState extends State<SignUpTouristScreen> {
                                           hintStyle: TextStyle(
                                               color: Color(0xffd1d1d1),
                                               fontSize: 17),
-                                          hintText: "  Phone Number"),
+                                          hintText: "Phone Number"),
                                     ),
                                   ),
                                 ),
@@ -258,7 +298,7 @@ class _SignUpTouristScreenState extends State<SignUpTouristScreen> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (BuildContext context) =>
-                                              ToursitHomePageScreen()));
+                                              TouristHomePage()));
                                 },
                                 child: Text(
                                   'SIGN UP',

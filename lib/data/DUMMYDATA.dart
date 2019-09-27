@@ -92,7 +92,8 @@ class Data extends ChangeNotifier {
           'images/egypt-cairo-pyramids-of-giza-and camels-2.jpg',
           'images/egypt-cairo-pyramids-of-giza-and camels-2.jpg',
         ],
-        rating: 4.8,tourGuidePic: 'images/karim.jpg'),
+        rating: 4.8,
+        tourGuidePic: 'images/karim.jpg'),
     Tour(
         tourID: "2Tour",
         name: "Musuem",
@@ -111,7 +112,30 @@ class Data extends ChangeNotifier {
         pictures: [
           'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
           'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
-        ],rating: 4.2,tourGuidePic: 'images/karim.jpg')
+        ],
+        rating: 4.2,
+        tourGuidePic: 'images/karim.jpg'),
+    Tour(
+        tourID: "2Tour",
+        name: "Musuem",
+        tourguide: "1TourGuide",
+        tourguideName: "Hend",
+        tourists: ["2Tourist"],
+        date: "12/12/2019",
+        location: "Alexandria",
+        places: ["Giza"],
+        description:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        meetingPoint: "tahrir",
+        language: "English",
+        price: 150,
+        peopleAllowed: 5,
+        pictures: [
+          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
+          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
+        ],
+        rating: 4.2,
+        tourGuidePic: 'images/karim.jpg')
   ];
   var DUMMY_VIEW_TOURS = [
     Tour(
@@ -119,7 +143,7 @@ class Data extends ChangeNotifier {
         name: "Pharonic Tour",
         tourguide: "1TourGuide",
         tourists: ["1Tourist", "2Tourist"],
-        date:"a",
+        date: "a",
         location: "Cairo",
         places: ["Giza"],
         description: "Enter Description here",
@@ -148,35 +172,53 @@ class Data extends ChangeNotifier {
         pictures: [
           'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
           'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
-        ])
+        ]),
+    Tour(
+        tourID: "2Tour",
+        name: "Musuem",
+        tourguide: "1TourGuide",
+        tourguideName: "Hend",
+        tourists: ["2Tourist"],
+        date: "12/12/2019",
+        location: "Alexandria",
+        places: ["Giza"],
+        description:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        meetingPoint: "tahrir",
+        language: "English",
+        price: 150,
+        peopleAllowed: 5,
+        pictures: [
+          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
+          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
+        ],
+        rating: 4.2,
+        tourGuidePic: 'images/karim.jpg')
   ];
   void addTouristToTour(String tourID, String touristID) {
     var tour = DUMMY_TOURS.where((tour) => tourID == tour.tourID).toList()[0];
     tour.tourists.add(touristID);
-        notifyListeners();
-
-
+    notifyListeners();
   }
-
 
   void addTour() {
     DUMMY_TOURS.add(Tour(name: 'NewTOUR'));
     notifyListeners();
   }
 
-  void updateDummyData(List<Tour> list){
+  void updateDummyData(List<Tour> list) {
     DUMMY_VIEW_TOURS = list;
     notifyListeners();
-  TourGuide getTourGuideByID(String id) {
-    return DUMMY_TOURGUIDES.where((tourguide) {
-      return tourguide.profileID == id;
-    }).toList()[0];
-  }
+    TourGuide getTourGuideByID(String id) {
+      return DUMMY_TOURGUIDES.where((tourguide) {
+        return tourguide.profileID == id;
+      }).toList()[0];
+    }
 
-  Tourist getTouristByID(String id) {
-    return DUMMY_TOURSISTS.where((tourist) {
-      return tourist.profileID == id;
-    }).toList()[0];
+    Tourist getTouristByID(String id) {
+      return DUMMY_TOURSISTS.where((tourist) {
+        return tourist.profileID == id;
+      }).toList()[0];
+    }
   }
-}
 }

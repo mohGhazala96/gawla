@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gawla/screens/tourist/tourist_homepage_screen.dart';
 import '../../data/DUMMYDATA.dart';
 import '../../widgets/RatingBar.dart';
 import 'package:provider/provider.dart';
@@ -144,7 +145,7 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
                       ],
                     ),
                     Container(
-                      height: isButtonDisabled? 300:240,
+                      height: isButtonDisabled ? 300 : 240,
                       child: new SingleChildScrollView(
                           child: Column(
                         children: <Widget>[
@@ -180,11 +181,29 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
             ),
           ),
           Positioned(
-            child: Hero(
-                tag: tour.pictures[0],
-                child: Container(
-                    child: PhotoList(tour.pictures),
-                    height: MediaQuery.of(context).size.height / 3)),
+            child: Stack(children: <Widget>[
+              Hero(
+                  tag: tour.pictures[0],
+                  child: Container(
+                      child: PhotoList(tour.pictures),
+                      height: MediaQuery.of(context).size.height / 3)),
+              Container(
+                margin: EdgeInsets.only(left: 10, top: 30),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    TouristHomePage()));
+                      },
+                      child: Icon(Icons.arrow_back_ios,
+                          color: Colors.black, size: 35.0)),
+                ),
+              )
+            ]),
           ),
           Align(
             alignment: Alignment.bottomLeft,
