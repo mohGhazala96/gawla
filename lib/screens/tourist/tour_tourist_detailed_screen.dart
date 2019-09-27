@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gawla/screens/common/chat_screen.dart';
 import 'package:gawla/screens/tourist/tourist_homepage_screen.dart';
 import '../../data/DUMMYDATA.dart';
 import '../../widgets/RatingBar.dart';
@@ -177,7 +178,10 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
                   color: Colors.black,
                   size: 50,
                 ),
-                onTap: () {},
+                onTap: () {  Navigator.of(context).pushNamed(
+      ChatScreen.routeName,
+      
+    );},
                 title: Text("Tour's Chat",
                     style: TextStyle(color: Colors.black, fontSize: 16,fontWeight: FontWeight.bold)),
               )

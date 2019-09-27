@@ -161,7 +161,7 @@ class Data extends ChangeNotifier {
         name: "Musuem",
         tourguide: "1TourGuide",
         tourguideName: "Hend",
-        tourists: ["2Tourist"],
+        tourists: ["1Tourist"],
         date: "12/12/2019",
         location: "Alexandria",
         places: ["Giza"],
