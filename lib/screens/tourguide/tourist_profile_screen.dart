@@ -36,7 +36,15 @@ class TourGuideTouristProfileScreen extends StatelessWidget {
       return tourist.profileID == routeArgs['id'];
     }).toList();
         print(tourist[0].name+"aaassss");
-
+      var flagCode = "eg";
+      switch (tourist[0].nationality){
+      case 'egyptian': flagCode='eg'; break;
+      case 'american': flagCode='us';break;
+      case 'french': flagCode='fr';break;
+      case 'dutch': flagCode='bq';break;
+      case 'kenyian': flagCode='ke';break;
+      case 'turkish': flagCode='tr';break;
+    }
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     return SafeArea(
       child: Scaffold(
@@ -129,7 +137,7 @@ class TourGuideTouristProfileScreen extends StatelessWidget {
                           width: 20.0,
                         ),
                         SizedBox(
-                          child: Image.asset('images/country_flag.png'),
+                          child:   Image.asset('images/flags/'+flagCode+'.png'),
                           height: 40.0,
                           width: 40.0,
                         )

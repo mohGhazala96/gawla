@@ -34,6 +34,15 @@ class TouristTourguideProfileScreen extends StatelessWidget {
         style: TextStyle(fontSize: 16.0),
       ));
     }
+      var flagCode = "eg";
+      switch (tourguide.nationality){
+      case 'egyptian': flagCode='eg'; break;
+      case 'american': flagCode='us';break;
+      case 'french': flagCode='fr';break;
+      case 'dutch': flagCode='bq';break;
+      case 'kenyian': flagCode='ke';break;
+      case 'turkish': flagCode='tr';break;
+    }
 
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -73,7 +82,7 @@ class TouristTourguideProfileScreen extends StatelessWidget {
                         child: CircleAvatar(
                           radius: 44,
                           backgroundColor: Colors.amber,
-                          backgroundImage: AssetImage('images/karim.jpg'),
+                          child:   Image.asset('images/flags/'+flagCode+'.png'),
                         ),
                       ),
                       SizedBox(
