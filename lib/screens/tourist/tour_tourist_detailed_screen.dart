@@ -171,7 +171,18 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
                                   fontSize: 16.0, fontWeight: FontWeight.bold),
                             ),
                             subtitle: Text(tour.tourguideName),
-                          )
+                          ),ListTile(
+                leading: Icon(
+                  Icons.question_answer,
+                  color: Colors.black,
+                  size: 50,
+                ),
+                onTap: () {},
+                title: Text("Tour's Chat",
+                    style: TextStyle(color: Colors.black, fontSize: 16,fontWeight: FontWeight.bold)),
+              )
+                           
+
                         ],
                       )),
                     ),
