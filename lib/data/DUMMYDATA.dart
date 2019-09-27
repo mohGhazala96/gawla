@@ -107,7 +107,27 @@ class Data extends ChangeNotifier {
         pictures: [
           'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
           'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
+        ],rating: 4.2,tourGuidePic: 'images/karim.jpg'),
+            Tour(
+        tourID: "2Tour",
+        name: "Musuem",
+        tourguide: "1TourGuide",
+        tourguideName: "Hend",
+        tourists: ["2Tourist"],
+        date: "12/12/2019",
+        location: "Alexandria",
+        places: ["Giza"],
+        description:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        meetingPoint: "tahrir",
+        language: "English",
+        price: 150,
+        peopleAllowed: 5,
+        pictures: [
+          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
+          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
         ],rating: 4.2,tourGuidePic: 'images/karim.jpg')
+
   ];
   var DUMMY_VIEW_TOURS = [
     Tour(
@@ -144,7 +164,26 @@ class Data extends ChangeNotifier {
         pictures: [
           'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
           'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
-        ])
+        ]),
+            Tour(
+        tourID: "2Tour",
+        name: "Musuem",
+        tourguide: "1TourGuide",
+        tourguideName: "Hend",
+        tourists: ["2Tourist"],
+        date: "12/12/2019",
+        location: "Alexandria",
+        places: ["Giza"],
+        description:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        meetingPoint: "tahrir",
+        language: "English",
+        price: 150,
+        peopleAllowed: 5,
+        pictures: [
+          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
+          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
+        ],rating: 4.2,tourGuidePic: 'images/karim.jpg')
   ];
   void addTouristToTour(String tourID, String touristID) {
     var tour = DUMMY_TOURS.where((tour) => tourID == tour.tourID).toList()[0];

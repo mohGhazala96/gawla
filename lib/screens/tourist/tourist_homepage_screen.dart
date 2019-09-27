@@ -18,12 +18,12 @@ class ToursitHomePage extends StatefulWidget {
 class ToursitHomePageScreen extends State<ToursitHomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   static const routeName = 'tourist-homepage-screen';
+    static int currentPage=0;
 
   @override
   Widget build(BuildContext context) {
     final touristId = MyApp.profileID;
     final String logoAssetName = 'images/logo.svg';
-    int currentPage;
 
     return Scaffold(
       bottomNavigationBar: Container(
@@ -58,7 +58,7 @@ class ToursitHomePageScreen extends State<ToursitHomePage> {
         //   )
         // ),
         // cn: Theme.of(context).primaryColor,
-        child: Column(
+        child:currentPage==0?  Column(
           children: <Widget>[
             Align(
               alignment: Alignment.topLeft,
@@ -118,7 +118,7 @@ class ToursitHomePageScreen extends State<ToursitHomePage> {
               ),
             ),
           ],
-        ),
+        ): currentPage==1?  ToursSearchScreen()  :ToursTouristScreen() ,
       ),
     );
   }
