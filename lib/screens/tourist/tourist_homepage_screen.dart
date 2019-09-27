@@ -5,6 +5,8 @@ import 'tours_tourist_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import '../../main.dart';
+import 'package:gawla/widgets/diagonally_cut_colored_image.dart';
+
 class TouristHomePage extends StatefulWidget {
   @override
   TouristHomePageScreen createState() => TouristHomePageScreen();
@@ -26,7 +28,7 @@ class TouristHomePageScreen extends State<TouristHomePage> {
           padding: EdgeInsets.only(bottom: 20),
           color: Colors.black,
           child: FancyBottomNavigation(
-            initialSelection:MyApp.globalIndexPage,
+            initialSelection: MyApp.globalIndexPage,
             barBackgroundColor: Colors.black,
             textColor: Colors.white,
             tabs: [
@@ -37,7 +39,6 @@ class TouristHomePageScreen extends State<TouristHomePage> {
             onTabChangedListener: (position) {
               setState(() {
                 MyApp.globalIndexPage = position;
-                
               });
             },
           ),
@@ -45,7 +46,7 @@ class TouristHomePageScreen extends State<TouristHomePage> {
         drawer: MenuDrawer(),
         key: _scaffoldKey,
         body: Container(
-          child: MyApp.globalIndexPage  == 0
+          child: MyApp.globalIndexPage == 0
               ? Column(
                   children: <Widget>[
                     Align(
@@ -76,7 +77,9 @@ class TouristHomePageScreen extends State<TouristHomePage> {
                     )
                   ],
                 )
-              : MyApp.globalIndexPage  == 1 ? ToursSearchScreen() : ToursTouristScreen(),
+              : MyApp.globalIndexPage == 1
+                  ? ToursSearchScreen()
+                  : ToursTouristScreen(),
         ),
       ),
     );
