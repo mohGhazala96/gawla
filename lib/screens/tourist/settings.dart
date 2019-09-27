@@ -20,46 +20,74 @@ class SettingsScreen extends StatelessWidget {
     return Scaffold(
       body: Form(
           child: Container(
-        margin: EdgeInsets.only(top: 80),
+        margin: EdgeInsets.only(top: 30),
         child: Column(
           children: <Widget>[
+            Container(
+              margin: EdgeInsets.only(left: 10),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  ToursitHomePageScreen()));
+                    },
+                    child: Icon(Icons.arrow_back_ios,
+                        color: Colors.black, size: 35.0)),
+              ),
+            ),
             Align(
               alignment: Alignment.topCenter,
-              child: CircularProfileAvatar(
-                imgurl, //sets image path, it should be a URL string. default value is empty string, if path is empty it will display only initials
-                radius: 75, // sets radius, default 50.0
-                backgroundColor:
-                    Colors.white, // sets background color, default Colors.white
-                borderWidth: 4, // sets border, default 0.0
-                initialsText: Text(
-                  "AF",
-                  style: TextStyle(fontSize: 40, color: Colors.white),
-                ), // sets initials text, set your own style, default Text('')
-                borderColor:
-                    Colors.brown, // sets border color, default Colors.white
-                elevation:
-                    5.0, // sets elevation (shadow of the profile picture), default value is 0.0
-                // foregroundColor: Colors.brown.withOpacity(
-                //     0.5), //sets foreground colour, it works if showInitialTextAbovePicture = true , default Colors.transparent
-                cacheImage:
-                    true, // allow widget to cache image against provided url
-                onTap: () {
-                  print('adil');
-                }, // sets on tap
-                showInitialTextAbovePicture:
-                    false, // setting it true will show initials text above profile picture, default false
+              child: Column(
+                children: <Widget>[
+                  CircularProfileAvatar(
+                    imgurl, //sets image path, it should be a URL string. default value is empty string, if path is empty it will display only initials
+                    radius: 75, // sets radius, default 50.0
+                    backgroundColor: Colors
+                        .white, // sets background color, default Colors.white
+                    borderWidth: 4, // sets border, default 0.0
+                    initialsText: Text(
+                      "AF",
+                      style: TextStyle(fontSize: 40, color: Colors.white),
+                    ), // sets initials text, set your own style, default Text('')
+                    borderColor:
+                        Colors.brown, // sets border color, default Colors.white
+                    elevation:
+                        5.0, // sets elevation (shadow of the profile picture), default value is 0.0
+                    // foregroundColor: Colors.brown.withOpacity(
+                    //     0.5), //sets foreground colour, it works if showInitialTextAbovePicture = true , default Colors.transparent
+                    cacheImage:
+                        true, // allow widget to cache image against provided url
+                    onTap: () {
+                      print('adil');
+                    }, // sets on tap
+                    showInitialTextAbovePicture:
+                        false, // setting it true will show initials text above profile picture, default false
+                  ),
+                  Container(
+                      margin: EdgeInsets.only(top: 20),
+                      child: Text(
+                        "Click on your avatar to select a new one ;)",
+                        textAlign: TextAlign.center,
+                        style:
+                            TextStyle(color: Color(0xff707070), fontSize: 14),
+                      )),
+                ],
               ),
             ),
             Expanded(
               child: Container(
                 color: Colors.white,
-                margin: EdgeInsets.only(top: 50),
+                margin: EdgeInsets.only(top: 20),
                 child: ListView(
                   children: <Widget>[
                     Align(
                       alignment: Alignment.center,
                       child: Container(
-                        margin: EdgeInsets.only(top: 30),
+                        margin: EdgeInsets.only(top: 10),
                         width: MediaQuery.of(context).size.width * 0.8,
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -207,29 +235,46 @@ class SettingsScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    ButtonTheme(
-                      minWidth: MediaQuery.of(context).size.width * 0.5,
-                      height: 45,
-                      buttonColor: Colors.white,
-                      child: RaisedButton(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(15.0)),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      ToursitHomePageScreen()));
-                        },
-                        child: Text(
-                          'SIGN IN',
-                          style: TextStyle(color: Color(0xff707070)),
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ),
+            ),
+            Stack(
+              children: <Widget>[
+                Container(
+                  color: Colors.white,
+                  width: MediaQuery.of(context).size.width,
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Container(
+                      margin: EdgeInsets.only(bottom: 120),
+                      child: ButtonTheme(
+                        minWidth: MediaQuery.of(context).size.width * 0.5,
+                        height: 50,
+                        buttonColor: Colors.white,
+                        child: Container(
+                          child: RaisedButton(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(15.0)),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          ToursitHomePageScreen()));
+                            },
+                            child: Text(
+                              'Save Changes',
+                              style: TextStyle(
+                                  color: Color(0xff707070), fontSize: 15),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

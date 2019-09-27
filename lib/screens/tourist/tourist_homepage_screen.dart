@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gawla/screens/common/menudrawer.dart';
+import 'package:gawla/screens/tourist/tours_search_screen.dart';
 import '../../main.dart';
 import '../../data/DUMMYDATA.dart';
 import 'tourist_profile_screen.dart';
@@ -19,7 +20,20 @@ class ToursitHomePageScreen extends StatelessWidget {
       drawer: MenuDrawer(),
       key: _scaffoldKey,
       body: Container(
-        color: Theme.of(context).primaryColor,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.bottomLeft,
+            end: Alignment.topRight,
+            stops: [0.25,0.5,0.75,1],
+            colors: [
+              Color(0xbbfe9933),
+              Color(0xfffeaa33),
+              Color(0xfffebb33),
+              Color(0xfffecc33)
+            ]
+          )
+        ),
+        //color: Theme.of(context).primaryColor,
         child: Column(
           children: <Widget>[
             Align(
@@ -30,21 +44,21 @@ class ToursitHomePageScreen extends StatelessWidget {
                   onTap: () {
                     _scaffoldKey.currentState.openDrawer();
                   },
-                  child: Icon(Icons.menu),
+                  child: Icon(
+                    Icons.menu,
+                    size: 30,
+                  ),
                 ),
               ),
             ),
             Align(
-              alignment: Alignment.center,
+              alignment: Alignment.topCenter,
               child: Container(
-                margin: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.1),
-                child: Text("Gawla",
-                    style: TextStyle(
-                        letterSpacing: 5,
-                        fontSize: 60,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black)),
+                margin: EdgeInsets.only(top: 60),
+                child: Text(
+                  'GAWLA',
+                  style: Theme.of(context).textTheme.title,
+                ),
               ),
             ),
             Align(
@@ -57,8 +71,8 @@ class ToursitHomePageScreen extends StatelessWidget {
                   children: <Widget>[
                     GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(
-                            context, ToursTouristScreen.routeName);
+                      Navigator.pushNamed(
+                            context, ToursSearchScreen.routeName);
                       },
                       child: Icon(
                         Icons.search,
@@ -80,6 +94,73 @@ class ToursitHomePageScreen extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class SearchDialog extends StatefulWidget {
+  @override
+  _SearchDialogState createState() => _SearchDialogState();
+}
+
+class _SearchDialogState extends State<SearchDialog> {
+  final formKey = GlobalKey<FormState>();
+  String searchResult;
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(9),
+      ),
+      child: Container(
+        height: MediaQuery.of(context).size.height * 0.4,
+        child: Form(
+          key: formKey,
+          child: Column(
+            children: <Widget>[
+              Align(
+                alignment: Alignment.topLeft,
+                child: Container(
+                  margin: EdgeInsets.only(top: 10, left: 10),
+                  child: Text(
+                    "Search for a tour",
+                    style: Theme.of(context).textTheme.subtitle,
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: Container(
+                  margin: EdgeInsets.only(top: 30, left: 5, right: 5),
+                  child: TextFormField(
+                      onSaved: (res) => searchResult = res,
+                      decoration: InputDecoration(
+                        hintText: "Search",
+                        suffixIcon: Icon(
+                          Icons.search,
+                          color: Colors.black,
+                        ),
+                      )),
+                ),
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: Container(
+                  margin: EdgeInsets.only(top: 20),
+                  child: RaisedButton(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0)),
+                    color: Colors.amber,
+                    child: Text("LEAVE IT ON US"),
+                    onPressed: () {},
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

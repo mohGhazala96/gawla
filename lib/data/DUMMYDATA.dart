@@ -3,16 +3,29 @@ import 'package:flutter/cupertino.dart';
 import '../models/tourguide.dart';
 import '../models/tour.dart';
 import '../models/tourist.dart';
+import 'package:gawla/models/review.dart';
 
 class Data extends ChangeNotifier {
+  static Review review1 = Review(
+      rate: 5,
+      review: 'Gave Me The Tour Of My Life. HIGHLY RECOMMEND!',
+      reviewerID: '1Tourist');
+  static Review review2 =
+      Review(rate: 4, review: 'Very Good Tourguide', reviewerID: '2Tourist');
+  static Review review3 = Review(
+      rate: 3,
+      review: 'Good Tourguide. Only problem was timings',
+      reviewerID: '1Tourist');
+
   static TourGuide tourguide1 = TourGuide(
       profileID: '1TourGuide',
-      name: "mohamed",
+      name: "Mohamed",
       password: "abcd123",
       nationality: "Egyptian",
       age: 42,
       gender: true,
       phoneNumber: "0101895078523",
+      since: 1998,
       experience: "enter experienece here",
       languages: ["Arabic", "English", "Spanish"],
       rating: 5,
@@ -79,7 +92,7 @@ class Data extends ChangeNotifier {
         tourguide: "1TourGuide",
         tourists: ["1Tourist", "2Tourist"],
         date: DateTime.now(),
-        location: "Cairo",
+        location: "Alexandria",
         places: ["Giza"],
         description: "Enter Description here",
         meetingPoint: "tahrir",
@@ -95,5 +108,17 @@ class Data extends ChangeNotifier {
   void addTour() {
     DUMMY_TOURS.add(Tour(name: 'NewTOUR'));
     notifyListeners();
+  }
+
+  TourGuide getTourGuideByID(String id) {
+    return DUMMY_TOURGUIDES.where((tourguide) {
+      return tourguide.profileID == id;
+    }).toList()[0];
+  }
+
+  Tourist getTouristByID(String id) {
+    return DUMMY_TOURSISTS.where((tourist) {
+      return tourist.profileID == id;
+    }).toList()[0];
   }
 }

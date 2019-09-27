@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../models/tour.dart';
+import 'package:gawla/widgets/TourItem.dart';
+import 'package:provider/provider.dart';
 import '../../data/DUMMYDATA.dart';
 import '../../main.dart';
-import 'package:provider/provider.dart';
-import '../../widgets/TourItem.dart';
-
 class ToursTouristScreen extends StatelessWidget {
   static const routeName = 'tours-tourist-screen';
 
