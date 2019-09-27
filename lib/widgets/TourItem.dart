@@ -7,8 +7,9 @@ class TourItem extends StatelessWidget {
   final String displayImage;
   final int numberOfPeople;
   final int price;
+  final String isBooked;
 
-  TourItem(this.tourID, this.tourName, this.displayImage,this.numberOfPeople,this.price);
+  TourItem(this.tourID, this.tourName, this.displayImage,this.numberOfPeople,this.price,this.isBooked);
 
   void selectCategory(BuildContext ctx) {
     print(displayImage);
@@ -17,7 +18,8 @@ class TourItem extends StatelessWidget {
       arguments: {
         'tourID': tourID,
         'tourname': tourName,
-        'image': displayImage
+        'image': displayImage,
+        'isbooked':isBooked
       },
     );
   }

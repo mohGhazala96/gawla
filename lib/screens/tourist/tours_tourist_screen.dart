@@ -25,7 +25,8 @@ class ToursTouristScreen extends StatelessWidget {
               tourData.name,
               tourData.pictures[0],
               tourData.peopleAllowed,
-              tourData.price
+              tourData.price,
+              "true"
             ),
           )
           .toList(),

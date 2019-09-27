@@ -8,12 +8,18 @@ import '../../widgets/PhotoListState.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flushbar/flushbar.dart';
 
-class TourTouristDetailedScreen extends StatelessWidget {
+class TourTouristDetailedScreen extends StatefulWidget {
   static const routeName = '/tour-tourist-detailed-screen';
-  void showFlushBar(BuildContext context) {
+
+  @override
+  _TourTouristDetailedScreenState createState() => _TourTouristDetailedScreenState();
+}
+
+class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
+  bool isButtonDisabled= false;
+  bool isClicked=false;
+  void showFlushBar(BuildContext context, String tourID) {
    Flushbar(
-      title: "Hey Ninja",
-      message: "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
       flushbarPosition: FlushbarPosition.BOTTOM,
       flushbarStyle: FlushbarStyle.FLOATING,
       reverseAnimationCurve: Curves.decelerate,
@@ -27,25 +33,14 @@ class TourTouristDetailedScreen extends StatelessWidget {
         Icons.check,
         color: Colors.greenAccent,
       ),
-      mainButton: FlatButton(
-        onPressed: () {},
-        child: Text(
-          "CLAP",
-          style: TextStyle(color: Colors.amber),
-        ),
-      ),
       showProgressIndicator: true,
       progressIndicatorBackgroundColor: Colors.blueGrey,
-      titleText: Text(
-        "Hello Hero",
-        style: TextStyle(
-            fontWeight: FontWeight.bold, fontSize: 20.0, color: Colors.yellow[600], fontFamily: "ShadowsIntoLightTwo"),
-      ),
       messageText: Text(
-        "You killed that giant monster in the city. Congratulations!",
-        style: TextStyle(fontSize: 18.0, color: Colors.green, fontFamily: "ShadowsIntoLightTwo"),
+        "You successfuly booked this tour!",
+        style: TextStyle(fontSize: 18.0, color: Colors.white, fontFamily: "ShadowsIntoLightTwo"),
       ),
     )..show(context);
+     Provider.of<Data>(context).addTouristToTour(tourID, MyApp.profileID);
   }
 
   @override
@@ -53,6 +48,11 @@ class TourTouristDetailedScreen extends StatelessWidget {
     final routeArgs =
         ModalRoute.of(context).settings.arguments as Map<String, String>;
     final tourID = routeArgs['tourID'];
+    final isBooked = routeArgs['isbooked'];
+    if(isBooked=="true" || isClicked)
+      isButtonDisabled = true;
+      else
+      isButtonDisabled = false;
 
     final tourDertailed = Provider.of<Data>(context).DUMMY_TOURS.where((tour) {
       return tour.tourID == tourID;
@@ -174,15 +174,23 @@ class TourTouristDetailedScreen extends StatelessWidget {
               ),
               child: Center(
                 child: FlatButton(
-                  onPressed: () {
-                  showFlushBar(context);
+                  
+                  onPressed: isButtonDisabled? null: () {
+                    setState(() {
+                      showFlushBar(context,tourID);
+
+                      isClicked=true;
+
+
+                    });
                 },
-                  child: Text(
+                  child:  Text( 
+                    isButtonDisabled?'Booked':
                   'Book Now',
                   style: TextStyle(
                       fontSize: 23.0,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white)),
+                      color: isButtonDisabled?Colors.grey:Colors.white)),
                 //
                 
                 ),
