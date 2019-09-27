@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'tourguide.dart';
 import 'tourist.dart';
-import 'message.dart';
-import 'package:gawla/data/DUMMYDATA.dart';
 
 class Tour {
   String tourID;
@@ -19,7 +17,6 @@ class Tour {
   int price;
   int peopleAllowed;
   List<String> pictures;
-  List<Message> messages;
   double rating;
   String tourGuidePic;
 
@@ -27,6 +24,7 @@ class Tour {
       {@required this.tourID,
       @required this.name,
       @required this.tourguide,
+      this.tourguideName,
       this.tourists,
       @required this.date,
       @required this.location,
@@ -38,6 +36,5 @@ class Tour {
       this.peopleAllowed,
       @required this.pictures,
       this.rating,
-      this.tourGuidePic,
-      this.messages});
+      this.tourGuidePic});
 }

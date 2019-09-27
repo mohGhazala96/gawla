@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:gawla/models/message.dart';
+
 import '../models/tourguide.dart';
 import '../models/tour.dart';
 import '../models/tourist.dart';
@@ -16,24 +16,6 @@ class Data extends ChangeNotifier {
       rate: 3,
       review: 'Good Tourguide. Only problem was timings',
       reviewerID: '1Tourist');
-
-  static Message message1 = Message(
-      id: 'msg1',
-      isTourist: false,
-      sender: 'KTOUR',
-      text:
-          'Hello Everyone, I am Mohammed from Egypt the tourguide for this tour. This will be our main place for communication. I hope You all enjoy your time. Now everyone intorduce themselves :)');
-  static Message message2 = Message(
-      id: 'msg1',
-      isTourist: true,
-      sender: '1Tourist',
-      text:
-          'Hey Everyone! I am Hend from Kuwait and I can\'t wait to meet you all');
-  static Message message3 = Message(
-      id: 'msg1',
-      isTourist: true,
-      sender: '2Tourist',
-      text: 'Heyoo! I am Jacak from US and I\'ll meet yall soon ;)');
 
   static TourGuide tourguide1 = TourGuide(
       profileID: '1TourGuide',
@@ -110,7 +92,8 @@ class Data extends ChangeNotifier {
           'images/egypt-cairo-pyramids-of-giza-and camels-2.jpg',
           'images/egypt-cairo-pyramids-of-giza-and camels-2.jpg',
         ],
-        rating: 4.8,tourGuidePic: 'images/karim.jpg'),
+        rating: 4.8,
+        tourGuidePic: 'images/karim.jpg'),
     Tour(
         tourID: "2Tour",
         name: "Musuem",
@@ -129,8 +112,10 @@ class Data extends ChangeNotifier {
         pictures: [
           'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
           'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
-        ],rating: 4.2,tourGuidePic: 'images/karim.jpg'),
-            Tour(
+        ],
+        rating: 4.2,
+        tourGuidePic: 'images/karim.jpg'),
+    Tour(
         tourID: "2Tour",
         name: "Musuem",
         tourguide: "1TourGuide",
@@ -148,8 +133,9 @@ class Data extends ChangeNotifier {
         pictures: [
           'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
           'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
-        ],rating: 4.2,tourGuidePic: 'images/karim.jpg')
-
+        ],
+        rating: 4.2,
+        tourGuidePic: 'images/karim.jpg')
   ];
   var DUMMY_VIEW_TOURS = [
     Tour(
@@ -157,7 +143,7 @@ class Data extends ChangeNotifier {
         name: "Pharonic Tour",
         tourguide: "1TourGuide",
         tourists: ["1Tourist", "2Tourist"],
-        date:"a",
+        date: "a",
         location: "Cairo",
         places: ["Giza"],
         description: "Enter Description here",
@@ -188,17 +174,6 @@ class Data extends ChangeNotifier {
           'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
         ]),
     Tour(
-        name: 'Best Tour Ever',
-        description: 'Karim Will provide you with the best tour of your life',
-        language: 'English',
-        location: 'San Stefano',
-        meetingPoint: 'Raml Station',
-        price: 500,
-        tourID: 'KTOUR',
-        tourguide: '1TourGuide',
-        messages: [message1, message2, message3]);
-
-            Tour(
         tourID: "2Tour",
         name: "Musuem",
         tourguide: "1TourGuide",
@@ -216,69 +191,34 @@ class Data extends ChangeNotifier {
         pictures: [
           'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
           'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
-        ],rating: 4.2,tourGuidePic: 'images/karim.jpg')
+        ],
+        rating: 4.2,
+        tourGuidePic: 'images/karim.jpg')
   ];
   void addTouristToTour(String tourID, String touristID) {
     var tour = DUMMY_TOURS.where((tour) => tourID == tour.tourID).toList()[0];
     tour.tourists.add(touristID);
-       notifyListeners();
+    notifyListeners();
   }
-
 
   void addTour() {
     DUMMY_TOURS.add(Tour(name: 'NewTOUR'));
     notifyListeners();
   }
 
-  void updateDummyData(List<Tour> list){
+  void updateDummyData(List<Tour> list) {
     DUMMY_VIEW_TOURS = list;
     notifyListeners();
-  TourGuide getTourGuideByID(String id) {
-    return DUMMY_TOURGUIDES.where((tourguide) {
-      return tourguide.profileID == id;
-    }).toList()[0];
-  }
+    TourGuide getTourGuideByID(String id) {
+      return DUMMY_TOURGUIDES.where((tourguide) {
+        return tourguide.profileID == id;
+      }).toList()[0];
+    }
 
-  Tourist getTouristByID(String id) {
-    return DUMMY_TOURSISTS.where((tourist) {
-      return tourist.profileID == id;
-    }).toList()[0];
-  }
-
-  Tour getTourByID(String id) {
-    return DUMMY_TOURS.where((tour) {
-      return tour.tourID == id;
-    }).toList()[0];
-  }
-
-  String getUserName(String id) {
-    int isTourguide = DUMMY_TOURGUIDES
-        .where((tourguide) {
-          return tourguide.profileID == id;
-        })
-        .toList()
-        .length;
-    if (isTourguide > 0) {
-      return DUMMY_TOURGUIDES
-          .where((tourguide) {
-            return tourguide.profileID == id;
-          })
-          .toList()[0]
-          .name;
-    } else {
-      return DUMMY_TOURSISTS
-          .where((tourist) {
-            return tourist.profileID == id;
-          })
-          .toList()[0]
-          .name;
+    Tourist getTouristByID(String id) {
+      return DUMMY_TOURSISTS.where((tourist) {
+        return tourist.profileID == id;
+      }).toList()[0];
     }
   }
-
-  void addMessage(Tour tour, String sender, String text) {
-    Message message = Message(sender: sender, text: text);
-    tour.messages.add(message);
-    notifyListeners();
-  }
-}
 }

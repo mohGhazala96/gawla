@@ -60,12 +60,11 @@ class MyApp extends StatelessWidget {
                 )),
           ),
           // home: CategoriesScreen(),
-
           initialRoute: '/', // default is '/'
           routes: {
             '/': (ctx) => SignIn(),
             AddTourScreen.routeName: (ctx) => AddTour(),
-            ChatScreen.routeName: (ctx) => ChatScreen(),
+//            ChatScreen.routeName: (ctx) => ChatScreen(),
             InboxScreen.routeName: (ctx) => InboxScreen(),
             SearchToursScreen.routeName: (ctx) => SearchToursScreen(),
             SignUpTourGuideScreen.routeName: (ctx) => SignUpTourGuideScreen(),

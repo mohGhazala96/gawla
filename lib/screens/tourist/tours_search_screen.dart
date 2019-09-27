@@ -42,7 +42,7 @@ class _ToursSearchScreenState extends State<ToursSearchScreen> {
                     .toLowerCase()
                     .contains(search.toLowerCase()))
                 .toList(),
-                Provider.of<Data>(context).updateDummyData(viewList),
+            Provider.of<Data>(context).updateDummyData(viewList),
             print(viewList)
           },
         ),
@@ -51,7 +51,8 @@ class _ToursSearchScreenState extends State<ToursSearchScreen> {
         child: GridView(
           padding:
               const EdgeInsets.only(right: 20, left: 20, top: 30, bottom: 0),
-          children: Provider.of<Data>(context).DUMMY_VIEW_TOURS
+          children: Provider.of<Data>(context)
+              .DUMMY_VIEW_TOURS
               .map(
                 (tourData) => TourItem(
                     tourData.tourID,
