@@ -6,8 +6,9 @@ class Tour {
   String tourID;
   String name;
   String tourguide;
+  String tourguideName;
   List<String> tourists;
-  DateTime date;
+  String date;
   String location;
   List<String> places;
   String description;
@@ -16,11 +17,13 @@ class Tour {
   int price;
   int peopleAllowed;
   List<String> pictures;
+  double rating;
 
   Tour({
     @required this.tourID,
     @required this.name,
     @required this.tourguide,
+    this.tourguideName,
     this.tourists,
     @required this.date,
     @required this.location,
@@ -31,5 +34,6 @@ class Tour {
     @required this.price,
     this.peopleAllowed,
     @required this.pictures,
+    this.rating
   });
 }

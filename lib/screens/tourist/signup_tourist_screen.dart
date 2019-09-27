@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gawla/screens/common/signin_screen.dart';
 import 'package:gawla/screens/tourist/tourist_homepage_screen.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class SignUpTouristScreen extends StatefulWidget {
   static const routeName = 'signup_tourist_screen';
