@@ -30,18 +30,30 @@ class TouristTourguideProfileScreen extends StatelessWidget {
     List<Widget> listOfLanaguges = new List<Widget>();
     for (var i = 0; i < tourguide.languages.length; i++) {
       listOfLanaguges.add(new Text(
-        tourguide.languages[i]+" ",
+        tourguide.languages[i] + " ",
         style: TextStyle(fontSize: 16.0),
       ));
     }
-      var flagCode = "eg";
-      switch (tourguide.nationality){
-      case 'egyptian': flagCode='eg'; break;
-      case 'american': flagCode='us';break;
-      case 'french': flagCode='fr';break;
-      case 'dutch': flagCode='bq';break;
-      case 'kenyian': flagCode='ke';break;
-      case 'turkish': flagCode='tr';break;
+    var flagCode = "eg";
+    switch (tourguide.nationality) {
+      case 'egyptian':
+        flagCode = 'eg';
+        break;
+      case 'american':
+        flagCode = 'us';
+        break;
+      case 'french':
+        flagCode = 'fr';
+        break;
+      case 'dutch':
+        flagCode = 'bq';
+        break;
+      case 'kenyian':
+        flagCode = 'ke';
+        break;
+      case 'turkish':
+        flagCode = 'tr';
+        break;
     }
 
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
@@ -53,16 +65,15 @@ class TouristTourguideProfileScreen extends StatelessWidget {
         body: Container(
           child: ListView(
             children: <Widget>[
-              Align(
-                alignment: Alignment.topLeft,
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 30, left: 10),
+              Padding(
+                padding: const EdgeInsets.only(top: 20.0, left: 10.0),
+                child: Align(
+                  alignment: Alignment.topLeft,
                   child: GestureDetector(
                     onTap: () {
                       Navigator.pop(context);
                     },
-                    child: Icon(Icons.arrow_back_ios,
-                        color: Colors.black, size: 35.0),
+                    child: Icon(Icons.arrow_back_ios),
                   ),
                 ),
               ),
@@ -82,7 +93,7 @@ class TouristTourguideProfileScreen extends StatelessWidget {
                         child: CircleAvatar(
                           radius: 44,
                           backgroundColor: Colors.amber,
-                          child:   Image.asset('images/flags/'+flagCode+'.png'),
+                          backgroundImage: AssetImage('images/karim.jpg'),
                         ),
                       ),
                       SizedBox(
@@ -165,6 +176,14 @@ class TouristTourguideProfileScreen extends StatelessWidget {
                         tourguide.nationality,
                         style: TextStyle(fontSize: 16.0),
                       ),
+                      SizedBox(
+                        width: 50.0,
+                      ),
+                      SizedBox(
+                        child: Image.asset('images/flags/' + flagCode + '.png'),
+                        height: 40.0,
+                        width: 40.0,
+                      )
                     ],
                   ),
                   SizedBox(
