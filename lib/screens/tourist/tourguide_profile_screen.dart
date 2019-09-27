@@ -40,27 +40,20 @@ class TouristTourguideProfileScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         key: scaffoldKey,
-        drawer: MenuDrawer(),
         backgroundColor: Colors.amber,
         body: Container(
           child: ListView(
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(top: 15.0),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Container(
-                    margin: EdgeInsets.only(left: 17),
-                    child: GestureDetector(
-                      onTap: () {
-                        scaffoldKey.currentState.openDrawer();
-                      },
-                      child: Icon(
-                        Icons.menu,
-                        color: Colors.black,
-                        size: 30,
-                      ),
-                    ),
+              Align(
+                alignment: Alignment.topLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 30, left: 10),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(Icons.arrow_back_ios,
+                        color: Colors.black, size: 35.0),
                   ),
                 ),
               ),
@@ -233,7 +226,7 @@ class TouristTourguideProfileScreen extends StatelessWidget {
                   Row(
                     children: <Widget>[
                       Text(
-                        'Phono No. :',
+                        'Phone No. :',
                         style: TextStyle(
                             fontSize: 16.0, fontWeight: FontWeight.bold),
                       ),
