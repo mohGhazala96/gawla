@@ -72,41 +72,53 @@ class Data extends ChangeNotifier {
         tourID: "1Tour",
         name: "Pharonic Tour",
         tourguide: "1TourGuide",
-        tourguideName:"Hend" ,
+        tourguideName: "Hend",
         tourists: ["1Tourist", "2Tourist"],
         date: "1/10.2019",
         location: "Cairo",
         places: ["Giza"],
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        description:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
         meetingPoint: "tahrir",
         language: "English",
         price: 200,
         peopleAllowed: 5,
-        pictures: ['images/egypt-cairo-pyramids-of-giza-and camels-2.jpg','images/egypt-cairo-pyramids-of-giza-and camels-2.jpg','images/egypt-cairo-pyramids-of-giza-and camels-2.jpg'],
-        rating: 4.8,tourGuidePic: 'images/karim.jpg'),
+        pictures: [
+          'images/egypt-cairo-pyramids-of-giza-and camels-2.jpg',
+          'images/egypt-cairo-pyramids-of-giza-and camels-2.jpg',
+          'images/egypt-cairo-pyramids-of-giza-and camels-2.jpg'
+        ],
+        rating: 4.8,tourGuidePic:'images/karim.jpg' ),
     Tour(
         tourID: "2Tour",
         name: "Musuem",
         tourguide: "1TourGuide",
-        tourguideName:"Hend" ,
-        tourists: [ "2Tourist"],
+        tourguideName: "Hend",
+        tourists: ["2Tourist"],
         date: "12/12/2019",
         location: "Alexandria",
         places: ["Giza"],
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        description:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
         meetingPoint: "tahrir",
         language: "English",
         price: 150,
         peopleAllowed: 5,
-        pictures: ['images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg','images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'],rating: 4,tourGuidePic: 'images/karim.jpg')
+        pictures: [
+          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
+          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
+        ],
+        rating: 4,tourGuidePic: 'images/karim.jpg')
   ];
-  void addTouristToTour(String tourID, String touristID){
-        var tour = DUMMY_TOURS.where((tour)=> tourID==tour.tourID).toList()[0];
-        tour.tourists.add(touristID);
+  void addTouristToTour(String tourID, String touristID) {
+    var tour = DUMMY_TOURS.where((tour) => tourID == tour.tourID).toList()[0];
+    tour.tourists.add(touristID);
 
-        notifyListeners();
+    notifyListeners();
 
+    notifyListeners();
   }
+
   void addTour() {
     DUMMY_TOURS.add(Tour(name: 'NewTOUR'));
     notifyListeners();

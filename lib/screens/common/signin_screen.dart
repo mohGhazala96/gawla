@@ -164,7 +164,7 @@ class SignInScreen extends State<SignIn> {
                           ],
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),

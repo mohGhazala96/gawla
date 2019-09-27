@@ -264,7 +264,7 @@ class SettingsScreen extends StatelessWidget {
                                           ToursitHomePageScreen()));
                             },
                             child: Text(
-                              'Save Changes',
+                              'SAVE CHANGES',
                               style: TextStyle(
                                   color: Color(0xff707070), fontSize: 15),
                             ),
