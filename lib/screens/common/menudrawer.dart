@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gawla/main.dart';
 import 'package:gawla/screens/tourguide/tourguide_profile_screen.dart';
 import 'package:gawla/screens/tourist/settings.dart';
+import 'package:gawla/data/DUMMYDATA.dart';
+import 'package:provider/provider.dart';
 
 import '../tourist/tourist_profile_screen.dart';
 
@@ -44,7 +46,10 @@ class MenuDrawer extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => TouristProfileScreen()));
+                          builder: (context) => Provider.of<Data>(context)
+                                  .isTourist(MyApp.profileID)
+                              ? TouristProfileScreen()
+                              : TourGuideTourGuideProfileScreen()));
                 },
                 title: Text(
                   "Profile",
