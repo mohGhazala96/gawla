@@ -8,6 +8,8 @@ import '../../widgets/PhotoListState.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flushbar/flushbar.dart';
 
+import 'tourguide_profile_screen.dart';
+
 class TourTouristDetailedScreen extends StatefulWidget {
   static const routeName = '/tour-tourist-detailed-screen';
 
@@ -19,6 +21,14 @@ class TourTouristDetailedScreen extends StatefulWidget {
 class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
   bool isButtonDisabled = false;
   bool isClicked = false;
+  void visitTourGuide(BuildContext ctx,String tourGuideId){
+    Navigator.of(ctx).pushNamed(
+      TouristTourguideProfileScreen.routeName,
+      arguments: {
+        'id': tourGuideId
+      },
+    );
+  }
   void showFlushBar(BuildContext context, String tourID) {
     Flushbar(
       flushbarPosition: FlushbarPosition.BOTTOM,
@@ -121,42 +131,48 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        !isButtonDisabled?
-                          DatePickerTimeline(
-                            DateTime.now(),
-                            onDateChange: (date) {
-                              print(date.month.toString());
-                            },
-                          ):Text("Boooked On :  "+tour.date, style: TextStyle(fontWeight: FontWeight.bold),),
+                        !isButtonDisabled
+                            ? DatePickerTimeline(
+                                DateTime.now(),
+                                onDateChange: (date) {
+                                  print(date.month.toString());
+                                },
+                              )
+                            : Text(
+                                "Boooked On :  " + tour.date,
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
                       ],
                     ),
-                           Container(
-               height: 300,
-                               
-
-              
-                      child:   
-         new SingleChildScrollView( child:Column( 
-           children: <Widget>[   Text(
-                        
-                        tour.description,
-                        
-                        style: TextStyle(
-                          fontSize: 16.0,
-                        ),
-                      
-                    ),Text(
-                        
-                        "By:"+tour.tourguideName,
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.bold
-                        ),
-                      
-                    )],
-         )),
-                           ),
+                    Container(
+                      height: 300,
+                      child: new SingleChildScrollView(
+                          child: Column(
+                        children: <Widget>[
+                          Text(
+                            tour.description,
+                            style: TextStyle(
+                              fontSize: 16.0,
+                            ),
+                          ),
+                          
+                          ListTile(
+                            
+                            leading: Icon(
+                              Icons.face,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                            onTap: () {visitTourGuide( context,tour.tourguide);},
+                            title:  Text(
+                            "By:" + tour.tourguideName,
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                fontSize: 16.0, fontWeight: FontWeight.bold),
+                          ) ,
+                          )
+                        ],
+                      )),
+                    ),
                   ],
                 ),
               ),
@@ -167,8 +183,7 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
                 tag: tour.pictures[0],
                 child: Container(
                     child: PhotoList(tour.pictures),
-                    height: MediaQuery.of(context).size.height / 3)
-                ),
+                    height: MediaQuery.of(context).size.height / 3)),
           ),
           Align(
             alignment: Alignment.bottomLeft,

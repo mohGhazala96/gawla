@@ -3,16 +3,29 @@ import 'package:flutter/cupertino.dart';
 import '../models/tourguide.dart';
 import '../models/tour.dart';
 import '../models/tourist.dart';
+import 'package:gawla/models/review.dart';
 
 class Data extends ChangeNotifier {
+  static Review review1 = Review(
+      rate: 5,
+      review: 'Gave Me The Tour Of My Life. HIGHLY RECOMMEND!',
+      reviewerID: '1Tourist');
+  static Review review2 =
+      Review(rate: 4, review: 'Very Good Tourguide', reviewerID: '2Tourist');
+  static Review review3 = Review(
+      rate: 3,
+      review: 'Good Tourguide. Only problem was timings',
+      reviewerID: '1Tourist');
+
   static TourGuide tourguide1 = TourGuide(
       profileID: '1TourGuide',
-      name: "mohamed",
+      name: "Mohamed",
       password: "abcd123",
       nationality: "Egyptian",
       age: 42,
       gender: true,
-      phoneNumber: "+20101895078523",
+      phoneNumber: "0101895078523",
+      since: 1998,
       experience: "enter experienece here",
       languages: ["Arabic", "English", "Spanish"],
       rating: 5,
@@ -25,7 +38,7 @@ class Data extends ChangeNotifier {
       nationality: "German",
       age: 35,
       gender: true,
-      phoneNumber: "+4901835463",
+      phoneNumber: "901835463",
       experience: "enter experienece here",
       languages: ["Deutsch", "English", "Spanish"],
       rating: 4,
@@ -83,7 +96,7 @@ class Data extends ChangeNotifier {
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
         meetingPoint: "tahrir",
         language: "English",
-        price: 150                                                ,
+        price: 150,
         peopleAllowed: 5,
         pictures: ['images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg','images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'],rating: 4)
   ];
@@ -97,5 +110,17 @@ class Data extends ChangeNotifier {
   void addTour() {
     DUMMY_TOURS.add(Tour(name: 'NewTOUR'));
     notifyListeners();
+  }
+
+  TourGuide getTourGuideByID(String id) {
+    return DUMMY_TOURGUIDES.where((tourguide) {
+      return tourguide.profileID == id;
+    }).toList()[0];
+  }
+
+  Tourist getTouristByID(String id) {
+    return DUMMY_TOURSISTS.where((tourist) {
+      return tourist.profileID == id;
+    }).toList()[0];
   }
 }

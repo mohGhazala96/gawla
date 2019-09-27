@@ -67,6 +67,7 @@ class MyApp extends StatelessWidget {
             SignUpTouristScreen.routeName: (ctx) => SignUpTouristScreen(),
             TourTourGuideDetailedScreen.routeName: (ctx) =>
                 TourTourGuideDetailedScreen(),
+            TouristTourguideProfileScreen.routeName: (ctx)=>    TouristTourguideProfileScreen(),
             TourTouristDetailedScreen.routeName: (ctx) =>
                 TourTouristDetailedScreen(),
             ToursGuideHomePageScreen.routeName: (ctx) =>
