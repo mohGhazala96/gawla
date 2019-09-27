@@ -283,10 +283,10 @@ class Data extends ChangeNotifier {
     }
   }
 
-<<<<<<< HEAD
   Notifications getNotifications() {
     return notifications1;
-=======
+  }
+
   Tourist getTouristByID(String id) {
     return DUMMY_TOURSISTS.where((tourist) {
       return tourist.profileID == id;
@@ -341,6 +341,5 @@ class Data extends ChangeNotifier {
     Message message = Message(sender: sender, text: text);
     tour.messages.add(message);
     notifyListeners();
->>>>>>> 132edc06406a43622867f1516a0a302708e257ed
   }
 }
