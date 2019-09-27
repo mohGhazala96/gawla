@@ -134,6 +134,7 @@ class _SignUpTouristScreenState extends State<SignUpTouristScreen> {
                               alignment: Alignment.center,
                               child: Container(
                                 child: TextFormField(
+                                  keyboardType: TextInputType.emailAddress,
                                   onSaved: (value) => email = value.trim(),
                                   style: TextStyle(
                                       color: Colors.black, fontSize: 17),
@@ -297,7 +298,7 @@ class _SignUpTouristScreenState extends State<SignUpTouristScreen> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (BuildContext context) =>
-                                              ToursitHomePage()));
+                                              TouristHomePage()));
                                 },
                                 child: Text(
                                   'SIGN UP',
