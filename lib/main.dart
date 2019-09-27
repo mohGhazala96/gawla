@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.amber,
             accentColor: Colors.amber,
             canvasColor: Color(0xffFECC33),
+            cardColor: Colors.amber,
             fontFamily: 'Poppins',
             textTheme: ThemeData.light().textTheme.copyWith(
                 body1: TextStyle(

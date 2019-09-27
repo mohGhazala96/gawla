@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:gawla/main.dart';
 import 'package:gawla/models/message.dart';
 import 'package:bubble/bubble.dart';
-import 'package:gawla/data/DUMMYDATA.dart';
 import 'package:gawla/models/tour.dart';
 import 'package:gawla/screens/common/menudrawer.dart';
 import 'package:provider/provider.dart';
 import 'package:gawla/widgets/diagonally_cut_colored_image.dart';
+import 'package:gawla/data/DUMMYDATA.dart';
 
 class ChatScreen extends StatelessWidget {
   static const routeName = 'chat-screen';
