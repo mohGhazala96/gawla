@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:gawla/models/notification.dart';
+import 'package:gawla/models/notifications.dart';
 import 'package:gawla/screens/common/menudrawer.dart';
 import 'package:gawla/screens/tourist/tours_search_screen.dart';
 import 'tours_tourist_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import '../../main.dart';
+import 'package:gawla/data/DUMMYDATA.dart';
+import 'package:provider/provider.dart';
+
 class TouristHomePage extends StatefulWidget {
   @override
   TouristHomePageScreen createState() => TouristHomePageScreen();
@@ -17,7 +22,7 @@ class TouristHomePageScreen extends State<TouristHomePage> {
   @override
   Widget build(BuildContext context) {
     final String logoAssetName = 'images/logo.svg';
-
+    var notifications = Provider.of<Data>(context).getNotifications();
     return SafeArea(
       bottom: true,
       top: true,
@@ -26,7 +31,7 @@ class TouristHomePageScreen extends State<TouristHomePage> {
           padding: EdgeInsets.only(bottom: 20),
           color: Colors.black,
           child: FancyBottomNavigation(
-            initialSelection:MyApp.globalIndexPage,
+            initialSelection: MyApp.globalIndexPage,
             barBackgroundColor: Colors.black,
             textColor: Colors.white,
             tabs: [
@@ -37,7 +42,6 @@ class TouristHomePageScreen extends State<TouristHomePage> {
             onTabChangedListener: (position) {
               setState(() {
                 MyApp.globalIndexPage = position;
-                
               });
             },
           ),
@@ -45,7 +49,7 @@ class TouristHomePageScreen extends State<TouristHomePage> {
         drawer: MenuDrawer(),
         key: _scaffoldKey,
         body: Container(
-          child: MyApp.globalIndexPage  == 0
+          child: MyApp.globalIndexPage == 0
               ? Column(
                   children: <Widget>[
                     Align(
@@ -73,10 +77,97 @@ class TouristHomePageScreen extends State<TouristHomePage> {
                         child: SvgPicture.asset(logoAssetName,
                             semanticsLabel: 'Gawla Logo'),
                       ),
-                    )
+                    ),
+                    // Opacity(
+                    //   opacity: 0.9,
+                    //   child: Container(
+                    //     height: MediaQuery.of(context).size.height * 0.49,
+                    //     width: MediaQuery.of(context).size.width * 0.9,
+                    //     padding: EdgeInsets.only(top: 10, bottom: 10),
+                    //     decoration: BoxDecoration(
+                    //         boxShadow: [
+                    //           BoxShadow(
+                    //               color: Colors.black12,
+                    //               offset: Offset(0, -1),
+                    //               blurRadius: 13)
+                    //         ],
+                    //         color: Colors.white,
+                    //         borderRadius: new BorderRadius.circular(15.0),
+                    //         border: new Border.all(
+                    //             color: Color(0xff707070), width: 0.0)),
+                    //     child: SingleChildScrollView(
+                    //       child: Container(
+                    //           margin: const EdgeInsets.all(24.0),
+                    //           child: ExpansionPanelList(
+                    //             animationDuration: Duration(milliseconds: 350),
+                    //             expansionCallback:
+                    //                 (int index, bool isExpanded) {
+                    //               setState(() {
+                    //                 notifications.notifications[index]
+                    //                     .isExpanded = !isExpanded;
+                    //               });
+                    //             },
+                    //             children: <ExpansionPanel>[
+                    //               ...notifications.notifications
+                    //                   .map<ExpansionPanel>(
+                    //                       (NotificationForDay x) {
+                    //                 return ExpansionPanel(
+                    //                     canTapOnHeader: true,
+                    //                     isExpanded: x.isExpanded,
+                    //                     headerBuilder: (context, isExpanded) {
+                    //                       return Container(
+                    //                         margin: EdgeInsets.only(
+                    //                             left: 20, top: 10),
+                    //                         child: (Text(
+                    //                           x.date,
+                    //                           style: TextStyle(
+                    //                               color: Colors.white,
+                    //                               fontWeight: FontWeight.w900,
+                    //                               fontSize: 17),
+                    //                         )),
+                    //                       );
+                    //                     },
+                    //                     body: Column(
+                    //                       children: <Container>[
+                    //                         ...x.notificationsForDay
+                    //                             .map<Container>(
+                    //                                 (String notificationText) {
+                    //                           return Container(
+                    //                               margin: EdgeInsets.only(
+                    //                                   left: 20, bottom: 20),
+                    //                               child: Row(
+                    //                                 children: <Widget>[
+                    //                                   Icon(
+                    //                                     Icons.notifications,
+                    //                                     color: Colors.white,
+                    //                                   ),
+                    //                                   Container(
+                    //                                       margin:
+                    //                                           EdgeInsets.only(
+                    //                                               left: 10),
+                    //                                       child: Text(
+                    //                                         notificationText,
+                    //                                         style: TextStyle(
+                    //                                             fontWeight:
+                    //                                                 FontWeight
+                    //                                                     .w600),
+                    //                                       )),
+                    //                                 ],
+                    //                               ));
+                    //                         })
+                    //                       ],
+                    //                     ));
+                    //               }),
+                    //             ],
+                    //           )),
+                    //     ),
+                    //   ),
+                    // )
                   ],
                 )
-              : MyApp.globalIndexPage  == 1 ? ToursSearchScreen() : ToursTouristScreen(),
+              : MyApp.globalIndexPage == 1
+                  ? ToursSearchScreen()
+                  : ToursTouristScreen(),
         ),
       ),
     );

@@ -1,4 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:gawla/models/notification.dart';
+import 'package:gawla/models/notifications.dart';
+import 'package:gawla/models/notification.dart';
 
 import '../models/tourguide.dart';
 import '../models/tour.dart';
@@ -16,7 +19,23 @@ class Data extends ChangeNotifier {
       rate: 3,
       review: 'Good Tourguide. Only problem was timings',
       reviewerID: '1Tourist');
-
+  static NotificationForDay nfd1 = NotificationForDay(
+      date: "28th of September",
+      notificationsForDay: [
+        "Egyptian Museum @ 10:00 AM",
+        "Library of Alexandria @ 2:30 PM"
+      ]);
+  static NotificationForDay nfd2 = NotificationForDay(
+      date: "29th of September",
+      notificationsForDay: ["Karnak Temple @ 11:00 AM"]);
+  static NotificationForDay nfd3 = NotificationForDay(
+      date: "30th of September",
+      notificationsForDay: [
+        "Abou-Simbel Temple @ 9:00 AM",
+        "Philae Temple @ 3:30 PM"
+      ]);
+  static Notifications notifications1 =
+      Notifications(notifications: [nfd1, nfd2, nfd3]);
   static TourGuide tourguide1 = TourGuide(
       profileID: '1TourGuide',
       email: "tourguide1@gmail.com",
@@ -220,5 +239,9 @@ class Data extends ChangeNotifier {
         return tourist.profileID == id;
       }).toList()[0];
     }
+  }
+
+  Notifications getNotifications() {
+    return notifications1;
   }
 }
