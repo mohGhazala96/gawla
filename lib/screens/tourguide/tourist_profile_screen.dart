@@ -28,11 +28,11 @@ class TourGuideTouristProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final routeArgs = ModalRoute.of(context).settings.arguments as Map<String, String>;
+    final routeArgs =
+        ModalRoute.of(context).settings.arguments as Map<String, String>;
 
-    final tourist=
-        Provider.of<Data>(context).DUMMY_TOURSISTS.where((tourist) {
-          print(routeArgs['id']);
+    final tourist = Provider.of<Data>(context).DUMMY_TOURSISTS.where((tourist) {
+      print(routeArgs['id']);
       return tourist.profileID == routeArgs['id'];
     }).toList();
         print(tourist[0].name+"aaassss");
@@ -48,26 +48,19 @@ class TourGuideTouristProfileScreen extends StatelessWidget {
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     return SafeArea(
       child: Scaffold(
-        key: scaffoldKey,
-        drawer: MenuDrawer(),
         backgroundColor: Colors.amber,
         body: Container(
           child: ListView(children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top: 15.0),
+              padding: const EdgeInsets.only(top: 25.0, left: 8.0),
               child: Align(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  margin: EdgeInsets.only(left: 17),
-                  child: GestureDetector(
-                    onTap: () {
-                      scaffoldKey.currentState.openDrawer();
-                    },
-                    child: Icon(
-                      Icons.menu,
-                      color: Colors.black,
-                      size: 30,
-                    ),
+                alignment: Alignment.topLeft,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(
+                    Icons.arrow_back_ios,
                   ),
                 ),
               ),
@@ -89,7 +82,8 @@ class TourGuideTouristProfileScreen extends StatelessWidget {
                           child: CircleAvatar(
                             radius: 44,
                             backgroundColor: Colors.amber,
-                            backgroundImage: AssetImage(tourist[0].displayPicture),
+                            backgroundImage:
+                                AssetImage(tourist[0].displayPicture),
                           ),
                         ),
                         SizedBox(
@@ -157,7 +151,7 @@ class TourGuideTouristProfileScreen extends StatelessWidget {
                           width: 92.0,
                         ),
                         Text(
-                          tourist[0].gender?"Male":"Female",
+                          tourist[0].gender ? "Male" : "Female",
                           style: TextStyle(fontSize: 16.0),
                         ),
                       ],
@@ -165,7 +159,6 @@ class TourGuideTouristProfileScreen extends StatelessWidget {
                     SizedBox(
                       height: 36.0,
                     ),
-                    
                     SizedBox(
                       height: 36.0,
                     ),

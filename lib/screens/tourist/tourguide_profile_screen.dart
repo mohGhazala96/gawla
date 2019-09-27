@@ -165,14 +165,6 @@ class TouristTourguideProfileScreen extends StatelessWidget {
                         tourguide.nationality,
                         style: TextStyle(fontSize: 16.0),
                       ),
-                      SizedBox(
-                        width: 10.0,
-                      ),
-                      SizedBox(
-                        child: Image.asset('images/country_flag.png'),
-                        height: 50.0,
-                        width: 50.0,
-                      )
                     ],
                   ),
                   SizedBox(

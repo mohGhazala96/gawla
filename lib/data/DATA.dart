@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:gawla/models/message.dart';
-import 'package:gawla/models/notification.dart';
-import 'package:gawla/models/notifications.dart';
+
 import 'package:gawla/models/review.dart';
 import 'package:gawla/models/tour.dart';
 import 'package:gawla/models/tourguide.dart';
@@ -81,23 +80,7 @@ class DATA extends ChangeNotifier {
       review: 'Exceptional TourGuide. Gave Me The Experience of my Life',
       rate: 5);
 
-  static NotificationForDay nfd1 = NotificationForDay(
-      date: "28th of September",
-      notificationsForDay: [
-        "Egyptian Museum @ 10:00 AM",
-        "Library of Alexandria @ 2:30 PM"
-      ]);
-  static NotificationForDay nfd2 = NotificationForDay(
-      date: "29th of September",
-      notificationsForDay: ["Karnak Temple @ 11:00 AM"]);
-  static NotificationForDay nfd3 = NotificationForDay(
-      date: "30th of September",
-      notificationsForDay: [
-        "Abou-Simbel Temple @ 9:00 AM",
-        "Philae Temple @ 3:30 PM"
-      ]);
-  static Notifications notifications1 =
-      Notifications(notifications: [nfd1, nfd2, nfd3]);
+
 
   static TourGuide tourguide1 = TourGuide(
       name: 'angela',
@@ -282,9 +265,6 @@ class DATA extends ChangeNotifier {
     }
   }
 
-  Notifications getNotifications() {
-    return notifications1;
-  }
 
   Tourist getTouristByID(String id) {
     return DUMMY_TOURSISTS.where((tourist) {

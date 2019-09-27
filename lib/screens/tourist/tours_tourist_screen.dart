@@ -14,6 +14,8 @@ class ToursTouristScreen extends StatelessWidget {
     final tours = Provider.of<Data>(context).DUMMY_TOURS.where((tour) {
       return tour.tourists.contains(touristId);
     }).toList();
+    print("aaaadd"+tours[0].name  +" "+touristId );
+    print("aaaadd"+tours[1].name     +" "+touristId );
 
     return Scaffold(
         body: new Column(children: <Widget>[
