@@ -120,7 +120,7 @@ class SignInScreen extends State<SignIn> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (BuildContext context) =>
-                                              ToursitHomePageScreen()));
+                                              ToursitHomePage()));
                                 },
                                 child: Text(
                                   'SIGN IN',

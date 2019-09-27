@@ -258,7 +258,7 @@ class _SignUpTouristScreenState extends State<SignUpTouristScreen> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (BuildContext context) =>
-                                              ToursitHomePageScreen()));
+                                              ToursitHomePage()));
                                 },
                                 child: Text(
                                   'SIGN UP',
