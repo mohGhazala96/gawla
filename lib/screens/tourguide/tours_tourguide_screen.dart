@@ -13,7 +13,6 @@ class ToursTourGuideScreen extends StatelessWidget {
     final tours = Provider.of<Data>(context).DUMMY_TOURS.where((tour) {
       return tour.tourguide==tourGuideId;
     }).toList();
-    print("hi");
 
 print(tours);
     return Scaffold(
@@ -43,7 +42,7 @@ print(tours);
                   tourData.pictures[0],
                   tourData.peopleAllowed,
                   tourData.price,
-                  "true"),
+                  "true",false),
             )
             .toList(),
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(

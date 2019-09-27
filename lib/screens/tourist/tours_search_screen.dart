@@ -28,11 +28,16 @@ class _ToursSearchScreenState extends State<ToursSearchScreen> {
         margin: EdgeInsets.only(top: 30),
         child: TextField(
           decoration: InputDecoration(
+            hintText: "Search by location...",
+            contentPadding: EdgeInsets.all(7.5),
             fillColor: Colors.white,
             filled: true,
             border: OutlineInputBorder(
                 borderRadius: new BorderRadius.circular(15.0)),
-            icon: Icon(Icons.search),
+            icon: Icon(
+              Icons.search,
+              color: Color(0xff707070),
+            ),
           ),
           onChanged: (search) => {
             viewList = tours
@@ -59,7 +64,8 @@ class _ToursSearchScreenState extends State<ToursSearchScreen> {
                     tourData.pictures[0],
                     tourData.peopleAllowed,
                     tourData.price,
-                    "false"),
+                    "false",
+                    true),
               )
               .toList(),
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(

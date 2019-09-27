@@ -42,7 +42,7 @@ class ToursTouristScreen extends StatelessWidget {
                   tourData.pictures[0],
                   tourData.peopleAllowed,
                   tourData.price,
-                  "true"),
+                  "true",true),
             )
             .toList(),
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(

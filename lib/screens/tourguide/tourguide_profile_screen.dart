@@ -30,15 +30,13 @@ class TourGuideTourGuideProfileScreen extends StatelessWidget {
             Align(
               alignment: Alignment.topLeft,
               child: Padding(
-                padding: const EdgeInsets.only(top: 30, left: 30),
+                padding: const EdgeInsets.only(top: 30, left: 10),
                 child: GestureDetector(
                   onTap: () {
                     Navigator.pop(context);
                   },
-                  child: Icon(
-                    Icons.arrow_back,
-                    color: Colors.black,
-                  ),
+                  child: Icon(Icons.arrow_back_ios,
+                      color: Colors.black, size: 35.0),
                 ),
               ),
             ),
@@ -214,7 +212,7 @@ class TourGuideTourGuideProfileScreen extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     Text(
-                      'Phono No. :',
+                      'Phone No. :',
                       style: TextStyle(
                           fontSize: 16.0, fontWeight: FontWeight.bold),
                     ),

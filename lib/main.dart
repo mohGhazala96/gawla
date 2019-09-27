@@ -22,7 +22,7 @@ import 'package:gawla/data/DUMMYDATA.dart';
 import 'package:gawla/screens/sampleProvider.dart';
 import './screens/tourist/tours_search_screen.dart';
 import 'package:flutter/services.dart';
-
+import './screens/tourguide/tourist_profile_screen.dart';
 void main() {
   SystemChrome.setEnabledSystemUIOverlays([]);
   runApp(MyApp());
@@ -87,6 +87,7 @@ class MyApp extends StatelessWidget {
             ToursTouristScreen.routeName: (ctx) => ToursTouristScreen(),
             ToursTourGuideScreen.routeName: (ctx) => ToursTourGuideScreen(),
             SettingsScreen.routeName: (ctx) => SettingsScreen(),
+            TourGuideTouristProfileScreen.routeName: (ctx)=>TourGuideTouristProfileScreen()
           },
 
           onGenerateRoute: (settings) {
