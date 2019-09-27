@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gawla/data/DUMMYDATA.dart';
 import 'package:gawla/screens/common/menudrawer.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
+//import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
 
 class TouristTourguideProfileScreen extends StatelessWidget {
   static const routeName = 'tourist-tourguide-profile-screen';
@@ -17,7 +18,10 @@ class TouristTourguideProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tourguideId = '2TourGuide';
+      final routeArgs = ModalRoute.of(context).settings.arguments as Map<String, String>;
+    final tourguideId = routeArgs['id'];
+    
+    print("aa");
     final tourguide =
         Provider.of<Data>(context).DUMMY_TOURGUIDES.where((tourguide) {
       return tourguide.profileID == tourguideId;
@@ -244,6 +248,8 @@ class TouristTourguideProfileScreen extends StatelessWidget {
                         },
                         child: Icon(
                           FontAwesomeIcons.whatsapp,
+                                      color: Colors.green,
+
                           size: 40.0,
                         ),
                       )

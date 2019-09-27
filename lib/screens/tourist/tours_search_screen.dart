@@ -19,57 +19,57 @@ class _ToursSearchScreenState extends State<ToursSearchScreen> {
     final touristId = MyApp.profileID;
     print(touristId);
     final tours = Provider.of<Data>(context).DUMMY_TOURS;
+    List<Tour> viewList = List.of(tours);
+
     return Scaffold(
-        body: Column(
-      children: <Widget>[
-        Container(
-      width: MediaQuery.of(context).size.width * 0.95,
-      height: 40,
-      margin: EdgeInsets.only(top: 30),
-      child: TextField(
-        decoration: InputDecoration(
-          fillColor: Colors.white,
-          filled: true,
-          border: OutlineInputBorder(),
-          icon: Icon(Icons.search),
-          hintText: 'Search for an area',
-        ),
-        onChanged: (search) => {
-          setState(() {
-            // SearchBar.filteredList = widget
-            //     .where((item) => item.location
-            //         .toString()
-            //         .toLowerCase()
-            //         .contains(search.toLowerCase()))
-            //     .toList();
-            // print(SearchBar.filteredList);
-          })
-        },
-      ),
-    ),
-        Expanded(
-          child: GridView(
-            padding:
-                const EdgeInsets.only(right: 20, left: 20, top: 30, bottom: 0),
-            children: tours
-                .map(
-                  (tourData) => TourItem(
-                      tourData.tourID,
-                      tourData.name,
-                      tourData.pictures[0],
-                      tourData.peopleAllowed,
-                      tourData.price,"false"),
-                )
+        body: Column(children: <Widget>[
+      Container(
+        width: MediaQuery.of(context).size.width * 0.95,
+        height: 40,
+        margin: EdgeInsets.only(top: 30),
+        child: TextField(
+          decoration: InputDecoration(
+            fillColor: Colors.white,
+            filled: true,
+            border: OutlineInputBorder(),
+            icon: Icon(Icons.search),
+            hintText: 'Search for an area',
+          ),
+          onChanged: (search) => {
+            viewList = tours
+                .where((item) => item.location
+                    .toString()
+                    .toLowerCase()
+                    .contains(search.toLowerCase()))
                 .toList(),
-            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 500,
-              childAspectRatio: 3 / 2,
-              crossAxisSpacing: 20,
-              mainAxisSpacing: 20,
-            ),
+                Provider.of<Data>(context).updateDummyData(viewList),
+            print(viewList)
+          },
+        ),
+      ),
+      Expanded(
+        child: GridView(
+          padding:
+              const EdgeInsets.only(right: 20, left: 20, top: 30, bottom: 0),
+          children: Provider.of<Data>(context).DUMMY_VIEW_TOURS
+              .map(
+                (tourData) => TourItem(
+                    tourData.tourID,
+                    tourData.name,
+                    tourData.pictures[0],
+                    tourData.peopleAllowed,
+                    tourData.price,
+                    "false"),
+              )
+              .toList(),
+          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 500,
+            childAspectRatio: 3 / 2,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 20,
           ),
         ),
-      ]
-    ));
+      ),
+    ]));
   }
 }

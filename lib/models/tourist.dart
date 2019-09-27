@@ -3,17 +3,19 @@ import './chat.dart';
 
 class Tourist {
   String profileID;
+  String email;
   String name;
   String password;
   int age;
   String nationality;
   bool gender; //0 female / 1 male
   String phoneNumber;
-  Image displayPicture;
+  String displayPicture;
   List<Chat> chats;
 
   Tourist(
       {@required this.profileID,
+      @required this.email,
       @required this.name,
       @required this.password,
       @required this.nationality,

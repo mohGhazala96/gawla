@@ -21,8 +21,12 @@ import 'package:provider/provider.dart';
 import 'package:gawla/data/DUMMYDATA.dart';
 import 'package:gawla/screens/sampleProvider.dart';
 import './screens/tourist/tours_search_screen.dart';
+import 'package:flutter/services.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  SystemChrome.setEnabledSystemUIOverlays([]);
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   static String profileID = "1Tourist";
@@ -56,10 +60,11 @@ class MyApp extends StatelessWidget {
                 )),
           ),
           // home: CategoriesScreen(),
-          initialRoute: 'chat-screen', // default is '/'
+
+          initialRoute: '/', // default is '/'
           routes: {
-            '/': (ctx) => TourGuideTouristProfileScreen(),
-            AddTourScreen.routeName: (ctx) => AddTourScreen(),
+            '/': (ctx) => SignIn(),
+            AddTourScreen.routeName: (ctx) => AddTour(),
             ChatScreen.routeName: (ctx) => ChatScreen(),
             InboxScreen.routeName: (ctx) => InboxScreen(),
             SearchToursScreen.routeName: (ctx) => SearchToursScreen(),
@@ -67,6 +72,8 @@ class MyApp extends StatelessWidget {
             SignUpTouristScreen.routeName: (ctx) => SignUpTouristScreen(),
             TourTourGuideDetailedScreen.routeName: (ctx) =>
                 TourTourGuideDetailedScreen(),
+            TouristTourguideProfileScreen.routeName: (ctx) =>
+                TouristTourguideProfileScreen(),
             TourTouristDetailedScreen.routeName: (ctx) =>
                 TourTouristDetailedScreen(),
             ToursGuideHomePageScreen.routeName: (ctx) =>
@@ -74,7 +81,7 @@ class MyApp extends StatelessWidget {
             TourGuideTourGuideProfileScreen.routeName: (ctx) =>
                 TourGuideTourGuideProfileScreen(),
             ToursSearchScreen.routeName: (ctx) => ToursSearchScreen(),
-            ToursitHomePageScreen.routeName: (ctx) => ToursitHomePageScreen(),
+            ToursitHomePageScreen.routeName: (ctx) => ToursitHomePage(),
             TouristProfileScreen.routeName: (ctx) => TouristProfileScreen(),
             ToursTouristScreen.routeName: (ctx) => ToursTouristScreen(),
             ToursTourGuideScreen.routeName: (ctx) => ToursTourGuideScreen(),

@@ -8,8 +8,9 @@ class Tour {
   String tourID;
   String name;
   String tourguide;
+  String tourguideName;
   List<String> tourists;
-  DateTime date;
+  String date;
   String location;
   List<String> places;
   String description;
@@ -19,6 +20,8 @@ class Tour {
   int peopleAllowed;
   List<String> pictures;
   List<Message> messages;
+  double rating;
+  String tourGuidePic;
 
   Tour(
       {@required this.tourID,
@@ -34,13 +37,7 @@ class Tour {
       @required this.price,
       this.peopleAllowed,
       @required this.pictures,
+      this.rating,
+      this.tourGuidePic,
       this.messages});
-
-//  String getTourguideName(id) {
-//    String tourguide =
-//  };
-
-//  bool isTourist(String id) {
-//    return id == tourguide ? false : true;
-//  }
 }

@@ -7,34 +7,58 @@ import 'tourist_profile_screen.dart';
 import 'tours_tourist_screen.dart';
 import 'package:provider/provider.dart';
 import 'tourist_profile_screen.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 
-class ToursitHomePageScreen extends StatelessWidget {
+class ToursitHomePage extends StatefulWidget {
+  @override
+  ToursitHomePageScreen createState() => ToursitHomePageScreen();
+}
+
+class ToursitHomePageScreen extends State<ToursitHomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   static const routeName = 'tourist-homepage-screen';
+    static int currentPage=0;
 
   @override
   Widget build(BuildContext context) {
     final touristId = MyApp.profileID;
+    final String logoAssetName = 'images/logo.svg';
 
     return Scaffold(
+      bottomNavigationBar: Container(
+        margin: EdgeInsets.only(bottom: 10),
+        child: FancyBottomNavigation(
+          tabs: [
+            TabData(iconData: Icons.home, title: "Home"),
+            TabData(iconData: Icons.search, title: "Search"),
+            TabData(iconData: Icons.shopping_cart, title: "My Bookings")
+          ],
+          onTabChangedListener: (position) {
+            setState(() {
+              currentPage = position;
+            });
+          },
+        ),
+      ),
       drawer: MenuDrawer(),
       key: _scaffoldKey,
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.bottomLeft,
-            end: Alignment.topRight,
-            stops: [0.25,0.5,0.75,1],
-            colors: [
-              Color(0xbbfe9933),
-              Color(0xfffeaa33),
-              Color(0xfffebb33),
-              Color(0xfffecc33)
-            ]
-          )
-        ),
-        //color: Theme.of(context).primaryColor,
-        child: Column(
+        // decoration: BoxDecoration(
+        //   gradient: LinearGradient(
+        //     begin: Alignment.bottomLeft,
+        //     end: Alignment.topRight,
+        //     stops: [0.25,0.5,0.75,1],
+        //     colors: [
+        //       Color(0xbbfe9933),
+        //       Color(0xfffeaa33),
+        //       Color(0xfffebb33),
+        //       Color(0xfffecc33)
+        //     ]
+        //   )
+        // ),
+        // cn: Theme.of(context).primaryColor,
+        child:currentPage==0?  Column(
           children: <Widget>[
             Align(
               alignment: Alignment.topLeft,
@@ -54,24 +78,24 @@ class ToursitHomePageScreen extends StatelessWidget {
             Align(
               alignment: Alignment.topCenter,
               child: Container(
+                width: MediaQuery.of(context).size.width * 0.8,
+                height: MediaQuery.of(context).size.height * 0.2,
                 margin: EdgeInsets.only(top: 60),
-                child: Text(
-                  'GAWLA',
-                  style: Theme.of(context).textTheme.title,
-                ),
+                child: SvgPicture.asset(logoAssetName,
+                    semanticsLabel: 'Gawla Logo'),
               ),
             ),
             Align(
               alignment: Alignment.center,
               child: Container(
                 margin: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.5),
+                    top: MediaQuery.of(context).size.height * 0.3),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     GestureDetector(
                       onTap: () {
-                      Navigator.pushNamed(
+                        Navigator.pushNamed(
                             context, ToursSearchScreen.routeName);
                       },
                       child: Icon(
@@ -94,7 +118,7 @@ class ToursitHomePageScreen extends StatelessWidget {
               ),
             ),
           ],
-        ),
+        ): currentPage==1?  ToursSearchScreen()  :ToursTouristScreen() ,
       ),
     );
   }

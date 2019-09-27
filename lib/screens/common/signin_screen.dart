@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:gawla/data/DUMMYDATA.dart';
+import 'package:gawla/screens/common/notifdialog.dart';
+import 'package:gawla/screens/common/validations.dart';
+import 'package:gawla/screens/tourguide/tourguide_homepage_screen.dart';
 import 'package:gawla/screens/tourist/signup_tourist_screen.dart';
 import 'package:gawla/screens/tourist/tourist_homepage_screen.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -14,6 +20,8 @@ class SignInScreen extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
+    final String logoAssetName = 'images/logo.svg';
+
     return Scaffold(
         body: Form(
       key: formKey,
@@ -23,11 +31,11 @@ class SignInScreen extends State<SignIn> {
             Align(
               alignment: Alignment.topCenter,
               child: Container(
-                margin: EdgeInsets.only(top: 160),
-                child: Text(
-                  'GAWLA',
-                  style: Theme.of(context).textTheme.title,
-                ),
+                width: MediaQuery.of(context).size.width * 0.8,
+                height: MediaQuery.of(context).size.height * 0.2,
+                margin: EdgeInsets.only(top: 120),
+                child: SvgPicture.asset(logoAssetName,
+                    semanticsLabel: 'Gawla Logo'),
               ),
             ),
             Expanded(
@@ -47,10 +55,10 @@ class SignInScreen extends State<SignIn> {
                               alignment: Alignment.center,
                               child: Container(
                                 child: TextFormField(
+                                  validator: (value) => validateEmail(value),
                                   onSaved: (value) => email = value.trim(),
-                                  obscureText: true,
                                   style: TextStyle(
-                                      color: Colors.white, fontSize: 17),
+                                      color: Colors.black, fontSize: 17),
                                   decoration: InputDecoration(
                                       prefixIcon: Icon(
                                         Icons.mail,
@@ -75,10 +83,11 @@ class SignInScreen extends State<SignIn> {
                             alignment: Alignment.center,
                             child: Container(
                               child: TextFormField(
+                                validator: (value) => validatePassword(value),
                                 onSaved: (value) => password = value.trim(),
                                 obscureText: true,
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 17),
+                                    color: Colors.black, fontSize: 17),
                                 decoration: InputDecoration(
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide:
@@ -116,11 +125,47 @@ class SignInScreen extends State<SignIn> {
                                     borderRadius:
                                         new BorderRadius.circular(15.0)),
                                 onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
+                                  bool isValid =
+                                      formKey.currentState.validate();
+                                  if (isValid) {
+                                    formKey.currentState.save();
+                                    List<bool> result = signInValidation(
+                                        email,
+                                        password,
+                                        Provider.of<Data>(context)
+                                            .DUMMY_TOURGUIDES,
+                                        Provider.of<Data>(context)
+                                            .DUMMY_TOURSISTS);
+                                    print(result);
+                                    if (result[0] == true &&
+                                        result[1] == true) {
+                                      //Tour Guide
+                                      Navigator.pushNamed(context,
+                                          ToursGuideHomePageScreen.routeName);
+                                    }
+                                    if (result[0] == true &&
+                                        result[1] == false) {
+                                      //Tourist
+                                      Navigator.pushNamed(context,
+                                          ToursitHomePageScreen.routeName);
+                                    }
+                                    if (result[0] == false) {
+                                      print('ajbjasjaf');
+                                      //Not valid
+                                      showDialog(
+                                          context: context,
                                           builder: (BuildContext context) =>
-                                              ToursitHomePageScreen()));
+                                              NotifDialog(
+                                                text:
+                                                    "Login Credentials incorrect",
+                                              ));
+                                    }
+                                  }
+                                  // Navigator.push(
+                                  //     context,
+                                  //     MaterialPageRoute(
+                                  //         builder: (BuildContext context) =>
+                                  //             ToursitHomePageScreen()));
                                 },
                                 child: Text(
                                   'SIGN IN',
@@ -164,7 +209,7 @@ class SignInScreen extends State<SignIn> {
                           ],
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
