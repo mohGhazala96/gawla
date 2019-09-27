@@ -66,7 +66,7 @@ class MyApp extends StatelessWidget {
           routes: {
             '/': (ctx) => SignIn(),
             AddTourScreen.routeName: (ctx) => AddTour(),
-//            ChatScreen.routeName: (ctx) => ChatScreen(),
+            ChatScreen.routeName: (ctx) => ChatScreen(),
             InboxScreen.routeName: (ctx) => InboxScreen(),
             SearchToursScreen.routeName: (ctx) => SearchToursScreen(),
             SignUpTourGuideScreen.routeName: (ctx) => SignUpTourGuideScreen(),

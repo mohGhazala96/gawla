@@ -7,6 +7,7 @@ import '../models/tourguide.dart';
 import '../models/tour.dart';
 import '../models/tourist.dart';
 import 'package:gawla/models/review.dart';
+import 'package:gawla/models/message.dart';
 
 class Data extends ChangeNotifier {
   static Review review1 = Review(
@@ -36,6 +37,25 @@ class Data extends ChangeNotifier {
       ]);
   static Notifications notifications1 =
       Notifications(notifications: [nfd1, nfd2, nfd3]);
+
+  static Message message1 = Message(
+      id: 'msg1',
+      isTourist: false,
+      sender: 'KTOUR',
+      text:
+          'Hello Everyone, I am Mohammed from Egypt the tourguide for this tour. This will be our main place for communication. I hope You all enjoy your time. Now everyone intorduce themselves :)');
+  static Message message2 = Message(
+      id: 'msg1',
+      isTourist: true,
+      sender: '1Tourist',
+      text:
+          'Hey Everyone! I am Hend from Kuwait and I can\'t wait to meet you all');
+  static Message message3 = Message(
+      id: 'msg1',
+      isTourist: true,
+      sender: '2Tourist',
+      text: 'Heyoo! I am Jacak from US and I\'ll meet yall soon ;)');
+
   static TourGuide tourguide1 = TourGuide(
       profileID: '1TourGuide',
       email: "tourguide1@gmail.com",
@@ -137,7 +157,7 @@ class Data extends ChangeNotifier {
     Tour(
         tourID: "2Tour",
         name: "Musuem",
-        tourguide: "1TourGuide",
+        tourguide: "2TourGuide",
         tourguideName: "Hend",
         tourists: ["2Tourist"],
         date: "12/12/2019",
@@ -154,7 +174,29 @@ class Data extends ChangeNotifier {
           'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
         ],
         rating: 4.2,
-        tourGuidePic: 'images/karim.jpg')
+        tourGuidePic: 'images/karim.jpg'),
+    Tour(
+        messages: [message1, message2, message3],
+        tourID: "KTOUR",
+        name: "Musuem",
+        tourguide: "1TourGuide",
+        tourguideName: "Hend",
+        tourists: ["1Tourist"],
+        date: "12/12/2019",
+        location: "Alexandria",
+        places: ["Giza"],
+        description:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        meetingPoint: "tahrir",
+        language: "English",
+        price: 150,
+        peopleAllowed: 5,
+        pictures: [
+          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
+          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
+        ],
+        rating: 4.2,
+        tourGuidePic: 'images/karim.jpg'),
   ];
   var DUMMY_VIEW_TOURS = [
     Tour(
@@ -241,7 +283,64 @@ class Data extends ChangeNotifier {
     }
   }
 
+<<<<<<< HEAD
   Notifications getNotifications() {
     return notifications1;
+=======
+  Tourist getTouristByID(String id) {
+    return DUMMY_TOURSISTS.where((tourist) {
+      return tourist.profileID == id;
+    }).toList()[0];
+  }
+
+  Tour getTourByID(String id) {
+    return DUMMY_TOURS.where((tour) {
+      return tour.tourID == id;
+    }).toList()[0];
+  }
+
+  String getUserName(String id) {
+    int isTourguide = DUMMY_TOURGUIDES
+        .where((tourguide) {
+          return tourguide.profileID == id;
+        })
+        .toList()
+        .length;
+    if (isTourguide > 0) {
+      return DUMMY_TOURGUIDES
+          .where((tourguide) {
+            return tourguide.profileID == id;
+          })
+          .toList()[0]
+          .name;
+    } else {
+      return DUMMY_TOURSISTS
+          .where((tourist) {
+            return tourist.profileID == id;
+          })
+          .toList()[0]
+          .name;
+    }
+  }
+
+  bool isTourist(String id) {
+    int tourist = DUMMY_TOURSISTS
+        .where((tourist) {
+          return tourist.profileID == id;
+        })
+        .toList()
+        .length;
+
+    if (tourist > 0) {
+      return true;
+    }
+    return false;
+  }
+
+  void addMessage(Tour tour, String sender, String text) {
+    Message message = Message(sender: sender, text: text);
+    tour.messages.add(message);
+    notifyListeners();
+>>>>>>> 132edc06406a43622867f1516a0a302708e257ed
   }
 }

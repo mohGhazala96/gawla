@@ -13,7 +13,9 @@ class ToursTourGuideScreen extends StatelessWidget {
     final tours = Provider.of<Data>(context).DUMMY_TOURS.where((tour) {
       return tour.tourguide==tourGuideId;
     }).toList();
+    print("hi");
 
+print(tours);
     return Scaffold(
         body: new Column(children: <Widget>[
       Row(

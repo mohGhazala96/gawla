@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'tourguide.dart';
 import 'tourist.dart';
+import 'package:gawla/models/message.dart';
 
 class Tour {
   String tourID;
@@ -19,6 +20,7 @@ class Tour {
   List<String> pictures;
   double rating;
   String tourGuidePic;
+  List<Message> messages;
 
   Tour(
       {@required this.tourID,
@@ -36,5 +38,6 @@ class Tour {
       this.peopleAllowed,
       @required this.pictures,
       this.rating,
-      this.tourGuidePic});
+      this.tourGuidePic,
+      this.messages});
 }

@@ -9,6 +9,7 @@ import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import '../../main.dart';
 import 'package:gawla/data/DUMMYDATA.dart';
 import 'package:provider/provider.dart';
+import 'package:gawla/widgets/diagonally_cut_colored_image.dart';
 
 class TouristHomePage extends StatefulWidget {
   @override
