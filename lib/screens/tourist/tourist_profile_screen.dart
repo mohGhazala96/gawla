@@ -5,6 +5,7 @@ import '../../main.dart';
 import '../../data/DUMMYDATA.dart';
 import 'package:provider/provider.dart';
 import 'package:gawla/widgets/diagonally_cut_colored_image.dart';
+import 'package:country_icons/country_icons.dart';
 
 // ADD FONTS TO TEXTS
 
@@ -26,12 +27,21 @@ class TouristProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var flagCode = "eg";
     final touristId = MyApp.profileID;
     final tourist = Provider.of<Data>(context).DUMMY_TOURSISTS.where((tourist) {
       return tourist.profileID == touristId;
     }).toList()[0];
 
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+    switch (tourist.nationality){
+      case 'egyptian': flagCode='eg'; break;
+      case 'american': flagCode='us';break;
+      case 'french': flagCode='fr';break;
+      case 'dutch': flagCode='bq';break;
+      case 'kenyian': flagCode='ke';break;
+      case 'turkish': flagCode='tr';break;
+    }
 
     return SafeArea(
       child: Scaffold(
@@ -112,6 +122,14 @@ class TouristProfileScreen extends StatelessWidget {
                           tourist.nationality,
                           style: TextStyle(fontSize: 16.0),
                         ),
+                        SizedBox(
+                          width: 50.0,
+                        ),
+                        SizedBox(
+                          child:   Image.asset('images/flags/'+flagCode+'.png'),
+                          height: 40.0,
+                          width: 40.0,
+                        )
                       ],
                     ),
                     SizedBox(
