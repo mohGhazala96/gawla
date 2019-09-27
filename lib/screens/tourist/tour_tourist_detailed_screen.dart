@@ -208,7 +208,7 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
           Align(
             alignment: Alignment.bottomLeft,
             child: Padding(
-              padding: const EdgeInsets.only(left: 20.0, bottom: 10.0),
+              padding: const EdgeInsets.only(left: 10.0,top: 10),
               child: Text(
                 '\$${tour.price}',
                 style: TextStyle(

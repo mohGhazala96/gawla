@@ -4,7 +4,7 @@ import 'package:gawla/screens/tourist/tours_search_screen.dart';
 import 'tours_tourist_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
-
+import '../../main.dart';
 class TouristHomePage extends StatefulWidget {
   @override
   TouristHomePageScreen createState() => TouristHomePageScreen();
@@ -13,7 +13,6 @@ class TouristHomePage extends StatefulWidget {
 class TouristHomePageScreen extends State<TouristHomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   static const routeName = 'tourist-homepage-screen';
-  static int currentPage = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +26,7 @@ class TouristHomePageScreen extends State<TouristHomePage> {
           padding: EdgeInsets.only(bottom: 20),
           color: Colors.black,
           child: FancyBottomNavigation(
+            initialSelection:MyApp.globalIndexPage,
             barBackgroundColor: Colors.black,
             textColor: Colors.white,
             tabs: [
@@ -36,7 +36,8 @@ class TouristHomePageScreen extends State<TouristHomePage> {
             ],
             onTabChangedListener: (position) {
               setState(() {
-                currentPage = position;
+                MyApp.globalIndexPage = position;
+                
               });
             },
           ),
@@ -44,7 +45,7 @@ class TouristHomePageScreen extends State<TouristHomePage> {
         drawer: MenuDrawer(),
         key: _scaffoldKey,
         body: Container(
-          child: currentPage == 0
+          child: MyApp.globalIndexPage  == 0
               ? Column(
                   children: <Widget>[
                     Align(
@@ -75,7 +76,7 @@ class TouristHomePageScreen extends State<TouristHomePage> {
                     )
                   ],
                 )
-              : currentPage == 1 ? ToursSearchScreen() : ToursTouristScreen(),
+              : MyApp.globalIndexPage  == 1 ? ToursSearchScreen() : ToursTouristScreen(),
         ),
       ),
     );
