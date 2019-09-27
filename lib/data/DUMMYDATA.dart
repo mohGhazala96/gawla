@@ -19,6 +19,7 @@ class Data extends ChangeNotifier {
 
   static TourGuide tourguide1 = TourGuide(
       profileID: '1TourGuide',
+      email: "tourguide1@gmail.com",
       name: "Mohamed",
       password: "abcd123",
       nationality: "Egyptian",
@@ -33,6 +34,7 @@ class Data extends ChangeNotifier {
       chats: null);
   static TourGuide tourguide2 = TourGuide(
       profileID: '2TourGuide',
+      email: "tourguide2@gmail.com",
       name: "Hanz",
       password: "abcd123",
       nationality: "German",
@@ -47,6 +49,7 @@ class Data extends ChangeNotifier {
 
   static Tourist tourist1 = Tourist(
       profileID: "1Tourist",
+      email: "hendkw@gmail.com",
       name: "Hend",
       password: "abcd123",
       nationality: "Kuwait",
@@ -57,6 +60,7 @@ class Data extends ChangeNotifier {
       chats: null);
   static Tourist tourist2 = Tourist(
       profileID: "2Tourist",
+      email: "captainamerica@gmail.com",
       name: "Jack",
       password: "abcd123",
       nationality: "American",
