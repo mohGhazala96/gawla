@@ -28,7 +28,7 @@ void main() {
   runApp(MyApp());
 }
 class MyApp extends StatelessWidget {
-  static String profileID = "1Tourist";
+  static String profileID = "1TourGuide";
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<Data>(
@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
           // home: CategoriesScreen(),
           initialRoute:'/', // default is '/'
           routes: {
-            '/': (ctx) => SignIn(),
+            '/': (ctx) => ToursTourGuideScreen(),
             AddTourScreen.routeName: (ctx) => AddTour(),
             ChatScreen.routeName: (ctx) => ChatScreen(),
             InboxScreen.routeName: (ctx) => InboxScreen(),
