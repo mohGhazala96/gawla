@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gawla/main.dart';
 import 'package:gawla/models/message.dart';
 import 'package:bubble/bubble.dart';
 import 'package:gawla/data/DUMMYDATA.dart';
@@ -10,182 +11,11 @@ import 'package:gawla/widgets/diagonally_cut_colored_image.dart';
 class ChatScreen extends StatelessWidget {
   static const routeName = 'chat-screen';
 
-  static String id = 'KTOUR';
-
-//  final List<Bubble> messageBubbles = [
-//    Bubble(
-//      alignment: Alignment.center,
-//      color: Color.fromRGBO(212, 234, 244, 1.0),
-//      child: Text('TODAY',
-//          textAlign: TextAlign.center, style: TextStyle(fontSize: 11.0)),
-//    ),
-//    Bubble(
-//      margin: BubbleEdges.only(top: 10),
-//      alignment: Alignment.topRight,
-//      nipWidth: 8,
-//      nipHeight: 24,
-//      nip: BubbleNip.rightTop,
-//      color: Color.fromRGBO(225, 255, 199, 1.0),
-//      child: Text(
-//        'karim: sHello, World!',
-//        textAlign: TextAlign.right,
-//        style: TextStyle(fontSize: 22.0),
-//      ),
-//    ),
-//    Bubble(
-//      margin: BubbleEdges.only(top: 10),
-//      alignment: Alignment.topLeft,
-//      nipWidth: 8,
-//      nipHeight: 24,
-//      nip: BubbleNip.leftTop,
-//      child: Row(
-//        children: <Widget>[
-//          Text('karim: ', style: TextStyle(fontSize: 18.0, color: Colors.blue)),
-//          Text('Hi, developer!', style: TextStyle(fontSize: 22.0)),
-//        ],
-//      ),
-//    ),
-//    Bubble(
-//      margin: BubbleEdges.only(top: 10),
-//      alignment: Alignment.topRight,
-//      nipWidth: 30,
-//      nipHeight: 10,
-//      nip: BubbleNip.rightTop,
-//      color: Color.fromRGBO(225, 255, 199, 1.0),
-//      child: Text('Hello, World!',
-//          textAlign: TextAlign.right, style: TextStyle(fontSize: 22.0)),
-//    ),
-//    Bubble(
-//      margin: BubbleEdges.only(top: 10),
-//      alignment: Alignment.topLeft,
-//      nipWidth: 30,
-//      nipHeight: 10,
-//      nip: BubbleNip.leftTop,
-//      child: Text('Hi, developer!', style: TextStyle(fontSize: 22.0)),
-//    ),
-//    Bubble(
-//        margin: BubbleEdges.only(top: 10),
-//        alignment: Alignment.center,
-//        nip: BubbleNip.no,
-//        color: Color.fromRGBO(212, 234, 244, 1.0),
-//        child: Text('TOMORROW',
-//            textAlign: TextAlign.center, style: TextStyle(fontSize: 11))),
-//    Bubble(
-//      alignment: Alignment.center,
-//      color: Color.fromRGBO(212, 234, 244, 1.0),
-//      child: Text('TODAY',
-//          textAlign: TextAlign.center, style: TextStyle(fontSize: 11.0)),
-//    ),
-//    Bubble(
-//      margin: BubbleEdges.only(top: 10),
-//      alignment: Alignment.topRight,
-//      nipWidth: 8,
-//      nipHeight: 24,
-//      nip: BubbleNip.rightTop,
-//      color: Color.fromRGBO(225, 255, 199, 1.0),
-//      child: Text(
-//        'karim: sHello, Worldkarim: sHello, Worldkarim: sHello, Worldkarim: sHello, Worldkarim: sHello, Worldkarim: sHello, Worldkarim: sHello, World!',
-//        textAlign: TextAlign.right,
-//        style: TextStyle(fontSize: 22.0),
-//      ),
-//    ),
-//    Bubble(
-//      margin: BubbleEdges.only(top: 10),
-//      alignment: Alignment.topLeft,
-//      nipWidth: 8,
-//      nipHeight: 24,
-//      nip: BubbleNip.leftTop,
-//      child:
-//          Text('karim: ', style: TextStyle(fontSize: 18.0, color: Colors.blue)),
-//    ),
-//    Bubble(
-//      margin: BubbleEdges.only(top: 10),
-//      alignment: Alignment.topRight,
-//      nipWidth: 30,
-//      nipHeight: 10,
-//      nip: BubbleNip.rightTop,
-//      color: Color.fromRGBO(225, 255, 199, 1.0),
-//      child: Text('Hello, World!',
-//          textAlign: TextAlign.right, style: TextStyle(fontSize: 22.0)),
-//    ),
-//    Bubble(
-//      margin: BubbleEdges.only(top: 10),
-//      alignment: Alignment.topLeft,
-//      nipWidth: 30,
-//      nipHeight: 10,
-//      nip: BubbleNip.leftTop,
-//      child: Text(
-//          'karim: sHello, Worldkarim: sHello, Worldkarim: sHello, Worldkarim: sHello, Worldkarim: sHello, Worldkarim: sHello, Worldkarim: sHello, World!',
-//          style: TextStyle(fontSize: 22.0)),
-//    ),
-//    Bubble(
-//        margin: BubbleEdges.only(top: 10),
-//        alignment: Alignment.center,
-//        nip: BubbleNip.no,
-//        color: Color.fromRGBO(212, 234, 244, 1.0),
-//        child: Text('TOMORROW',
-//            textAlign: TextAlign.center, style: TextStyle(fontSize: 11))),
-//    Bubble(
-//      alignment: Alignment.center,
-//      color: Color.fromRGBO(212, 234, 244, 1.0),
-//      child: Text('TODAY',
-//          textAlign: TextAlign.center, style: TextStyle(fontSize: 11.0)),
-//    ),
-//    Bubble(
-//      margin: BubbleEdges.only(top: 10),
-//      alignment: Alignment.topRight,
-//      nipWidth: 8,
-//      nipHeight: 24,
-//      nip: BubbleNip.rightTop,
-//      color: Color.fromRGBO(225, 255, 199, 1.0),
-//      child: Text(
-//        'karim: sHello, World!',
-//        textAlign: TextAlign.right,
-//        style: TextStyle(fontSize: 22.0),
-//      ),
-//    ),
-//    Bubble(
-//      margin: BubbleEdges.only(top: 10),
-//      alignment: Alignment.topLeft,
-//      nipWidth: 8,
-//      nipHeight: 24,
-//      nip: BubbleNip.leftTop,
-//      child: Row(
-//        children: <Widget>[
-//          Text('karim: ', style: TextStyle(fontSize: 18.0, color: Colors.blue)),
-//          Text('Hi, developer!', style: TextStyle(fontSize: 22.0)),
-//        ],
-//      ),
-//    ),
-//    Bubble(
-//      margin: BubbleEdges.only(top: 10),
-//      alignment: Alignment.topRight,
-//      nipWidth: 30,
-//      nipHeight: 10,
-//      nip: BubbleNip.rightTop,
-//      color: Color.fromRGBO(225, 255, 199, 1.0),
-//      child: Text('Hello, World!',
-//          textAlign: TextAlign.right, style: TextStyle(fontSize: 22.0)),
-//    ),
-//    Bubble(
-//      margin: BubbleEdges.only(top: 10),
-//      alignment: Alignment.topLeft,
-//      nipWidth: 30,
-//      nipHeight: 10,
-//      nip: BubbleNip.leftTop,
-//      child: Text('Hi, developer!', style: TextStyle(fontSize: 22.0)),
-//    ),
-//    Bubble(
-//        margin: BubbleEdges.only(top: 10),
-//        alignment: Alignment.center,
-//        nip: BubbleNip.no,
-//        color: Color.fromRGBO(212, 234, 244, 1.0),
-//        child: Text('TOMORROW',
-//            textAlign: TextAlign.center, style: TextStyle(fontSize: 11)))
-//  ];
-
   @override
   Widget build(BuildContext context) {
+    String id = 'KTOUR';
+    String user = MyApp.profileID;
+
     Tour tour = Provider.of<Data>(context).getTourByID(id);
     String msgText;
     final _controller = TextEditingController();
@@ -201,10 +31,12 @@ class ChatScreen extends StatelessWidget {
       ),
     );
 
+    print(user + 'sjsjsjj');
+
     List<Bubble> mapMessagesToBubbles() {
       List<Bubble> messageBubbles = [];
       for (int i = 0; i < tour.messages.length; i++) {
-        if (tour.messages[i].sender == id) {
+        if (tour.messages[i].sender == user) {
           messageBubbles.add(
             Bubble(
               margin: BubbleEdges.only(top: 10),
@@ -266,9 +98,7 @@ class ChatScreen extends StatelessWidget {
     return SafeArea(
       child: WillPopScope(
         onWillPop: () {
-          Provider.of<Data>(context).isTourist(id)
-              ? Navigator.pushNamed(context, 'tourist-homepage-screen')
-              : Navigator.pushNamed(context, 'tourguide-homepage-screen');
+          Navigator.pop(context);
         },
         child: Scaffold(
             appBar: AppBar(
@@ -324,7 +154,7 @@ class ChatScreen extends StatelessWidget {
                               child: RaisedButton(
                                 onPressed: () {
                                   Provider.of<Data>(context)
-                                      .addMessage(tour, id, msgText);
+                                      .addMessage(tour, user, msgText);
 //                          _controller.clear();
                                 },
                                 child: Text('SEND'),

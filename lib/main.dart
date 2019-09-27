@@ -85,7 +85,7 @@ class MyApp extends StatelessWidget {
             TouristProfileScreen.routeName: (ctx) => TouristProfileScreen(),
             ToursTouristScreen.routeName: (ctx) => ToursTouristScreen(),
             ToursTourGuideScreen.routeName: (ctx) => ToursTourGuideScreen(),
-            SettingsScreen.routeName: (ctx) => SettingsScreen()
+            SettingsScreen.routeName: (ctx) => SettingsScreen(),
           },
 
           onGenerateRoute: (settings) {

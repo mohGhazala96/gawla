@@ -21,7 +21,7 @@ class Data extends ChangeNotifier {
   static Message message1 = Message(
       id: 'msg1',
       isTourist: false,
-      sender: 'KTOUR',
+      sender: '1TourGuide',
       text:
           'Hello Everyone, I am Mohammed from Egypt the tourguide for this tour. This will be our main place for communication. I hope You all enjoy your time. Now everyone intorduce themselves :)');
   static Message message2 = Message(
