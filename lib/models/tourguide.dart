@@ -4,6 +4,7 @@ import './review.dart';
 
 class TourGuide {
   String profileID;
+  String email;
   String name;
   String password;
   String nationality;
@@ -21,6 +22,7 @@ class TourGuide {
 
   TourGuide(
       {@required this.profileID,
+      @required this.email,
       @required this.name,
       @required this.password,
       @required this.nationality,

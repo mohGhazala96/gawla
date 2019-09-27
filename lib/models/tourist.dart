@@ -3,6 +3,7 @@ import './chat.dart';
 
 class Tourist {
   String profileID;
+  String email;
   String name;
   String password;
   int age;
@@ -14,6 +15,7 @@ class Tourist {
 
   Tourist(
       {@required this.profileID,
+      @required this.email,
       @required this.name,
       @required this.password,
       @required this.nationality,
