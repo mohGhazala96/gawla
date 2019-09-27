@@ -8,6 +8,7 @@ import './screens/common/chat_screen.dart';
 import './screens/common/inbox_screen.dart';
 import './screens/tourist/search_screen.dart';
 import './screens/common/signin_screen.dart';
+import './screens/common/FAQ.dart';
 import './screens/tourguide/signup_tourguide_screen.dart';
 import './screens/tourist/signup_tourist_screen.dart';
 import './screens/tourguide/tourguide_homepage_screen.dart';
@@ -19,10 +20,10 @@ import './screens/tourist/tours_tourist_screen.dart';
 import './screens/tourist/tourguide_profile_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:gawla/data/DUMMYDATA.dart';
-import 'package:gawla/screens/sampleProvider.dart';
 import './screens/tourist/tours_search_screen.dart';
 import 'package:flutter/services.dart';
 import './screens/tourguide/tourist_profile_screen.dart';
+
 void main() {
   SystemChrome.setEnabledSystemUIOverlays([]);
   runApp(MyApp());
@@ -62,9 +63,10 @@ class MyApp extends StatelessWidget {
                 )),
           ),
           // home: CategoriesScreen(),
-          initialRoute: "/", // default is '/'
+          initialRoute: "faq-screen", // default is '/'
           routes: {
             '/': (ctx) => SignIn(),
+            FAQScreen.routeName: (ctx) => FAQ(),
             AddTourScreen.routeName: (ctx) => AddTour(),
             ChatScreen.routeName: (ctx) => ChatScreen(),
             InboxScreen.routeName: (ctx) => InboxScreen(),
@@ -87,7 +89,8 @@ class MyApp extends StatelessWidget {
             ToursTouristScreen.routeName: (ctx) => ToursTouristScreen(),
             ToursTourGuideScreen.routeName: (ctx) => ToursTourGuideScreen(),
             SettingsScreen.routeName: (ctx) => SettingsScreen(),
-            TourGuideTouristProfileScreen.routeName: (ctx)=>TourGuideTouristProfileScreen()
+            TourGuideTouristProfileScreen.routeName: (ctx) =>
+                TourGuideTouristProfileScreen()
           },
 
           onGenerateRoute: (settings) {

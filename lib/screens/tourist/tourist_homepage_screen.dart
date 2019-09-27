@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:gawla/models/notification.dart';
-import 'package:gawla/models/notifications.dart';
 import 'package:gawla/screens/common/menudrawer.dart';
 import 'package:gawla/screens/tourist/tours_search_screen.dart';
 import 'tours_tourist_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import '../../main.dart';
-import 'package:gawla/data/DUMMYDATA.dart';
-import 'package:provider/provider.dart';
-import 'package:gawla/widgets/diagonally_cut_colored_image.dart';
 
 class TouristHomePage extends StatefulWidget {
   @override
@@ -23,7 +18,6 @@ class TouristHomePageScreen extends State<TouristHomePage> {
   @override
   Widget build(BuildContext context) {
     final String logoAssetName = 'images/logo.svg';
-    var notifications = Provider.of<Data>(context).getNotifications();
     return SafeArea(
       bottom: true,
       top: true,

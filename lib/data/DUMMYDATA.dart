@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:gawla/models/notification.dart';
-import 'package:gawla/models/notifications.dart';
-import 'package:gawla/models/notification.dart';
+import 'package:gawla/models/FAQ.dart';
+import 'package:gawla/models/question.dart';
 
 import '../models/tourguide.dart';
 import '../models/tour.dart';
@@ -20,23 +20,27 @@ class Data extends ChangeNotifier {
       rate: 3,
       review: 'Good Tourguide. Only problem was timings',
       reviewerID: '1Tourist');
-  static NotificationForDay nfd1 = NotificationForDay(
-      date: "28th of September",
-      notificationsForDay: [
-        "Egyptian Museum @ 10:00 AM",
-        "Library of Alexandria @ 2:30 PM"
-      ]);
-  static NotificationForDay nfd2 = NotificationForDay(
-      date: "29th of September",
-      notificationsForDay: ["Karnak Temple @ 11:00 AM"]);
-  static NotificationForDay nfd3 = NotificationForDay(
-      date: "30th of September",
-      notificationsForDay: [
-        "Abou-Simbel Temple @ 9:00 AM",
-        "Philae Temple @ 3:30 PM"
-      ]);
-  static Notifications notifications1 =
-      Notifications(notifications: [nfd1, nfd2, nfd3]);
+  static Question q1 = Question(
+      question: "What is Lorem Ipsum?",
+      answer:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+      isExpanded: true);
+  static Question q2 = Question(
+      question: "Why do we use it?",
+      answer:
+          "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      isExpanded: false);
+  static Question q3 = Question(
+      question: "Where does it come from?",
+      answer:
+          "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+      isExpanded: false);
+  static Question q4 = Question(
+      question: "Where can I get some?",
+      answer:
+          "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.",
+      isExpanded: false);
+  static FAQ faq = FAQ(questions: [q1, q2, q3, q4]);
 
   static Message message1 = Message(
       id: 'msg1',
@@ -283,8 +287,8 @@ class Data extends ChangeNotifier {
     }
   }
 
-  Notifications getNotifications() {
-    return notifications1;
+  FAQ getFAQ() {
+    return faq;
   }
 
   Tourist getTouristByID(String id) {

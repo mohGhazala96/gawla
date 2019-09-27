@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gawla/main.dart';
+import 'package:gawla/screens/common/FAQ.dart';
 import 'package:gawla/screens/tourguide/tourguide_profile_screen.dart';
 import 'package:gawla/screens/tourist/settings.dart';
 import 'package:gawla/data/DUMMYDATA.dart';
@@ -73,7 +74,9 @@ class MenuDrawer extends StatelessWidget {
                   Icons.question_answer,
                   color: Colors.white,
                 ),
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, FAQScreen.routeName);
+                },
                 title: Text("FAQ's",
                     style: TextStyle(color: Colors.white, fontSize: 17)),
               ),
