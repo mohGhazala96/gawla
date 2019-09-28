@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
-import 'package:gawla/models/message.dart';
+import 'package:gawla/models/FAQ.dart';
+import 'package:gawla/models/question.dart';
+
 import '../models/tourguide.dart';
 import '../models/tour.dart';
 import '../models/tourist.dart';
 import 'package:gawla/models/review.dart';
+import 'package:gawla/models/message.dart';
 
 class Data extends ChangeNotifier {
   static Review review1 = Review(
@@ -16,11 +19,32 @@ class Data extends ChangeNotifier {
       rate: 3,
       review: 'Good Tourguide. Only problem was timings',
       reviewerID: '1Tourist');
+  static Question q1 = Question(
+      question: "What is Lorem Ipsum?",
+      answer:
+          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+      isExpanded: true);
+  static Question q2 = Question(
+      question: "Why do we use it?",
+      answer:
+          "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      isExpanded: false);
+  static Question q3 = Question(
+      question: "Where does it come from?",
+      answer:
+          "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
+      isExpanded: false);
+  static Question q4 = Question(
+      question: "Where can I get some?",
+      answer:
+          "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.",
+      isExpanded: false);
+  static FAQ faq = FAQ(questions: [q1, q2, q3, q4]);
 
   static Message message1 = Message(
       id: 'msg1',
       isTourist: false,
-      sender: 'KTOUR',
+      sender: '1TourGuide',
       text:
           'Hello Everyone, I am Mohammed from Egypt the tourguide for this tour. This will be our main place for communication. I hope You all enjoy your time. Now everyone intorduce themselves :)');
   static Message message2 = Message(
@@ -48,7 +72,7 @@ class Data extends ChangeNotifier {
       experience: "enter experienece here",
       languages: ["Arabic", "English", "Spanish"],
       rating: 5,
-      displayPicture: null,
+      displayPicture: 'images/karim.jpg',
       chats: null);
   static TourGuide tourguide2 = TourGuide(
       profileID: '2TourGuide',
@@ -62,7 +86,7 @@ class Data extends ChangeNotifier {
       experience: "enter experienece here",
       languages: ["Deutsch", "English", "Spanish"],
       rating: 4,
-      displayPicture: null,
+      displayPicture: 'images/karim.jpg',
       chats: null);
 
   static Tourist tourist1 = Tourist(
@@ -87,15 +111,15 @@ class Data extends ChangeNotifier {
       phoneNumber: "91313333",
       displayPicture: 'images/karim.jpg',
       chats: null);
-  var DUMMY_TOURGUIDES = [tourguide1, tourguide2];
-  var DUMMY_TOURSISTS = [tourist1, tourist2];
+  var dummyTourGuides = [tourguide1, tourguide2];
+  var dummyTourists = [tourist1, tourist2];
 
-  var DUMMY_TOURS = [
+  var dummyTours = [
     Tour(
         tourID: "1Tour",
         name: "Pharonic Tour",
         tourguide: "1TourGuide",
-        tourguideName: "Hend",
+        tourguideName: "Mohamed",
         tourists: ["1Tourist", "2Tourist"],
         date: "1/10.2019",
         location: "Cairo",
@@ -110,7 +134,8 @@ class Data extends ChangeNotifier {
           'images/egypt-cairo-pyramids-of-giza-and camels-2.jpg',
           'images/egypt-cairo-pyramids-of-giza-and camels-2.jpg',
         ],
-        rating: 4.8,tourGuidePic: 'images/karim.jpg'),
+        rating: 4.8,
+        tourGuidePic: 'images/karim.jpg'),
     Tour(
         tourID: "2Tour",
         name: "Musuem",
@@ -129,11 +154,13 @@ class Data extends ChangeNotifier {
         pictures: [
           'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
           'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
-        ],rating: 4.2,tourGuidePic: 'images/karim.jpg'),
-            Tour(
+        ],
+        rating: 4.2,
+        tourGuidePic: 'images/karim.jpg'),
+    Tour(
         tourID: "2Tour",
         name: "Musuem",
-        tourguide: "1TourGuide",
+        tourguide: "2TourGuide",
         tourguideName: "Hend",
         tourists: ["2Tourist"],
         date: "12/12/2019",
@@ -148,16 +175,39 @@ class Data extends ChangeNotifier {
         pictures: [
           'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
           'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
-        ],rating: 4.2,tourGuidePic: 'images/karim.jpg')
-
+        ],
+        rating: 4.2,
+        tourGuidePic: 'images/karim.jpg'),
+    Tour(
+        messages: [message1, message2, message3],
+        tourID: "KTOUR",
+        name: "Musuem",
+        tourguide: "1TourGuide",
+        tourguideName: "Hend",
+        tourists: ["1Tourist"],
+        date: "12/12/2019",
+        location: "Alexandria",
+        places: ["Giza"],
+        description:
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        meetingPoint: "tahrir",
+        language: "English",
+        price: 150,
+        peopleAllowed: 5,
+        pictures: [
+          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
+          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
+        ],
+        rating: 4.2,
+        tourGuidePic: 'images/karim.jpg'),
   ];
-  var DUMMY_VIEW_TOURS = [
+  var dummyViewTours = [
     Tour(
         tourID: "1Tour",
         name: "Pharonic Tour",
         tourguide: "1TourGuide",
         tourists: ["1Tourist", "2Tourist"],
-        date:"a",
+        date: "a",
         location: "Cairo",
         places: ["Giza"],
         description: "Enter Description here",
@@ -188,17 +238,6 @@ class Data extends ChangeNotifier {
           'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
         ]),
     Tour(
-        name: 'Best Tour Ever',
-        description: 'Karim Will provide you with the best tour of your life',
-        language: 'English',
-        location: 'San Stefano',
-        meetingPoint: 'Raml Station',
-        price: 500,
-        tourID: 'KTOUR',
-        tourguide: '1TourGuide',
-        messages: [message1, message2, message3]);
-
-            Tour(
         tourID: "2Tour",
         name: "Musuem",
         tourguide: "1TourGuide",
@@ -216,57 +255,69 @@ class Data extends ChangeNotifier {
         pictures: [
           'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
           'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
-        ],rating: 4.2,tourGuidePic: 'images/karim.jpg')
+        ],
+        rating: 4.2,
+        tourGuidePic: 'images/karim.jpg')
   ];
   void addTouristToTour(String tourID, String touristID) {
-    var tour = DUMMY_TOURS.where((tour) => tourID == tour.tourID).toList()[0];
+    var tour = dummyTours.where((tour) => tourID == tour.tourID).toList()[0];
     tour.tourists.add(touristID);
-       notifyListeners();
+    notifyListeners();
   }
-
 
   void addTour() {
-    DUMMY_TOURS.add(Tour(name: 'NewTOUR'));
+    dummyTours.add(Tour(name: 'NewTOUR'));
     notifyListeners();
   }
 
-  void updateDummyData(List<Tour> list){
-    DUMMY_VIEW_TOURS = list;
+  void updateDummyData(List<Tour> list) {
+    dummyViewTours = list;
     notifyListeners();
-  TourGuide getTourGuideByID(String id) {
-    return DUMMY_TOURGUIDES.where((tourguide) {
-      return tourguide.profileID == id;
-    }).toList()[0];
+    // TourGuide getTourGuideByID(String id) {
+    //   return dummyTourGuides.where((tourguide) {
+    //     return tourguide.profileID == id;
+    //   }).toList()[0];
+    // }
+
+    // Tourist getTouristByID(String id) {
+    //   return dummyTourists.where((tourist) {
+    //     return tourist.profileID == id;
+    //   }).toList()[0];
+    // }
+  }
+
+  FAQ getFAQ() {
+    return faq;
   }
 
   Tourist getTouristByID(String id) {
-    return DUMMY_TOURSISTS.where((tourist) {
+    return dummyTourists.where((tourist) {
       return tourist.profileID == id;
     }).toList()[0];
   }
 
   Tour getTourByID(String id) {
-    return DUMMY_TOURS.where((tour) {
+    return dummyTours.where((tour) {
       return tour.tourID == id;
     }).toList()[0];
   }
 
   String getUserName(String id) {
-    int isTourguide = DUMMY_TOURGUIDES
+    int isTourguide = dummyTourGuides
         .where((tourguide) {
           return tourguide.profileID == id;
         })
         .toList()
         .length;
     if (isTourguide > 0) {
-      return DUMMY_TOURGUIDES
+      return dummyTourGuides
           .where((tourguide) {
             return tourguide.profileID == id;
           })
           .toList()[0]
           .name;
     } else {
-      return DUMMY_TOURSISTS
+      return dummyTourists
           .where((tourist) {
             return tourist.profileID == id;
           })
@@ -275,10 +326,23 @@ class Data extends ChangeNotifier {
     }
   }
 
+  bool isTourist(String id) {
+    int tourist = dummyTourists
+        .where((tourist) {
+          return tourist.profileID == id;
+        })
+        .toList()
+        .length;
+
+    if (tourist > 0) {
+      return true;
+    }
+    return false;
+  }
+
   void addMessage(Tour tour, String sender, String text) {
     Message message = Message(sender: sender, text: text);
     tour.messages.add(message);
     notifyListeners();
   }
-}
 }

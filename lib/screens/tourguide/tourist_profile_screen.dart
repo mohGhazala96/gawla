@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:gawla/screens/common/menudrawer.dart';
-import '../../main.dart';
 import '../../data/DUMMYDATA.dart';
 import 'package:provider/provider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -28,35 +26,51 @@ class TourGuideTouristProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final touristId = MyApp.profileID;
-    final tourists =
-        Provider.of<Data>(context).DUMMY_TOURSISTS.where((tourist) {
-      return tourist.profileID == touristId;
-    }).toList();
-    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+    final routeArgs =
+        ModalRoute.of(context).settings.arguments as Map<String, String>;
 
+    final tourist = Provider.of<Data>(context).dummyTourists.where((tourist) {
+      print(routeArgs['id']);
+      return tourist.profileID == routeArgs['id'];
+    }).toList();
+    print(tourist[0].name + "aaassss");
+    var flagCode = "eg";
+    switch (tourist[0].nationality) {
+      case 'egyptian':
+        flagCode = 'eg';
+        break;
+      case 'american':
+        flagCode = 'us';
+        break;
+      case 'french':
+        flagCode = 'fr';
+        break;
+      case 'dutch':
+        flagCode = 'bq';
+        break;
+      case 'kenyian':
+        flagCode = 'ke';
+        break;
+      case 'turkish':
+        flagCode = 'tr';
+        break;
+    }
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     return SafeArea(
       child: Scaffold(
-        key: scaffoldKey,
-        drawer: MenuDrawer(),
         backgroundColor: Colors.amber,
         body: Container(
           child: ListView(children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top: 15.0),
+              padding: const EdgeInsets.only(top: 25.0, left: 8.0),
               child: Align(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  margin: EdgeInsets.only(left: 17),
-                  child: GestureDetector(
-                    onTap: () {
-                      scaffoldKey.currentState.openDrawer();
-                    },
-                    child: Icon(
-                      Icons.menu,
-                      color: Colors.black,
-                      size: 30,
-                    ),
+                alignment: Alignment.topLeft,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(
+                    Icons.arrow_back_ios,
                   ),
                 ),
               ),
@@ -78,7 +92,8 @@ class TourGuideTouristProfileScreen extends StatelessWidget {
                           child: CircleAvatar(
                             radius: 44,
                             backgroundColor: Colors.amber,
-                            backgroundImage: AssetImage('images/karim.jpg'),
+                            backgroundImage:
+                                AssetImage(tourist[0].displayPicture),
                           ),
                         ),
                         SizedBox(
@@ -87,7 +102,7 @@ class TourGuideTouristProfileScreen extends StatelessWidget {
                         Column(
                           children: <Widget>[
                             Text(
-                              'Alexander Olav',
+                              tourist[0].name,
                               style: TextStyle(fontSize: 24.0),
                             ),
                             Text(
@@ -119,14 +134,15 @@ class TourGuideTouristProfileScreen extends StatelessWidget {
                           width: 60.0,
                         ),
                         Text(
-                          'Norwegian',
+                          tourist[0].nationality,
                           style: TextStyle(fontSize: 16.0),
                         ),
                         SizedBox(
                           width: 20.0,
                         ),
                         SizedBox(
-                          child: Image.asset('images/country_flag.png'),
+                          child:
+                              Image.asset('images/flags/' + flagCode + '.png'),
                           height: 40.0,
                           width: 40.0,
                         )
@@ -146,29 +162,13 @@ class TourGuideTouristProfileScreen extends StatelessWidget {
                           width: 92.0,
                         ),
                         Text(
-                          'Male',
+                          tourist[0].gender ? "Male" : "Female",
                           style: TextStyle(fontSize: 16.0),
                         ),
                       ],
                     ),
                     SizedBox(
                       height: 36.0,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Text(
-                          'Languages:',
-                          style: TextStyle(
-                              fontSize: 16.0, fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(
-                          width: 62.0,
-                        ),
-                        Text(
-                          'Norwegian, English',
-                          style: TextStyle(fontSize: 16.0),
-                        ),
-                      ],
                     ),
                     SizedBox(
                       height: 36.0,
@@ -184,7 +184,7 @@ class TourGuideTouristProfileScreen extends StatelessWidget {
                           width: 121.0,
                         ),
                         Text(
-                          '27',
+                          tourist[0].age.toStringAsFixed(3),
                           style: TextStyle(fontSize: 16.0),
                         ),
                       ],
@@ -203,7 +203,7 @@ class TourGuideTouristProfileScreen extends StatelessWidget {
                           width: 70.0,
                         ),
                         Text(
-                          '+20 01015740042',
+                          tourist[0].phoneNumber,
                           style: TextStyle(fontSize: 16.0),
                         ),
                         SizedBox(
@@ -212,7 +212,7 @@ class TourGuideTouristProfileScreen extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             FlutterOpenWhatsapp.sendSingleMessage(
-                                '0201226110046', '');
+                                tourist[0].phoneNumber, '');
                           },
                           child: Icon(
                             FontAwesomeIcons.whatsapp,
@@ -232,25 +232,3 @@ class TourGuideTouristProfileScreen extends StatelessWidget {
     );
   }
 }
-
-//Stack(
-//children: <Widget>[
-//_buildDiagonalImageBackground(context),
-//new Align(
-//alignment: FractionalOffset.bottomCenter,
-//heightFactor: 1.4,
-//child: new Column(
-//children: <Widget>[
-//_buildAvatar(),
-//_buildFollowerInfo(textTheme),
-//_buildActionButtons(theme),
-//],
-//),
-//),
-//new Positioned(
-//top: 26.0,
-//left: 4.0,
-//child: new BackButton(color: Colors.white),
-//),
-//],
-//);

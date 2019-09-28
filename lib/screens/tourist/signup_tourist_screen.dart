@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gawla/screens/common/signin_screen.dart';
 import 'package:gawla/screens/tourist/tourist_homepage_screen.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 
@@ -134,6 +133,7 @@ class _SignUpTouristScreenState extends State<SignUpTouristScreen> {
                               alignment: Alignment.center,
                               child: Container(
                                 child: TextFormField(
+                                  keyboardType: TextInputType.emailAddress,
                                   onSaved: (value) => email = value.trim(),
                                   style: TextStyle(
                                       color: Colors.black, fontSize: 17),
@@ -297,7 +297,7 @@ class _SignUpTouristScreenState extends State<SignUpTouristScreen> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (BuildContext context) =>
-                                              ToursitHomePage()));
+                                              TouristHomePage()));
                                 },
                                 child: Text(
                                   'SIGN UP',

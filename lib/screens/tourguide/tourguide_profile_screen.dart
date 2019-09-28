@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gawla/screens/common/menudrawer.dart';
+import 'package:gawla/main.dart';
 import 'package:provider/provider.dart';
 import 'package:gawla/data/DUMMYDATA.dart';
 
@@ -15,36 +15,47 @@ class TourGuideTourGuideProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tourguideId = '1TourGuide';
+    final tourguideId = MyApp.profileID;
     final tourguide =
-        Provider.of<Data>(context).DUMMY_TOURGUIDES.where((tourguide) {
+        Provider.of<Data>(context).dummyTourGuides.where((tourguide) {
       return tourguide.profileID == tourguideId;
     }).toList()[0];
-    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-
+    var flagCode = "eg";
+    switch (tourguide.nationality) {
+      case 'egyptian':
+        flagCode = 'eg';
+        break;
+      case 'american':
+        flagCode = 'us';
+        break;
+      case 'french':
+        flagCode = 'fr';
+        break;
+      case 'dutch':
+        flagCode = 'bq';
+        break;
+      case 'kenyian':
+        flagCode = 'ke';
+        break;
+      case 'turkish':
+        flagCode = 'tr';
+        break;
+    }
     return SafeArea(
       child: Scaffold(
-        key: scaffoldKey,
-        drawer: MenuDrawer(),
         backgroundColor: Colors.amber,
         body: Container(
           child: ListView(children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 15.0),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  margin: EdgeInsets.only(left: 17),
-                  child: GestureDetector(
-                    onTap: () {
-                      scaffoldKey.currentState.openDrawer();
-                    },
-                    child: Icon(
-                      Icons.menu,
-                      color: Colors.black,
-                      size: 30,
-                    ),
-                  ),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 30, left: 10),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(Icons.arrow_back_ios,
+                      color: Colors.black, size: 35.0),
                 ),
               ),
             ),
@@ -141,7 +152,7 @@ class TourGuideTourGuideProfileScreen extends StatelessWidget {
                           fontSize: 16.0, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
-                      width: 60.0,
+                      width: 61.0,
                     ),
                     Text(
                       tourguide.nationality,
@@ -151,7 +162,7 @@ class TourGuideTourGuideProfileScreen extends StatelessWidget {
                       width: 20.0,
                     ),
                     SizedBox(
-                      child: Image.asset('images/country_flag.png'),
+                      child: Image.asset('images/flags/' + flagCode + '.png'),
                       height: 50.0,
                       width: 50.0,
                     )
@@ -168,7 +179,7 @@ class TourGuideTourGuideProfileScreen extends StatelessWidget {
                           fontSize: 16.0, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
-                      width: 92.0,
+                      width: 94.0,
                     ),
                     Text(
                       tourguide.gender ? 'MALE' : 'FEMALE',
@@ -187,7 +198,7 @@ class TourGuideTourGuideProfileScreen extends StatelessWidget {
                           fontSize: 16.0, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
-                      width: 62.0,
+                      width: 63.0,
                     ),
                     Text(
                       'Arabic, English',
@@ -206,7 +217,7 @@ class TourGuideTourGuideProfileScreen extends StatelessWidget {
                           fontSize: 16.0, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
-                      width: 121.0,
+                      width: 122.0,
                     ),
                     Text(
                       tourguide.age.toString(),
@@ -220,7 +231,7 @@ class TourGuideTourGuideProfileScreen extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     Text(
-                      'Phono No. :',
+                      'Phone No. :',
                       style: TextStyle(
                           fontSize: 16.0, fontWeight: FontWeight.bold),
                     ),

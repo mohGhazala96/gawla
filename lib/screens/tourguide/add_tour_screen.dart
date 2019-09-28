@@ -36,25 +36,14 @@ class AddTourScreen extends State<AddTour> {
                 margin: EdgeInsets.only(left: 10, bottom: 20),
                 child: Row(
                   children: <Widget>[
-                    Align(
-                      alignment: Alignment.topLeft,
-                      child: GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (BuildContext context) =>
-                                        ToursGuideHomePageScreen()));
-                          },
-                          child: Icon(Icons.arrow_back_ios,
-                              color: Colors.black, size: 35.0)),
-                    ),
                     Container(
                         margin: EdgeInsets.only(left: 10),
                         child: Text(
                           "Add Tour",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30,
+                              color: Colors.black),
                         ))
                   ],
                 ),

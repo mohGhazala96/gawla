@@ -1,17 +1,20 @@
-import 'package:gawla/data/DUMMYDATA.dart';
+import 'package:gawla/main.dart';
 import 'package:gawla/models/tourguide.dart';
 import 'package:gawla/models/tourist.dart';
-import 'package:provider/provider.dart';
 
 List<bool> signInValidation(String email, String password,
     List<TourGuide> tourGuides, List<Tourist> tourists) {
   for (int i = 0; i < tourGuides.length; i++) {
     if (tourGuides[i].email == email && tourGuides[i].password == password) {
+      MyApp.profileID = tourGuides[i].profileID;
+      print(MyApp.profileID);
       return [true, true];
     }
   }
   for (int i = 0; i < tourists.length; i++) {
-    if (tourists[i].email == email && tourGuides[i].password == password) {
+    if (tourists[i].email == email && tourists[i].password == password) {
+      MyApp.profileID = tourists[i].profileID;
+      print(MyApp.profileID);
       return [true, false];
     }
   }

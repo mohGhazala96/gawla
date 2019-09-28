@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:gawla/screens/common/searchbar.dart';
 import '../../models/tour.dart';
 import '../../data/DUMMYDATA.dart';
 import '../../main.dart';
@@ -18,22 +17,27 @@ class _ToursSearchScreenState extends State<ToursSearchScreen> {
   Widget build(BuildContext context) {
     final touristId = MyApp.profileID;
     print(touristId);
-    final tours = Provider.of<Data>(context).DUMMY_TOURS;
+    final tours = Provider.of<Data>(context).dummyTours;
     List<Tour> viewList = List.of(tours);
 
     return Scaffold(
         body: Column(children: <Widget>[
       Container(
-        width: MediaQuery.of(context).size.width * 0.95,
+        width: MediaQuery.of(context).size.width * 0.9,
         height: 40,
         margin: EdgeInsets.only(top: 30),
         child: TextField(
           decoration: InputDecoration(
+            hintText: "Search by location...",
+            contentPadding: EdgeInsets.all(7.5),
             fillColor: Colors.white,
             filled: true,
-            border: OutlineInputBorder(),
-            icon: Icon(Icons.search),
-            hintText: 'Search for an area',
+            border: OutlineInputBorder(
+                borderRadius: new BorderRadius.circular(15.0)),
+            icon: Icon(
+              Icons.search,
+              color: Color(0xff707070),
+            ),
           ),
           onChanged: (search) => {
             viewList = tours
@@ -42,7 +46,7 @@ class _ToursSearchScreenState extends State<ToursSearchScreen> {
                     .toLowerCase()
                     .contains(search.toLowerCase()))
                 .toList(),
-                Provider.of<Data>(context).updateDummyData(viewList),
+            Provider.of<Data>(context).updateDummyData(viewList),
             print(viewList)
           },
         ),
@@ -51,7 +55,8 @@ class _ToursSearchScreenState extends State<ToursSearchScreen> {
         child: GridView(
           padding:
               const EdgeInsets.only(right: 20, left: 20, top: 30, bottom: 0),
-          children: Provider.of<Data>(context).DUMMY_VIEW_TOURS
+          children: Provider.of<Data>(context)
+              .dummyViewTours
               .map(
                 (tourData) => TourItem(
                     tourData.tourID,
@@ -59,7 +64,8 @@ class _ToursSearchScreenState extends State<ToursSearchScreen> {
                     tourData.pictures[0],
                     tourData.peopleAllowed,
                     tourData.price,
-                    "false"),
+                    "false",
+                    true),
               )
               .toList(),
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(

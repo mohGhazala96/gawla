@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:gawla/screens/common/chat_screen.dart';
 import 'package:gawla/screens/tourist/tourist_homepage_screen.dart';
 import '../../data/DUMMYDATA.dart';
 import '../../widgets/RatingBar.dart';
 import 'package:provider/provider.dart';
 import '../../main.dart';
-import '../../models/tourguide.dart';
 import '../../widgets/PhotoListState.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flushbar/flushbar.dart';
@@ -72,7 +72,7 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
     else
       isButtonDisabled = false;
 
-    final tourDertailed = Provider.of<Data>(context).DUMMY_TOURS.where((tour) {
+    final tourDertailed = Provider.of<Data>(context).dummyTours.where((tour) {
       return tour.tourID == tourID;
     }).toList();
 
@@ -145,15 +145,17 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
                       ],
                     ),
                     Container(
-                      height: isButtonDisabled? 300:240,
+                      height: isButtonDisabled ? 300 : 240,
                       child: new SingleChildScrollView(
                           child: Column(
                         children: <Widget>[
-                          Text(
-                            tour.description,
-                            style: TextStyle(
-                              fontSize: 16.0,
-                            ),
+                          Column(
+                            children: <Widget>[
+                              Text('Description: ${tour.description}'),
+                              Text('Location: ${tour.location}'),
+                              Text('Meeting Point: ${tour.meetingPoint}'),
+                              Text('Language: ${tour.language}')
+                            ],
                           ),
                           ListTile(
                             leading: CircleAvatar(
@@ -171,6 +173,23 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
                                   fontSize: 16.0, fontWeight: FontWeight.bold),
                             ),
                             subtitle: Text(tour.tourguideName),
+                          ),
+                          ListTile(
+                            leading: Icon(
+                              Icons.question_answer,
+                              color: Colors.black,
+                              size: 50,
+                            ),
+                            onTap: () {
+                              Navigator.of(context).pushNamed(
+                                ChatScreen.routeName,
+                              );
+                            },
+                            title: Text("Tour's Chat",
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold)),
                           )
                         ],
                       )),
@@ -181,31 +200,34 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
             ),
           ),
           Positioned(
-            child: Stack(children: <Widget>[Hero(
-                tag: tour.pictures[0],
-                child: Container(
-                    child: PhotoList(tour.pictures),
-                    height: MediaQuery.of(context).size.height / 3)), Container(
-            margin: EdgeInsets.only(left: 10, top: 30),
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                                ToursitHomePage()));
-                  },
-                  child: Icon(Icons.arrow_back_ios,
-                      color: Colors.black, size: 35.0)),
-            ),
-          )]),
+            child: Stack(children: <Widget>[
+              Hero(
+                  tag: tour.pictures[0],
+                  child: Container(
+                      child: PhotoList(tour.pictures),
+                      height: MediaQuery.of(context).size.height / 3)),
+              Container(
+                margin: EdgeInsets.only(left: 10, top: 30),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    TouristHomePage()));
+                      },
+                      child: Icon(Icons.arrow_back_ios,
+                          color: Colors.black, size: 35.0)),
+                ),
+              )
+            ]),
           ),
           Align(
             alignment: Alignment.bottomLeft,
             child: Padding(
-              padding: const EdgeInsets.only(left: 20.0, bottom: 10.0),
+              padding: const EdgeInsets.only(left: 10.0, top: 10),
               child: Text(
                 '\$${tour.price}',
                 style: TextStyle(

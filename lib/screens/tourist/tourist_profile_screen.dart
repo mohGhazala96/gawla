@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:gawla/screens/common/menudrawer.dart';
 import '../../main.dart';
 import '../../data/DUMMYDATA.dart';
 import 'package:provider/provider.dart';
@@ -26,37 +25,48 @@ class TouristProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var flagCode = "eg";
     final touristId = MyApp.profileID;
-    final tourist = Provider.of<Data>(context).DUMMY_TOURSISTS.where((tourist) {
+    final tourist = Provider.of<Data>(context).dummyTourists.where((tourist) {
       return tourist.profileID == touristId;
     }).toList()[0];
 
-    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+    switch (tourist.nationality) {
+      case 'egyptian':
+        flagCode = 'eg';
+        break;
+      case 'american':
+        flagCode = 'us';
+        break;
+      case 'french':
+        flagCode = 'fr';
+        break;
+      case 'dutch':
+        flagCode = 'bq';
+        break;
+      case 'kenyian':
+        flagCode = 'ke';
+        break;
+      case 'turkish':
+        flagCode = 'tr';
+        break;
+    }
 
     return SafeArea(
       child: Scaffold(
-        key: scaffoldKey,
-        drawer: MenuDrawer(),
         backgroundColor: Colors.amber,
         body: Container(
           child: ListView(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(top: 15.0),
+                padding: const EdgeInsets.only(top: 20.0, left: 10.0),
                 child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Container(
-                    margin: EdgeInsets.only(left: 17),
-                    child: GestureDetector(
-                      onTap: () {
-                        scaffoldKey.currentState.openDrawer();
-                      },
-                      child: Icon(
-                        Icons.menu,
-                        color: Colors.black,
-                        size: 30,
-                      ),
-                    ),
+                  alignment: Alignment.topLeft,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(Icons.arrow_back_ios),
                   ),
                 ),
               ),
@@ -125,7 +135,8 @@ class TouristProfileScreen extends StatelessWidget {
                           width: 50.0,
                         ),
                         SizedBox(
-                          child: Image.asset('images/country_flag.png'),
+                          child:
+                              Image.asset('images/flags/' + flagCode + '.png'),
                           height: 40.0,
                           width: 40.0,
                         )

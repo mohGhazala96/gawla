@@ -11,7 +11,7 @@ class GreyStripe extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.black38,
+        color: Colors.black54,
         height: MediaQuery.of(context).size.height / 10.5,
         child: Container(
             margin: EdgeInsets.all(10),
@@ -51,7 +51,7 @@ class GreyStripe extends StatelessWidget {
                             color: Colors.white,
                           ),
                           Text(
-                            " $price EGP/hr",
+                            " $price EGP",
                             style: TextStyle(
                                 fontSize: 12, color: Color(0xffD1D1D1)),
                           ),

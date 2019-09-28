@@ -7,24 +7,24 @@ import '../../main.dart';
 class ToursTourGuideScreen extends StatelessWidget {
   static const routeName = 'tours-tourguide-screen';
 
-@override
+  @override
   Widget build(BuildContext context) {
     final tourGuideId = MyApp.profileID;
-    final tours = Provider.of<Data>(context).DUMMY_TOURS.where((tour) {
-      return tour.tourguide==tourGuideId;
+    final tours = Provider.of<Data>(context).dummyTours.where((tour) {
+      return tour.tourguide == tourGuideId;
     }).toList();
 
+    print(tours);
     return Scaffold(
         body: new Column(children: <Widget>[
       Row(
         children: <Widget>[
-          
           Padding(
-            padding: const EdgeInsets.only(top: 30, left: 10),
+            padding: const EdgeInsets.only(top: 30, left: 20),
             child: Text('My Tours',
                 style: TextStyle(
-                    fontSize: 40,
-                    color: Colors.white,
+                    fontSize: 30,
+                    color: Colors.black,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.bold)),
           )
@@ -41,7 +41,8 @@ class ToursTourGuideScreen extends StatelessWidget {
                   tourData.pictures[0],
                   tourData.peopleAllowed,
                   tourData.price,
-                  "true"),
+                  "true",
+                  false),
             )
             .toList(),
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(

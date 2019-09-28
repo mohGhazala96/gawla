@@ -55,6 +55,7 @@ class SignInScreen extends State<SignIn> {
                               alignment: Alignment.center,
                               child: Container(
                                 child: TextFormField(
+                                  keyboardType: TextInputType.emailAddress,
                                   validator: (value) => validateEmail(value),
                                   onSaved: (value) => email = value.trim(),
                                   style: TextStyle(
@@ -133,9 +134,9 @@ class SignInScreen extends State<SignIn> {
                                         email,
                                         password,
                                         Provider.of<Data>(context)
-                                            .DUMMY_TOURGUIDES,
+                                            .dummyTourGuides,
                                         Provider.of<Data>(context)
-                                            .DUMMY_TOURSISTS);
+                                            .dummyTourists);
                                     print(result);
                                     if (result[0] == true &&
                                         result[1] == true) {
@@ -147,7 +148,7 @@ class SignInScreen extends State<SignIn> {
                                         result[1] == false) {
                                       //Tourist
                                       Navigator.pushNamed(context,
-                                          ToursitHomePageScreen.routeName);
+                                          TouristHomePageScreen.routeName);
                                     }
                                     if (result[0] == false) {
                                       print('ajbjasjaf');
@@ -165,7 +166,7 @@ class SignInScreen extends State<SignIn> {
                                   //     context,
                                   //     MaterialPageRoute(
                                   //         builder: (BuildContext context) =>
-                                  //             ToursitHomePageScreen()));
+                                  //             TouristHomePageScreen()));
                                 },
                                 child: Text(
                                   'SIGN IN',

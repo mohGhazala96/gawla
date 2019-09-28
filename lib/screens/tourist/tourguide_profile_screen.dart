@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gawla/data/DUMMYDATA.dart';
-import 'package:gawla/screens/common/menudrawer.dart';
 import 'package:provider/provider.dart';
 //import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
 
@@ -18,40 +17,62 @@ class TouristTourguideProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      final routeArgs = ModalRoute.of(context).settings.arguments as Map<String, String>;
+    final routeArgs =
+        ModalRoute.of(context).settings.arguments as Map<String, String>;
     final tourguideId = routeArgs['id'];
-    
-    print("aa");
+
     final tourguide =
-        Provider.of<Data>(context).DUMMY_TOURGUIDES.where((tourguide) {
+        Provider.of<Data>(context).dummyTourGuides.where((tourguide) {
       return tourguide.profileID == tourguideId;
     }).toList()[0];
+
+    List<Widget> listOfLanaguges = new List<Widget>();
+    for (var i = 0; i < tourguide.languages.length; i++) {
+      listOfLanaguges.add(new Text(
+        tourguide.languages[i] + " ",
+        style: TextStyle(fontSize: 16.0),
+      ));
+    }
+    var flagCode = "eg";
+    switch (tourguide.nationality) {
+      case 'egyptian':
+        flagCode = 'eg';
+        break;
+      case 'american':
+        flagCode = 'us';
+        break;
+      case 'french':
+        flagCode = 'fr';
+        break;
+      case 'dutch':
+        flagCode = 'bq';
+        break;
+      case 'kenyian':
+        flagCode = 'ke';
+        break;
+      case 'turkish':
+        flagCode = 'tr';
+        break;
+    }
+
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
     return SafeArea(
       child: Scaffold(
         key: scaffoldKey,
-        drawer: MenuDrawer(),
         backgroundColor: Colors.amber,
         body: Container(
           child: ListView(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(top: 15.0),
+                padding: const EdgeInsets.only(top: 20.0, left: 10.0),
                 child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Container(
-                    margin: EdgeInsets.only(left: 17),
-                    child: GestureDetector(
-                      onTap: () {
-                        scaffoldKey.currentState.openDrawer();
-                      },
-                      child: Icon(
-                        Icons.menu,
-                        color: Colors.black,
-                        size: 30,
-                      ),
-                    ),
+                  alignment: Alignment.topLeft,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(Icons.arrow_back_ios),
                   ),
                 ),
               ),
@@ -98,7 +119,7 @@ class TouristTourguideProfileScreen extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                '4.95',
+                                tourguide.rating.toString(),
                                 style: TextStyle(
                                   fontSize: 18.0,
                                 ),
@@ -135,7 +156,7 @@ class TouristTourguideProfileScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                    tourguide.experience,
                   ),
                   SizedBox(
                     height: 36.0,
@@ -155,12 +176,12 @@ class TouristTourguideProfileScreen extends StatelessWidget {
                         style: TextStyle(fontSize: 16.0),
                       ),
                       SizedBox(
-                        width: 10.0,
+                        width: 50.0,
                       ),
                       SizedBox(
-                        child: Image.asset('images/country_flag.png'),
-                        height: 50.0,
-                        width: 50.0,
+                        child: Image.asset('images/flags/' + flagCode + '.png'),
+                        height: 40.0,
+                        width: 40.0,
                       )
                     ],
                   ),
@@ -196,10 +217,7 @@ class TouristTourguideProfileScreen extends StatelessWidget {
                       SizedBox(
                         width: 62.0,
                       ),
-                      Text(
-                        'Arabic, English',
-                        style: TextStyle(fontSize: 16.0),
-                      ),
+                      new Row(children: listOfLanaguges),
                     ],
                   ),
                   SizedBox(
@@ -216,7 +234,7 @@ class TouristTourguideProfileScreen extends StatelessWidget {
                         width: 121.0,
                       ),
                       Text(
-                        '21',
+                        tourguide.age.toString(),
                         style: TextStyle(fontSize: 16.0),
                       ),
                     ],
@@ -227,7 +245,7 @@ class TouristTourguideProfileScreen extends StatelessWidget {
                   Row(
                     children: <Widget>[
                       Text(
-                        'Phono No. :',
+                        'Phone No. :',
                         style: TextStyle(
                             fontSize: 16.0, fontWeight: FontWeight.bold),
                       ),
@@ -244,12 +262,11 @@ class TouristTourguideProfileScreen extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           FlutterOpenWhatsapp.sendSingleMessage(
-                              '0201226110046', '');
+                              tourguide.phoneNumber, '');
                         },
                         child: Icon(
                           FontAwesomeIcons.whatsapp,
-                                      color: Colors.green,
-
+                          color: Colors.green,
                           size: 40.0,
                         ),
                       )
