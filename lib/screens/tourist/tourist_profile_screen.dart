@@ -31,7 +31,7 @@ class TouristProfileScreen extends StatelessWidget {
       case 'dutch':
         flagCode = 'bq';
         break;
-      case 'kenyian':
+      case 'Kenyan':
         flagCode = 'ke';
         break;
       case 'turkish':
@@ -179,7 +179,7 @@ class TouristProfileScreen extends StatelessWidget {
                               fontSize: 16.0, fontWeight: FontWeight.bold),
                         ),
                         SizedBox(
-                          width: 70.0,
+                          width: 30.0,
                         ),
                         Text(
                           '${tourist.phoneNumber}',

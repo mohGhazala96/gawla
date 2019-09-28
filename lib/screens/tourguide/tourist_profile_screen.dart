@@ -33,7 +33,7 @@ class TourGuideTouristProfileScreen extends StatelessWidget {
       case 'dutch':
         flagCode = 'bq';
         break;
-      case 'kenyian':
+      case 'Kenyan':
         flagCode = 'ke';
         break;
       case 'turkish':
@@ -125,7 +125,6 @@ class TourGuideTouristProfileScreen extends StatelessWidget {
                         SizedBox(
                           width: 20.0,
                         ),
-                       
                       ],
                     ),
                     SizedBox(
