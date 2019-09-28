@@ -6,23 +6,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gawla/widgets/diagonally_cut_colored_image.dart';
 import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
 
-// ADD FONTS TO TEXTS
-
 class TourGuideTouristProfileScreen extends StatelessWidget {
   static const routeName = 'tourguide-tourist-profile-screen';
-
-  Widget buildDiagonalImageBackground(BuildContext context) {
-    var screenWidth = MediaQuery.of(context).size.width;
-
-    return new DiagonallyCutColoredImage(
-      new Image.asset(
-        'images/img6.png',
-        width: screenWidth,
-        height: 280.0,
-        fit: BoxFit.cover,
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -184,7 +169,7 @@ class TourGuideTouristProfileScreen extends StatelessWidget {
                           width: 121.0,
                         ),
                         Text(
-                          tourist[0].age.toStringAsFixed(3),
+                          tourist[0].age.toString(),
                           style: TextStyle(fontSize: 16.0),
                         ),
                       ],
@@ -202,13 +187,6 @@ class TourGuideTouristProfileScreen extends StatelessWidget {
                         SizedBox(
                           width: 70.0,
                         ),
-                        Text(
-                          tourist[0].phoneNumber,
-                          style: TextStyle(fontSize: 16.0),
-                        ),
-                        SizedBox(
-                          width: 5.0,
-                        ),
                         GestureDetector(
                           onTap: () {
                             FlutterOpenWhatsapp.sendSingleMessage(
@@ -216,7 +194,8 @@ class TourGuideTouristProfileScreen extends StatelessWidget {
                           },
                           child: Icon(
                             FontAwesomeIcons.whatsapp,
-                            size: 30.0,
+                            color: Colors.green,
+                            size: 40.0,
                           ),
                         )
                       ],

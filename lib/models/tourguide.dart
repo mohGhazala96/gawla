@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import './chat.dart';
 import './review.dart';
+import 'package:gawla/data/DUMMYDATA.dart';
+import 'package:provider/provider.dart';
 
 class TourGuide {
   String profileID;
@@ -37,4 +39,14 @@ class TourGuide {
       this.displayPicture,
       this.chats,
       this.reviews});
+
+  String getTouristImageByID(BuildContext context, String id) {
+    return Provider.of<Data>(context)
+        .dummyTourists
+        .where((tourist) {
+          return tourist.profileID == id;
+        })
+        .toList()[0]
+        .displayPicture;
+  }
 }

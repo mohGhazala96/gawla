@@ -114,9 +114,11 @@ class Data extends ChangeNotifier {
   static TourGuide tourguide1 = TourGuide(
       name: 'angela',
       profileID: 'angelaID',
-      phoneNumber: '01515740042',
+      phoneNumber: '+201015740042',
       password: '123456',
       nationality: 'egyptain',
+      experience:
+          'A Passionate Tourguide who travelled to more than 50 countries!',
       gender: true,
       email: 'angela@gmail.com',
       age: 29,
@@ -130,11 +132,12 @@ class Data extends ChangeNotifier {
   static TourGuide tourguide2 = TourGuide(
       name: 'Inanc',
       profileID: 'inancID',
-      phoneNumber: '54515740111',
+      phoneNumber: '+201097251045',
       password: '123456',
       nationality: 'turkish',
       gender: true,
       email: 'inanc@gmail.com',
+      experience: 'An Experienced Tourguide with 20 Years of experience',
       age: 55,
       bio: 'An Experienced Tourguide with 20 Years of experience',
       languages: ['english', 'turkish'],
@@ -146,11 +149,13 @@ class Data extends ChangeNotifier {
   static TourGuide tourguide3 = TourGuide(
       name: 'Hassan',
       profileID: 'hassanID',
-      phoneNumber: '15515740100',
+      phoneNumber: '+201018950264',
       password: '123456',
       nationality: 'egyptain',
       gender: true,
       email: 'hassan@gmail.com',
+      experience:
+          'A Proffesional Tourguide who guarentees you the experience of your life6',
       age: 34,
       bio:
           'A Proffesional Tourguide who guarentees you the experience of your life',
@@ -272,7 +277,7 @@ class Data extends ChangeNotifier {
 
   var dummyTourists = [tourist1, tourist2, tourist3, tourist4, tourist5];
   var dummyTourGuides = [tourguide1, tourguide2, tourguide3];
-  var dummyTours = [tour1, tour2, tour3, tour3, tour4];
+  var dummyTours = [tour1, tour2, tour3, tour4];
   var dummyViewTours = [tour1, tour2, tour3, tour4];
 
   void addTouristToTour(String tourID, String touristID) {

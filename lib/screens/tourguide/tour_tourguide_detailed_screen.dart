@@ -47,7 +47,7 @@ class _TourTourGuideDetailedScreenState
           child: CircleAvatar(
             radius: 30,
             backgroundColor: Colors.amber,
-            backgroundImage: AssetImage((tour.tourGuidePic)),
+            backgroundImage: AssetImage((tour.touristsPictures[i])),
           ),
         ),
       );

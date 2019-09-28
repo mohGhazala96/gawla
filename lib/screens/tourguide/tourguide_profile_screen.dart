@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gawla/main.dart';
 import 'package:provider/provider.dart';
 import 'package:gawla/data/DUMMYDATA.dart';
+import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TourGuideTourGuideProfileScreen extends StatelessWidget {
   static const routeName = 'tourguide-tourguide-profile-screen';
@@ -20,6 +22,68 @@ class TourGuideTourGuideProfileScreen extends StatelessWidget {
         Provider.of<Data>(context).dummyTourGuides.where((tourguide) {
       return tourguide.profileID == tourguideId;
     }).toList()[0];
+
+    String getRating(int rating) {
+      if (rating == 1) {
+        return '★';
+      } else if (rating == 2) {
+        return '★★';
+      } else if (rating == 3) {
+        return '★★★';
+      } else if (rating == 4) {
+        return '★★★★';
+      } else {
+        return '★★★★★';
+      }
+    }
+
+    List<Card> mapReviewsToCards() {
+      List<Card> cards = [];
+      for (int i = 0; i < tourguide.reviews.length; i++) {
+        cards.add(
+          Card(
+            elevation: 15.0,
+            color: Colors.white,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                ListTile(
+                  leading: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: Colors.black,
+                        width: 3,
+                        style: BorderStyle.solid,
+                      ),
+                    ),
+                    child: CircleAvatar(
+                      radius: 25,
+                      backgroundColor: Colors.amber,
+                      backgroundImage: AssetImage(tourguide.getTouristImageByID(
+                          context, tourguide.reviews[i].reviewerID)),
+                    ),
+                  ),
+                  title: Text(
+                      '${Provider.of<Data>(context).getUserName(tourguide.reviews[i].reviewerID)}  ${getRating(tourguide.reviews[i].rate)}'),
+                  subtitle: Text(tourguide.reviews[i].review),
+                ),
+              ],
+            ),
+          ),
+        );
+      }
+      return cards;
+    }
+
+    List<Widget> listOfLanaguges = new List<Widget>();
+    for (var i = 0; i < tourguide.languages.length; i++) {
+      listOfLanaguges.add(new Text(
+        tourguide.languages[i] + " ",
+        style: TextStyle(fontSize: 16.0),
+      ));
+    }
+
     var flagCode = "eg";
     switch (tourguide.nationality) {
       case 'egyptian':
@@ -75,7 +139,7 @@ class TourGuideTourGuideProfileScreen extends StatelessWidget {
                       child: CircleAvatar(
                         radius: 44,
                         backgroundColor: Colors.amber,
-                        backgroundImage: AssetImage('images/karim.jpg'),
+                        backgroundImage: AssetImage(tourguide.displayPicture),
                       ),
                     ),
                     SizedBox(
@@ -102,7 +166,7 @@ class TourGuideTourGuideProfileScreen extends StatelessWidget {
                               ),
                             ),
                             Text(
-                              '4.95',
+                              tourguide.rating.toString(),
                               style: TextStyle(
                                 fontSize: 18.0,
                               ),
@@ -139,7 +203,7 @@ class TourGuideTourGuideProfileScreen extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                  tourguide.experience,
                 ),
                 SizedBox(
                   height: 36.0,
@@ -155,7 +219,7 @@ class TourGuideTourGuideProfileScreen extends StatelessWidget {
                       width: 61.0,
                     ),
                     Text(
-                      tourguide.nationality,
+                      tourguide.nationality.toUpperCase(),
                       style: TextStyle(fontSize: 16.0),
                     ),
                     SizedBox(
@@ -200,10 +264,7 @@ class TourGuideTourGuideProfileScreen extends StatelessWidget {
                     SizedBox(
                       width: 63.0,
                     ),
-                    Text(
-                      'Arabic, English',
-                      style: TextStyle(fontSize: 16.0),
-                    ),
+                    new Row(children: listOfLanaguges),
                   ],
                 ),
                 SizedBox(
@@ -238,9 +299,16 @@ class TourGuideTourGuideProfileScreen extends StatelessWidget {
                     SizedBox(
                       width: 70.0,
                     ),
-                    Text(
-                      '+20 ${tourguide.phoneNumber}',
-                      style: TextStyle(fontSize: 16.0),
+                    GestureDetector(
+                      onTap: () {
+                        FlutterOpenWhatsapp.sendSingleMessage(
+                            tourguide.phoneNumber, '');
+                      },
+                      child: Icon(
+                        FontAwesomeIcons.whatsapp,
+                        color: Colors.green,
+                        size: 40.0,
+                      ),
                     ),
                   ],
                 ),
@@ -260,89 +328,9 @@ class TourGuideTourGuideProfileScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                Card(
-                  elevation: 15.0,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      ListTile(
-                        leading: Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 3,
-                              style: BorderStyle.solid,
-                            ),
-                          ),
-                          child: CircleAvatar(
-                            radius: 25,
-                            backgroundColor: Colors.amber,
-                            backgroundImage: AssetImage('images/karim.jpg'),
-                          ),
-                        ),
-                        title: Text('Karim Hisham  ★★★★★'),
-                        subtitle: Text(
-                            'Gave Me The Tour Of My Life. HIGHLY RECOMMEND!'),
-                      ),
-                    ],
-                  ),
-                ),
-                Card(
-                  elevation: 15.0,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      ListTile(
-                        leading: Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 3,
-                              style: BorderStyle.solid,
-                            ),
-                          ),
-                          child: CircleAvatar(
-                            radius: 25,
-                            backgroundColor: Colors.amber,
-                            backgroundImage: AssetImage('images/karim.jpg'),
-                          ),
-                        ),
-                        title: Text('Omar Hussein  ★★★★'),
-                        subtitle: Text('Very Good Tourguide'),
-                      ),
-                    ],
-                  ),
-                ),
-                Card(
-                  elevation: 15.0,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      ListTile(
-                        leading: Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 3,
-                              style: BorderStyle.solid,
-                            ),
-                          ),
-                          child: CircleAvatar(
-                            radius: 25,
-                            backgroundColor: Colors.amber,
-                            backgroundImage: AssetImage('images/karim.jpg'),
-                          ),
-                        ),
-                        title: Text('Omar Emam  ★★★'),
-                        subtitle:
-                            Text('Good Tourguide. Only problem was timings'),
-                      ),
-                    ],
-                  ),
-                ),
+                Column(
+                  children: mapReviewsToCards(),
+                )
               ]),
             ),
           ]),

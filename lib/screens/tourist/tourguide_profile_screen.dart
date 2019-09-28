@@ -26,6 +26,59 @@ class TouristTourguideProfileScreen extends StatelessWidget {
       return tourguide.profileID == tourguideId;
     }).toList()[0];
 
+    String getRating(int rating) {
+      if (rating == 1) {
+        return '★';
+      } else if (rating == 2) {
+        return '★★';
+      } else if (rating == 3) {
+        return '★★★';
+      } else if (rating == 4) {
+        return '★★★★';
+      } else {
+        return '★★★★★';
+      }
+    }
+
+    List<Card> mapReviewsToCards() {
+      List<Card> cards = [];
+      for (int i = 0; i < tourguide.reviews.length; i++) {
+        cards.add(
+          Card(
+            elevation: 15.0,
+            color: Colors.white,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                ListTile(
+                  leading: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: Colors.black,
+                        width: 3,
+                        style: BorderStyle.solid,
+                      ),
+                    ),
+                    child: CircleAvatar(
+                      radius: 25,
+                      backgroundColor: Colors.amber,
+                      backgroundImage: AssetImage(tourguide.getTouristImageByID(
+                          context, tourguide.reviews[i].reviewerID)),
+                    ),
+                  ),
+                  title: Text(
+                      '${Provider.of<Data>(context).getUserName(tourguide.reviews[i].reviewerID)}  ${getRating(tourguide.reviews[i].rate)}'),
+                  subtitle: Text(tourguide.reviews[i].review),
+                ),
+              ],
+            ),
+          ),
+        );
+      }
+      return cards;
+    }
+
     List<Widget> listOfLanaguges = new List<Widget>();
     for (var i = 0; i < tourguide.languages.length; i++) {
       listOfLanaguges.add(new Text(
@@ -92,7 +145,7 @@ class TouristTourguideProfileScreen extends StatelessWidget {
                         child: CircleAvatar(
                           radius: 44,
                           backgroundColor: Colors.amber,
-                          backgroundImage: AssetImage('images/karim.jpg'),
+                          backgroundImage: AssetImage(tourguide.displayPicture),
                         ),
                       ),
                       SizedBox(
@@ -172,7 +225,7 @@ class TouristTourguideProfileScreen extends StatelessWidget {
                         width: 60.0,
                       ),
                       Text(
-                        tourguide.nationality,
+                        tourguide.nationality.toUpperCase(),
                         style: TextStyle(fontSize: 16.0),
                       ),
                       SizedBox(
@@ -288,88 +341,8 @@ class TouristTourguideProfileScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Card(
-                    elevation: 15.0,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        ListTile(
-                          leading: Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: Colors.black,
-                                width: 3,
-                                style: BorderStyle.solid,
-                              ),
-                            ),
-                            child: CircleAvatar(
-                              radius: 25,
-                              backgroundColor: Colors.amber,
-                              backgroundImage: AssetImage('images/karim.jpg'),
-                            ),
-                          ),
-                          title: Text('Karim Hisham  ★★★★★'),
-                          subtitle: Text(
-                              'Gave Me The Tour Of My Life. HIGHLY RECOMMEND!'),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Card(
-                    elevation: 15.0,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        ListTile(
-                          leading: Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: Colors.black,
-                                width: 3,
-                                style: BorderStyle.solid,
-                              ),
-                            ),
-                            child: CircleAvatar(
-                              radius: 25,
-                              backgroundColor: Colors.amber,
-                              backgroundImage: AssetImage('images/karim.jpg'),
-                            ),
-                          ),
-                          title: Text('Omar Hussein  ★★★★'),
-                          subtitle: Text('Very Good Tourguide'),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Card(
-                    elevation: 15.0,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        ListTile(
-                          leading: Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                color: Colors.black,
-                                width: 3,
-                                style: BorderStyle.solid,
-                              ),
-                            ),
-                            child: CircleAvatar(
-                              radius: 25,
-                              backgroundColor: Colors.amber,
-                              backgroundImage: AssetImage('images/karim.jpg'),
-                            ),
-                          ),
-                          title: Text('Omar Emam  ★★★'),
-                          subtitle:
-                              Text('Good Tourguide. Only problem was timings'),
-                        ),
-                      ],
-                    ),
+                  Column(
+                    children: mapReviewsToCards(),
                   ),
                 ]),
               ),

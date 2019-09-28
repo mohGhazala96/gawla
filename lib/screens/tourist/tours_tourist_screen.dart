@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:gawla/models/tour.dart';
 import 'package:gawla/widgets/TourItem.dart';
 import 'package:provider/provider.dart';
 import '../../data/DUMMYDATA.dart';
 import '../../main.dart';
+import 'package:gawla/models/tourist.dart';
 
 class ToursTouristScreen extends StatelessWidget {
   static const routeName = 'tours-tourist-screen';
@@ -13,6 +15,15 @@ class ToursTouristScreen extends StatelessWidget {
     final tours = Provider.of<Data>(context).dummyTours.where((tour) {
       return tour.tourists.contains(touristId);
     }).toList();
+
+    print(tours.length);
+
+    print('ANA AHO');
+    for (Tour tour in tours) {
+      for (String tourist in tour.tourists) {
+        print('tourist: ' + tourist);
+      }
+    }
     print("aaaadd" + tours[0].name + " " + touristId);
     print("aaaadd" + tours[1].name + " " + touristId);
 
