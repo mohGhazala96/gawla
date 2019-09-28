@@ -130,6 +130,7 @@ class _TourTourGuideDetailedScreenState
                               size: 50,
                             ),
                             onTap: () {
+                              Provider.of<Data>(context).updateTourID(tourID);
                               Navigator.of(context).pushNamed(
                                 ChatScreen.routeName,
                               );

@@ -11,10 +11,10 @@ class ChatScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String id = 'KTOUR';
     String user = MyApp.profileID;
 
-    Tour tour = Provider.of<Data>(context).getTourByID(id);
+    String tourID = Provider.of<Data>(context).tourID;
+    Tour tour = Provider.of<Data>(context).getTourByID(tourID);
     String msgText;
     final _controller = TextEditingController();
 

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:gawla/models/FAQ.dart';
 import 'package:gawla/models/question.dart';
-
+import 'package:intl/intl.dart';
 import '../models/tourguide.dart';
 import '../models/tour.dart';
 import '../models/tourist.dart';
@@ -9,16 +9,13 @@ import 'package:gawla/models/review.dart';
 import 'package:gawla/models/message.dart';
 
 class Data extends ChangeNotifier {
-  static Review review1 = Review(
-      rate: 5,
-      review: 'Gave Me The Tour Of My Life. HIGHLY RECOMMEND!',
-      reviewerID: '1Tourist');
-  static Review review2 =
-      Review(rate: 4, review: 'Very Good Tourguide', reviewerID: '2Tourist');
-  static Review review3 = Review(
-      rate: 3,
-      review: 'Good Tourguide. Only problem was timings',
-      reviewerID: '1Tourist');
+  String tourID;
+
+  void updateTourID(String newID) {
+    tourID = newID;
+    notifyListeners();
+  }
+
   static Question q1 = Question(
       question: "What is Lorem Ipsum?",
       answer:
@@ -41,224 +38,243 @@ class Data extends ChangeNotifier {
       isExpanded: false);
   static FAQ faq = FAQ(questions: [q1, q2, q3, q4]);
 
-  static Message message1 = Message(
-      id: 'msg1',
-      isTourist: false,
-      sender: '1TourGuide',
-      text:
-          'Hello Everyone, I am Mohammed from Egypt the tourguide for this tour. This will be our main place for communication. I hope You all enjoy your time. Now everyone intorduce themselves :)');
-  static Message message2 = Message(
-      id: 'msg1',
-      isTourist: true,
-      sender: '1Tourist',
-      text:
-          'Hey Everyone! I am Hend from Kuwait and I can\'t wait to meet you all');
-  static Message message3 = Message(
-      id: 'msg1',
-      isTourist: true,
-      sender: '2Tourist',
-      text: 'Heyoo! I am Jacak from US and I\'ll meet yall soon ;)');
+  static Tourist tourist1 = Tourist(
+      name: 'kairm',
+      age: 21,
+      email: 'karim@gmail.com',
+      gender: true,
+      nationality: 'egyptian',
+      password: '123456',
+      phoneNumber: '01015740042',
+      profileID: 'karimID',
+      displayPicture: 'images/karim.jpg');
+
+  static Tourist tourist2 = Tourist(
+      name: 'John',
+      age: 28,
+      email: 'john@gmail.com',
+      gender: true,
+      nationality: 'american',
+      password: '123456',
+      phoneNumber: '99015740055',
+      profileID: 'johnID',
+      displayPicture: 'images/john.jpg');
+
+  static Tourist tourist3 = Tourist(
+      name: 'Stan',
+      age: 38,
+      email: 'stan@gmail.com',
+      gender: true,
+      nationality: 'french',
+      password: '123456',
+      phoneNumber: '62585741234',
+      profileID: 'stanID',
+      displayPicture: 'images/stan.jpg');
+
+  static Tourist tourist4 = Tourist(
+      name: 'Margreet ',
+      age: 26,
+      email: 'margreet@gmail.com',
+      gender: false,
+      nationality: 'dutch',
+      password: '123456',
+      phoneNumber: '12585741212',
+      profileID: 'margreetID',
+      displayPicture: 'images/margreet.jpg');
+
+  static Tourist tourist5 = Tourist(
+      name: 'Milka',
+      age: 45,
+      email: 'milka@gmail.com',
+      gender: false,
+      nationality: 'kenyian',
+      password: '123456',
+      phoneNumber: '82585741238',
+      profileID: 'milkaID',
+      displayPicture: 'images/milka.jpg');
+
+  static Review review1 = Review(
+      reviewerID: 'milkaID',
+      review: 'Fantastic Tourguide. HIGHLY RECOMMEND',
+      rate: 5);
+
+  static Review review2 = Review(
+      reviewerID: 'stanID',
+      review: 'TERRIBLE! Totally destroyed my experience',
+      rate: 1);
+
+  static Review review3 =
+      Review(reviewerID: 'karimID', review: 'Very Good TourGuide', rate: 4);
+
+  static Review review4 = Review(
+      reviewerID: 'margreetID',
+      review: 'Exceptional TourGuide. Gave Me The Experience of my Life',
+      rate: 5);
 
   static TourGuide tourguide1 = TourGuide(
-      profileID: '1TourGuide',
-      email: "tourguide1@gmail.com",
-      name: "Mohamed",
-      password: "abcd123",
-      nationality: "Egyptian",
-      age: 42,
+      name: 'angela',
+      profileID: 'angelaID',
+      phoneNumber: '01515740042',
+      password: '123456',
+      nationality: 'egyptain',
       gender: true,
-      phoneNumber: "0101895078523",
-      since: 1998,
-      experience: "enter experienece here",
-      languages: ["Arabic", "English", "Spanish"],
-      rating: 5,
-      displayPicture: 'images/karim.jpg',
-      chats: null);
+      email: 'angela@gmail.com',
+      age: 29,
+      bio: 'A Passionate Tourguide who travelled to more than 50 countries!',
+      languages: ['english', 'spanish', 'arabic'],
+      since: 2018,
+      displayPicture: 'images/angela.jpg',
+      rating: 4.75,
+      reviews: [review1, review4, review3]);
+
   static TourGuide tourguide2 = TourGuide(
-      profileID: '2TourGuide',
-      email: "tourguide2@gmail.com",
-      name: "Hanz",
-      password: "abcd123",
-      nationality: "German",
-      age: 35,
+      name: 'Inanc',
+      profileID: 'inancID',
+      phoneNumber: '54515740111',
+      password: '123456',
+      nationality: 'turkish',
       gender: true,
-      phoneNumber: "901835463",
-      experience: "enter experienece here",
-      languages: ["Deutsch", "English", "Spanish"],
-      rating: 4,
-      displayPicture: 'images/karim.jpg',
-      chats: null);
+      email: 'inanc@gmail.com',
+      age: 55,
+      bio: 'An Experienced Tourguide with 20 Years of experience',
+      languages: ['english', 'turkish'],
+      since: 2011,
+      displayPicture: 'images/angela.jpg',
+      rating: 2.2,
+      reviews: [review3, review2]);
 
-  static Tourist tourist1 = Tourist(
-      profileID: "1Tourist",
-      email: "hendkw@gmail.com",
-      name: "Hend",
-      password: "abcd123",
-      nationality: "Kuwait",
-      age: 26,
-      gender: false,
-      phoneNumber: "91313333",
-      displayPicture: 'images/karim.jpg',
-      chats: null);
-  static Tourist tourist2 = Tourist(
-      profileID: "2Tourist",
-      email: "captainamerica@gmail.com",
-      name: "Jack",
-      password: "abcd123",
-      nationality: "American",
-      age: 53,
-      gender: false,
-      phoneNumber: "91313333",
-      displayPicture: 'images/karim.jpg',
-      chats: null);
-  var dummyTourGuides = [tourguide1, tourguide2];
-  var dummyTourists = [tourist1, tourist2];
+  static TourGuide tourguide3 = TourGuide(
+      name: 'Hassan',
+      profileID: 'hassanID',
+      phoneNumber: '15515740100',
+      password: '123456',
+      nationality: 'egyptain',
+      gender: true,
+      email: 'hassan@gmail.com',
+      age: 34,
+      bio:
+          'A Proffesional Tourguide who guarentees you the experience of your life',
+      languages: ['english', 'arabic'],
+      since: 2019,
+      displayPicture: 'images/hassan.jpg',
+      rating: 4.5,
+      reviews: [review3, review4]);
 
-  var dummyTours = [
-    Tour(
-        tourID: "1Tour",
-        name: "Pharonic Tour",
-        tourguide: "1TourGuide",
-        tourguideName: "Mohamed",
-        tourists: ["1Tourist", "2Tourist"],
-        date: "1/10.2019",
-        location: "Cairo",
-        places: ["Giza"],
-        description:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-        meetingPoint: "tahrir",
-        language: "English",
-        price: 200,
-        peopleAllowed: 5,
-        pictures: [
-          'images/egypt-cairo-pyramids-of-giza-and camels-2.jpg',
-          'images/egypt-cairo-pyramids-of-giza-and camels-2.jpg',
-        ],
-        rating: 4.8,
-        tourGuidePic: 'images/karim.jpg'),
-    Tour(
-        tourID: "2Tour",
-        name: "Musuem",
-        tourguide: "1TourGuide",
-        tourguideName: "Hend",
-        tourists: ["2Tourist"],
-        date: "12/12/2019",
-        location: "Alexandria",
-        places: ["Giza"],
-        description:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-        meetingPoint: "tahrir",
-        language: "English",
-        price: 150,
-        peopleAllowed: 5,
-        pictures: [
-          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
-          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
-        ],
-        rating: 4.2,
-        tourGuidePic: 'images/karim.jpg'),
-    Tour(
-        tourID: "2Tour",
-        name: "Musuem",
-        tourguide: "2TourGuide",
-        tourguideName: "Hend",
-        tourists: ["2Tourist"],
-        date: "12/12/2019",
-        location: "Alexandria",
-        places: ["Giza"],
-        description:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-        meetingPoint: "tahrir",
-        language: "English",
-        price: 150,
-        peopleAllowed: 5,
-        pictures: [
-          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
-          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
-        ],
-        rating: 4.2,
-        tourGuidePic: 'images/karim.jpg'),
-    Tour(
-        messages: [message1, message2, message3],
-        tourID: "KTOUR",
-        name: "Musuem",
-        tourguide: "1TourGuide",
-        tourguideName: "Hend",
-        tourists: ["1Tourist"],
-        date: "12/12/2019",
-        location: "Alexandria",
-        places: ["Giza"],
-        description:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-        meetingPoint: "tahrir",
-        language: "English",
-        price: 150,
-        peopleAllowed: 5,
-        pictures: [
-          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
-          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
-        ],
-        rating: 4.2,
-        tourGuidePic: 'images/karim.jpg'),
-  ];
-  var dummyViewTours = [
-    Tour(
-        tourID: "1Tour",
-        name: "Pharonic Tour",
-        tourguide: "1TourGuide",
-        tourists: ["1Tourist", "2Tourist"],
-        date: "a",
-        location: "Cairo",
-        places: ["Giza"],
-        description: "Enter Description here",
-        meetingPoint: "tahrir",
-        language: "English",
-        price: 200,
-        peopleAllowed: 5,
-        pictures: [
-          'images/egypt-cairo-pyramids-of-giza-and camels-2.jpg',
-          'images/egypt-cairo-pyramids-of-giza-and camels-2.jpg',
-          'images/egypt-cairo-pyramids-of-giza-and camels-2.jpg'
-        ]),
-    Tour(
-        tourID: "2Tour",
-        name: "Musuem",
-        tourguide: "1TourGuide",
-        tourists: ["2Tourist"],
-        date: "date",
-        location: "Alexandria",
-        places: ["Giza"],
-        description: "Enter Description here",
-        meetingPoint: "tahrir",
-        language: "English",
-        price: 150,
-        peopleAllowed: 5,
-        pictures: [
-          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
-          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
-        ]),
-    Tour(
-        tourID: "2Tour",
-        name: "Musuem",
-        tourguide: "1TourGuide",
-        tourguideName: "Hend",
-        tourists: ["2Tourist"],
-        date: "12/12/2019",
-        location: "Alexandria",
-        places: ["Giza"],
-        description:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-        meetingPoint: "tahrir",
-        language: "English",
-        price: 150,
-        peopleAllowed: 5,
-        pictures: [
-          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
-          'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg'
-        ],
-        rating: 4.2,
-        tourGuidePic: 'images/karim.jpg')
-  ];
+  static Message message1 = Message(
+      sender: 'hassanID',
+      isTourist: false,
+      text:
+          'Hello Everyone! I am Hassan and I\'ll be your tourguide for this tour isa. Y Now Everyone Introduce themselves');
+  static Message message2 = Message(
+      sender: 'johnID',
+      isTourist: true,
+      text: 'Hey Guys, I am John from US and I can\'t wait to meet you all');
+  static Message message3 = Message(
+      sender: 'margreetID',
+      isTourist: true,
+      text:
+          'HEYYYY!! I am Margreet from Netherlands and I am very excited to come to Egypt and meet you all');
+
+  static Tour tour1 = Tour(
+      name: 'Pyramids Trip',
+      tourguide: 'hassanID',
+      tourID: 'pyramidsID',
+      price: 500,
+      meetingPoint: 'Tahrir Square',
+      location: 'Pyramids, Giza',
+      language: 'english',
+      description:
+          'We will explore the Pyramids, Sphinx and a lot more of the magical land of Egypt',
+      places: ['Pyramids', 'Sphinx'],
+      pictures: ['images/img3.png', 'images/img8.png'],
+      rating: 4.5,
+      peopleAllowed: 15,
+      date: DateTime.now().toString(),
+      tourguideName: 'hassan',
+      messages: [message1, message2, message3],
+      tourists: ['johnID', 'margreetID'],
+      tourGuidePic: 'images/hassan.jpg',
+      touristsPictures: ['images/john.jpg', 'images/margreet.jpg']);
+
+  static Tour tour2 = Tour(
+      name: 'Luxor Trip',
+      tourguide: 'inancID',
+      tourID: 'luxorID',
+      date: DateTime.now().toString(),
+      price: 6000,
+      meetingPoint: 'Talaat Harb Square',
+      location: 'Luxor',
+      language: 'english',
+      description: 'We will explore the mysterious land of Luxor',
+      places: ['Pyramids', 'Sphinx'],
+      pictures: ['images/img5.jpg', 'images/img12.jpg', 'images/img14.jpg'],
+      rating: 2.2,
+      peopleAllowed: 20,
+      messages: [],
+      tourguideName: 'inanc',
+      tourists: ['karimID', 'stanID', 'milkaID'],
+      tourGuidePic: 'images/inanc.jpg',
+      touristsPictures: [
+        'images/karim.jpg',
+        'images/stan.jpg',
+        'images/milka.jpg'
+      ]);
+
+  static Tour tour3 = Tour(
+    name: 'Cairo Trip',
+    tourguide: 'hassanID',
+    tourID: 'cairoID',
+    date: DateTime.now().toString(),
+    price: 6000,
+    meetingPoint: 'Cairo University Campus',
+    location: 'Cairo',
+    language: 'english',
+    description:
+        'We will visit the Egyptain museum and have a wonderful Nile cruise',
+    places: ['Nile', 'Egyptain Museum'],
+    pictures: [
+      'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
+      'images/img9.png',
+    ],
+    rating: 4.5,
+    peopleAllowed: 20,
+    tourguideName: 'hassan',
+    messages: [],
+    tourists: ['karimID', 'stanID'],
+    tourGuidePic: 'images/hassan.jpg',
+    touristsPictures: ['images/karim.jpg', 'images/stan.jpg'],
+  );
+
+  static Tour tour4 = Tour(
+      name: 'Sharm El Sheikh Trip',
+      tourguide: 'angelaID',
+      tourID: 'sharmID',
+      price: 6000,
+      date: DateTime.now().toString(),
+      meetingPoint: 'Talaat Harb Square',
+      location: 'Luxor',
+      language: 'english',
+      description:
+          'We will explore the island of dreams known as Sharm EL Sheikh',
+      places: ['Sue Square', 'Beach'],
+      pictures: ['images/img7.jpg'],
+      rating: 4.75,
+      peopleAllowed: 20,
+      tourguideName: 'inanc',
+      tourists: ['karimID', 'stanID', 'milkaID'],
+      tourGuidePic: 'inanc.jpg',
+      messages: [],
+      touristsPictures: [
+        'images/karim.jpg',
+        'images/stan.jpg',
+        'images/milka.jpg'
+      ]);
+
+  var dummyTourists = [tourist1, tourist2, tourist3, tourist4, tourist5];
+  var dummyTourGuides = [tourguide1, tourguide2, tourguide3];
+  var dummyTours = [tour1, tour2, tour3, tour3, tour4];
+  var dummyViewTours = [tour1, tour2, tour3, tour4];
+
   void addTouristToTour(String tourID, String touristID) {
     var tour = dummyTours.where((tour) => tourID == tour.tourID).toList()[0];
     tour.tourists.add(touristID);
@@ -273,21 +289,17 @@ class Data extends ChangeNotifier {
   void updateDummyData(List<Tour> list) {
     dummyViewTours = list;
     notifyListeners();
-    // TourGuide getTourGuideByID(String id) {
-    //   return dummyTourGuides.where((tourguide) {
-    //     return tourguide.profileID == id;
-    //   }).toList()[0];
-    // }
+    TourGuide getTourGuideByID(String id) {
+      return dummyTourGuides.where((tourguide) {
+        return tourguide.profileID == id;
+      }).toList()[0];
+    }
 
-    // Tourist getTouristByID(String id) {
-    //   return dummyTourists.where((tourist) {
-    //     return tourist.profileID == id;
-    //   }).toList()[0];
-    // }
-  }
-
-  FAQ getFAQ() {
-    return faq;
+    Tourist getTouristByID(String id) {
+      return dummyTourists.where((tourist) {
+        return tourist.profileID == id;
+      }).toList()[0];
+    }
   }
 
   Tourist getTouristByID(String id) {
@@ -344,5 +356,9 @@ class Data extends ChangeNotifier {
     Message message = Message(sender: sender, text: text);
     tour.messages.add(message);
     notifyListeners();
+  }
+
+  FAQ getFAQ() {
+    return faq;
   }
 }
