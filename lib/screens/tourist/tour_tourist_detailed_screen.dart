@@ -181,9 +181,9 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
                               size: 50,
                             ),
                             onTap: () {
-                              Navigator.of(context).pushNamed(
-                                ChatScreen.routeName,
-                              );
+                              Provider.of<Data>(context).updateTourID(tourID);
+                              Navigator.of(context)
+                                  .pushNamed(ChatScreen.routeName);
                             },
                             title: Text("Tour's Chat",
                                 style: TextStyle(
