@@ -36,13 +36,14 @@ class AddTourScreen extends State<AddTour> {
                 margin: EdgeInsets.only(left: 10, bottom: 20),
                 child: Row(
                   children: <Widget>[
-                   
                     Container(
                         margin: EdgeInsets.only(left: 10),
                         child: Text(
                           "Add Tour",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 20,color: Colors.white),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30,
+                              color: Colors.black),
                         ))
                   ],
                 ),

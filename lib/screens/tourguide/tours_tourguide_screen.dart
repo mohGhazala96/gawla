@@ -20,11 +20,11 @@ class ToursTourGuideScreen extends StatelessWidget {
       Row(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(top: 30, left: 10),
+            padding: const EdgeInsets.only(top: 30, left: 20),
             child: Text('My Tours',
                 style: TextStyle(
-                    fontSize: 40,
-                    color: Colors.white,
+                    fontSize: 30,
+                    color: Colors.black,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.bold)),
           )

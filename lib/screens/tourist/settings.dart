@@ -56,11 +56,7 @@ class SettingsScreen extends StatelessWidget {
                 alignment: Alignment.topLeft,
                 child: GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  TouristHomePage()));
+                      Navigator.pop(context);
                     },
                     child: Icon(Icons.arrow_back_ios,
                         color: Colors.black, size: 35.0)),
