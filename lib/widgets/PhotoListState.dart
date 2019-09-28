@@ -10,7 +10,7 @@ class PhotoList extends StatefulWidget {
 }
 
 class PhotoListState extends State<PhotoList> {
-  static int currentPageIndex = 0;
+  int currentPageIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
