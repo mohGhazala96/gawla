@@ -17,7 +17,7 @@ class TouristHomePageScreen extends State<TouristHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final String logoAssetName = 'images/logo.svg';
+    final String logoAssetName = 'images/logo_motto.svg';
     return SafeArea(
       bottom: true,
       top: true,
