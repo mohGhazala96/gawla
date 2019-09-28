@@ -132,12 +132,13 @@ class TouristProfileScreen extends StatelessWidget {
                           style: TextStyle(fontSize: 16.0),
                         ),
                         SizedBox(
-                          width: 50.0,
+                          width: 45.0,
+                          height: 55,
                         ),
                         SizedBox(
                           child:
                               Image.asset('images/flags/' + flagCode + '.png'),
-                          height: 40.0,
+                          height: 50.0,
                           width: 40.0,
                         )
                       ],

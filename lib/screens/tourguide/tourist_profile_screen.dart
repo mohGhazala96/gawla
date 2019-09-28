@@ -140,12 +140,7 @@ class TourGuideTouristProfileScreen extends StatelessWidget {
                         SizedBox(
                           width: 20.0,
                         ),
-                        SizedBox(
-                          child:
-                              Image.asset('images/flags/' + flagCode + '.png'),
-                          height: 40.0,
-                          width: 40.0,
-                        )
+                       
                       ],
                     ),
                     SizedBox(
