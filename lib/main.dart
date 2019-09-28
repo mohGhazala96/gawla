@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider<Data>(
         builder: (context) => Data(),
         child: MaterialApp(
+          debugShowCheckedModeBanner: false,
           title: 'Gawla',
           theme: ThemeData(
             primarySwatch: Colors.amber,

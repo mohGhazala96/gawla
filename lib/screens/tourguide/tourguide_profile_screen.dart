@@ -78,30 +78,37 @@ class TourGuideTourGuideProfileScreen extends StatelessWidget {
 
     List<Widget> listOfLanaguges = new List<Widget>();
     for (var i = 0; i < tourguide.languages.length; i++) {
-      listOfLanaguges.add(new Text(
-        tourguide.languages[i] + " ",
-        style: TextStyle(fontSize: 16.0),
-      ));
+      if (i >= tourguide.languages.length - 1) {
+        listOfLanaguges.add(new Text(
+          tourguide.languages[i],
+          style: TextStyle(fontSize: 16.0),
+        ));
+      } else {
+        listOfLanaguges.add(new Text(
+          tourguide.languages[i] + ",",
+          style: TextStyle(fontSize: 16.0),
+        ));
+      }
     }
 
     var flagCode = "eg";
     switch (tourguide.nationality) {
-      case 'egyptian':
+      case 'Egyptian':
         flagCode = 'eg';
         break;
-      case 'american':
+      case 'American':
         flagCode = 'us';
         break;
-      case 'french':
+      case 'French':
         flagCode = 'fr';
         break;
-      case 'dutch':
+      case 'Dutch':
         flagCode = 'bq';
         break;
-      case 'kenyian':
+      case 'Kenyian':
         flagCode = 'ke';
         break;
-      case 'turkish':
+      case 'Turkish':
         flagCode = 'tr';
         break;
     }

@@ -81,10 +81,17 @@ class TouristTourguideProfileScreen extends StatelessWidget {
 
     List<Widget> listOfLanaguges = new List<Widget>();
     for (var i = 0; i < tourguide.languages.length; i++) {
-      listOfLanaguges.add(new Text(
-        tourguide.languages[i].toUpperCase() + " ",
-        style: TextStyle(fontSize: 16.0),
-      ));
+      if (i >= tourguide.languages.length - 1) {
+        listOfLanaguges.add(new Text(
+          tourguide.languages[i],
+          style: TextStyle(fontSize: 16.0),
+        ));
+      } else {
+        listOfLanaguges.add(new Text(
+          tourguide.languages[i] + ",",
+          style: TextStyle(fontSize: 16.0),
+        ));
+      }
     }
     var flagCode = "eg";
     switch (tourguide.nationality) {

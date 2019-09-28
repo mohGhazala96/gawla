@@ -95,7 +95,7 @@ class Data extends ChangeNotifier {
 
   static Review review1 = Review(
       reviewerID: 'milkaID',
-      review: 'Fantastic Tourguide. HIGHLY RECOMMEND',
+      review: 'Fantastic Tourguide. HIGHLY RECOMMENDED',
       rate: 5);
 
   static Review review2 = Review(
@@ -104,26 +104,26 @@ class Data extends ChangeNotifier {
       rate: 1);
 
   static Review review3 =
-      Review(reviewerID: 'karimID', review: 'Very Good TourGuide', rate: 4);
+      Review(reviewerID: 'karimID', review: 'Very good tour guide !', rate: 4);
 
   static Review review4 = Review(
       reviewerID: 'margreetID',
-      review: 'Exceptional TourGuide. Gave Me The Experience of my Life',
+      review: 'Exceptional tour guide. Gave me the experience of my life',
       rate: 5);
 
   static TourGuide tourguide1 = TourGuide(
-      name: 'angela',
+      name: 'Angela',
       profileID: 'angelaID',
       phoneNumber: '+201015740042',
       password: '123456',
-      nationality: 'egyptain',
+      nationality: 'Egyptian',
       experience:
-          'A Passionate Tourguide who travelled to more than 50 countries!',
+          'A passionate tour guide who travelled to more than 50 countries !',
       gender: true,
       email: 'angela@gmail.com',
       age: 29,
-      bio: 'A Passionate Tourguide who travelled to more than 50 countries!',
-      languages: ['english', 'spanish'],
+      bio: 'A passionate tour guide who travelled to more than 50 countries !',
+      languages: ['English', 'Spanish'],
       since: 2018,
       displayPicture: 'images/angela.jpg',
       rating: 4.75,
@@ -134,13 +134,13 @@ class Data extends ChangeNotifier {
       profileID: 'inancID',
       phoneNumber: '+201097251045',
       password: '123456',
-      nationality: 'turkish',
+      nationality: 'Turkish',
       gender: true,
       email: 'inanc@gmail.com',
-      experience: 'An Experienced Tourguide with 20 Years of experience',
+      experience: 'An experienced tour guide with 20 Years of experience',
       age: 55,
-      bio: 'An Experienced Tourguide with 20 Years of experience',
-      languages: ['english', 'turkish'],
+      bio: 'An experienced tour guide with 20 Years of experience',
+      languages: ['English', 'Turkish'],
       since: 2011,
       displayPicture: 'images/angela.jpg',
       rating: 2.2,
@@ -151,15 +151,15 @@ class Data extends ChangeNotifier {
       profileID: 'hassanID',
       phoneNumber: '+201018950264',
       password: '123456',
-      nationality: 'egyptain',
+      nationality: 'Egyptian',
       gender: true,
       email: 'hassan@gmail.com',
       experience:
-          'A Proffesional Tourguide who guarentees you the experience of your life6',
+          'A professional tour guide who guarantees you the experience of your life',
       age: 34,
       bio:
-          'A Proffesional Tourguide who guarentees you the experience of your life',
-      languages: ['english', 'arabic'],
+          'A Professional tour guide who guarantees you the experience of your life',
+      languages: ['English', 'Arabic'],
       since: 2019,
       displayPicture: 'images/hassan.jpg',
       rating: 4.5,
@@ -169,7 +169,7 @@ class Data extends ChangeNotifier {
       sender: 'hassanID',
       isTourist: false,
       text:
-          'Hello Everyone! I am Hassan and I\'ll be your tourguide for this tour isa. Y Now Everyone Introduce themselves');
+          'Hello Everyone! I am Hassan and I\'ll be your tourguide for this tour. Please Introduce yourselves');
   static Message message2 = Message(
       sender: 'johnID',
       isTourist: true,
@@ -195,7 +195,7 @@ class Data extends ChangeNotifier {
       rating: 4.5,
       peopleAllowed: 15,
       date: DateTime.now().toString(),
-      tourguideName: 'hassan',
+      tourguideName: 'Hassan',
       messages: [message1, message2, message3],
       tourists: ['johnID', 'margreetID'],
       tourGuidePic: 'images/hassan.jpg',
@@ -216,7 +216,7 @@ class Data extends ChangeNotifier {
       rating: 2.2,
       peopleAllowed: 20,
       messages: [],
-      tourguideName: 'inanc',
+      tourguideName: 'Inanc',
       tourists: ['karimID', 'stanID', 'milkaID'],
       tourGuidePic: 'images/inanc.jpg',
       touristsPictures: [
@@ -243,7 +243,7 @@ class Data extends ChangeNotifier {
     ],
     rating: 4.5,
     peopleAllowed: 20,
-    tourguideName: 'hassan',
+    tourguideName: 'Hassan',
     messages: [],
     tourists: ['karimID', 'stanID'],
     tourGuidePic: 'images/hassan.jpg',
@@ -265,7 +265,7 @@ class Data extends ChangeNotifier {
       pictures: ['images/sharm1.jpg', 'images/sharm2.jpg'],
       rating: 4.75,
       peopleAllowed: 20,
-      tourguideName: 'inanc',
+      tourguideName: 'Inanc',
       tourists: ['karimID', 'stanID', 'milkaID'],
       tourGuidePic: 'inanc.jpg',
       messages: [],
@@ -289,7 +289,7 @@ class Data extends ChangeNotifier {
       pictures: ['images/alex1.jpg', 'images/alex2.jpg'],
       rating: 4.75,
       peopleAllowed: 20,
-      tourguideName: 'inanc',
+      tourguideName: 'Inanc',
       tourists: ['stanID', 'milkaID', 'margreetID'],
       tourGuidePic: 'images/inanc.jpg',
       messages: [],
@@ -313,7 +313,7 @@ class Data extends ChangeNotifier {
       pictures: ['images/aswan1.jpg', 'images/aswan2.jpg'],
       rating: 4.75,
       peopleAllowed: 10,
-      tourguideName: 'angela',
+      tourguideName: 'Angela',
       tourists: ['karimID', 'milkaID', 'margreetID'],
       tourGuidePic: 'images/angela.jpg',
       messages: [],
