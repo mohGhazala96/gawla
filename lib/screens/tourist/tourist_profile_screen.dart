@@ -87,7 +87,7 @@ class TouristProfileScreen extends StatelessWidget {
                               style: TextStyle(fontSize: 24.0),
                             ),
                             Text(
-                              'Joined Since 2019',
+                              'Joined since 2019',
                               style: TextStyle(fontSize: 16.0),
                             )
                           ],
@@ -144,7 +144,7 @@ class TouristProfileScreen extends StatelessWidget {
                           width: 92.0,
                         ),
                         Text(
-                          tourist.gender ? 'MALE' : 'FEMALE',
+                          tourist.gender ? 'Male' : 'Female',
                           style: TextStyle(fontSize: 16.0),
                         ),
                       ],
@@ -174,7 +174,7 @@ class TouristProfileScreen extends StatelessWidget {
                     Row(
                       children: <Widget>[
                         Text(
-                          'Phono No. :',
+                          'Phono Number:',
                           style: TextStyle(
                               fontSize: 16.0, fontWeight: FontWeight.bold),
                         ),

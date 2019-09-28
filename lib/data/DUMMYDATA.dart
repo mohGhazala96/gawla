@@ -87,7 +87,7 @@ class Data extends ChangeNotifier {
       age: 45,
       email: 'milka@gmail.com',
       gender: false,
-      nationality: 'kenyian',
+      nationality: 'Kenyan',
       password: '123456',
       phoneNumber: '+201097251045',
       profileID: 'milkaID',
