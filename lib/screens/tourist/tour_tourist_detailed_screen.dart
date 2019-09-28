@@ -131,17 +131,20 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        !isButtonDisabled
-                            ? DatePickerTimeline(
-                                DateTime.now(),
-                                onDateChange: (date) {
-                                  print(date.month.toString());
-                                },
-                              )
-                            : Text(
-                                "Boooked On :  " + tour.date,
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
+                        Container(
+                          height: 100,
+                          child: !isButtonDisabled
+                              ? DatePickerTimeline(
+                                  DateTime.now(),
+                                  onDateChange: (date) {
+                                    print(date.month.toString());
+                                  },
+                                )
+                              : Text(
+                                  "Boooked On :  " + tour.date,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                        ),
                       ],
                     ),
                     Container(
@@ -174,7 +177,7 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
                             ),
                             subtitle: Text(tour.tourguideName),
                           ),
-                          ListTile(
+                          isButtonDisabled?ListTile(
                             leading: Icon(
                               Icons.question_answer,
                               color: Colors.black,
@@ -190,7 +193,7 @@ class _TourTouristDetailedScreenState extends State<TourTouristDetailedScreen> {
                                     color: Colors.black,
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold)),
-                          )
+                          ):ListTile()
                         ],
                       )),
                     ),
