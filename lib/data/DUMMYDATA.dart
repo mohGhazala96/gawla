@@ -39,8 +39,8 @@ class Data extends ChangeNotifier {
   static FAQ faq = FAQ(questions: [q1, q2, q3, q4]);
 
   static Tourist tourist1 = Tourist(
-      name: 'kairm',
-      age: 21,
+      name: 'karim',
+      age: 25,
       email: 'karim@gmail.com',
       gender: true,
       nationality: 'egyptian',
@@ -89,7 +89,7 @@ class Data extends ChangeNotifier {
       gender: false,
       nationality: 'kenyian',
       password: '123456',
-      phoneNumber: '82585741238',
+      phoneNumber: '+201097251045',
       profileID: 'milkaID',
       displayPicture: 'images/milka.jpg');
 
@@ -163,7 +163,7 @@ class Data extends ChangeNotifier {
       since: 2019,
       displayPicture: 'images/hassan.jpg',
       rating: 4.5,
-      reviews: [review3, review4]);
+      reviews: [review4]);
 
   static Message message1 = Message(
       sender: 'hassanID',
@@ -203,7 +203,7 @@ class Data extends ChangeNotifier {
 
   static Tour tour2 = Tour(
       name: 'Luxor Trip',
-      tourguide: 'inancID',
+      tourguide: 'hassanID',
       tourID: 'luxorID',
       date: DateTime.now().toString(),
       price: 6000,
@@ -211,14 +211,14 @@ class Data extends ChangeNotifier {
       location: 'Luxor',
       language: 'English',
       description: 'We will explore the mysterious land of Luxor',
-      places: ['Pyramids', 'Sphinx'],
+      places: ['Abo Semble Temple'],
       pictures: ['images/luxor1.jpg', 'images/luxor2.jpg', 'images/luxor3.jpg'],
       rating: 2.2,
       peopleAllowed: 20,
       messages: [],
-      tourguideName: 'Inanc',
+      tourguideName: 'Hassan',
       tourists: ['karimID', 'stanID', 'milkaID'],
-      tourGuidePic: 'images/inanc.jpg',
+      tourGuidePic: 'images/hassan.jpg',
       touristsPictures: [
         'images/karim.jpg',
         'images/stan.jpg',
@@ -245,9 +245,9 @@ class Data extends ChangeNotifier {
     peopleAllowed: 20,
     tourguideName: 'Hassan',
     messages: [],
-    tourists: ['karimID', 'stanID'],
+    tourists: ['stanID', 'johnID'],
     tourGuidePic: 'images/hassan.jpg',
-    touristsPictures: ['images/karim.jpg', 'images/stan.jpg'],
+    touristsPictures: ['images/stan.jpg', 'images/john.jpg'],
   );
 
   static Tour tour4 = Tour(
@@ -266,19 +266,15 @@ class Data extends ChangeNotifier {
       rating: 4.75,
       peopleAllowed: 20,
       tourguideName: 'Inanc',
-      tourists: ['karimID', 'stanID', 'milkaID'],
+      tourists: ['stanID'],
       tourGuidePic: 'inanc.jpg',
       messages: [],
-      touristsPictures: [
-        'images/karim.jpg',
-        'images/stan.jpg',
-        'images/milka.jpg'
-      ]);
+      touristsPictures: ['images/stan.jpg']);
 
   static Tour tour5 = Tour(
       name: 'Alexandria Trip',
-      tourguide: 'inancID',
-      tourID: 'alexID',
+      tourguide: 'hassanID',
+      tourID: 'hassanID',
       price: 340,
       date: DateTime.now().toString(),
       meetingPoint: 'Raml Station',
@@ -289,9 +285,9 @@ class Data extends ChangeNotifier {
       pictures: ['images/alex1.jpg', 'images/alex2.jpg'],
       rating: 4.75,
       peopleAllowed: 20,
-      tourguideName: 'Inanc',
+      tourguideName: 'Hassan',
       tourists: ['stanID', 'milkaID', 'margreetID'],
-      tourGuidePic: 'images/inanc.jpg',
+      tourGuidePic: 'images/hassan.jpg',
       messages: [],
       touristsPictures: [
         'images/stan.jpg',
@@ -301,7 +297,7 @@ class Data extends ChangeNotifier {
 
   static Tour tour6 = Tour(
       name: 'Aswan Trip',
-      tourguide: 'angelaID',
+      tourguide: 'hassanID',
       tourID: 'aswanID',
       price: 750,
       date: DateTime.now().toString(),
@@ -313,15 +309,11 @@ class Data extends ChangeNotifier {
       pictures: ['images/aswan1.jpg', 'images/aswan2.jpg'],
       rating: 4.75,
       peopleAllowed: 10,
-      tourguideName: 'Angela',
-      tourists: ['karimID', 'milkaID', 'margreetID'],
-      tourGuidePic: 'images/angela.jpg',
+      tourguideName: 'Hassan',
+      tourists: ['karimID', 'margreetID'],
+      tourGuidePic: 'images/hassan.jpg',
       messages: [],
-      touristsPictures: [
-        'images/karim.jpg',
-        'images/milka.jpg',
-        'images/margreet.jpg'
-      ]);
+      touristsPictures: ['images/karim.jpg', 'images/margreet.jpg']);
 
   var dummyTourists = [tourist1, tourist2, tourist3, tourist4, tourist5];
   var dummyTourGuides = [tourguide1, tourguide2, tourguide3];
@@ -331,7 +323,16 @@ class Data extends ChangeNotifier {
   void addTouristToTour(String tourID, String touristID) {
     var tour = dummyTours.where((tour) => tourID == tour.tourID).toList()[0];
     tour.tourists.add(touristID);
+    String touristPicture = getTouristPictureByID(touristID);
+    tour.touristsPictures.add(touristPicture);
     notifyListeners();
+  }
+
+  String getTouristPictureByID(String touristID) {
+    Tourist tourist = dummyTourists.where((tourist) {
+      return tourist.profileID == touristID;
+    }).toList()[0];
+    return tourist.displayPicture;
   }
 
   void addTour() {

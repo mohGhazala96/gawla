@@ -109,6 +109,7 @@ class MenuDrawer extends StatelessWidget {
                       MyApp.profileID = "";
                       print(MyApp.profileID);
                       Navigator.pushNamed(context, "/");
+                      MyApp.globalIndexPage = 0;
                     },
                     child: Text(
                       "Sign out",
