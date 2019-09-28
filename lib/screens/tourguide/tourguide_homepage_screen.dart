@@ -26,7 +26,7 @@ class _ToursGuideHomePageScreenState extends State<ToursGuideHomePageScreen> {
     //   return tourGuide.profileID == tourGuideId;
     // }).toList();
 
-    final String logoAssetName = 'images/logo.svg';
+    final String logoAssetName = 'images/logo_motto.svg';
     return SafeArea(
       bottom: true,
       top: true,
