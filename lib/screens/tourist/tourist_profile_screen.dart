@@ -10,19 +10,6 @@ import 'package:gawla/widgets/diagonally_cut_colored_image.dart';
 class TouristProfileScreen extends StatelessWidget {
   static const routeName = 'tourist-tourist-profile-screen';
 
-  Widget buildDiagonalImageBackground(BuildContext context) {
-    var screenWidth = MediaQuery.of(context).size.width;
-
-    return new DiagonallyCutColoredImage(
-      new Image.asset(
-        'images/img6.png',
-        width: screenWidth,
-        height: 280.0,
-        fit: BoxFit.cover,
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     var flagCode = "eg";
@@ -87,7 +74,7 @@ class TouristProfileScreen extends StatelessWidget {
                           child: CircleAvatar(
                             radius: 44,
                             backgroundColor: Colors.amber,
-                            backgroundImage: AssetImage('images/karim.jpg'),
+                            backgroundImage: AssetImage(tourist.displayPicture),
                           ),
                         ),
                         SizedBox(
@@ -168,25 +155,6 @@ class TouristProfileScreen extends StatelessWidget {
                     Row(
                       children: <Widget>[
                         Text(
-                          'Languages:',
-                          style: TextStyle(
-                              fontSize: 16.0, fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(
-                          width: 62.0,
-                        ),
-                        Text(
-                          'Norwegian, English',
-                          style: TextStyle(fontSize: 16.0),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 36.0,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Text(
                           'Age:',
                           style: TextStyle(
                               fontSize: 16.0, fontWeight: FontWeight.bold),
@@ -214,7 +182,7 @@ class TouristProfileScreen extends StatelessWidget {
                           width: 70.0,
                         ),
                         Text(
-                          '+20 ${tourist.phoneNumber}',
+                          '${tourist.phoneNumber}',
                           style: TextStyle(fontSize: 16.0),
                         ),
                       ],

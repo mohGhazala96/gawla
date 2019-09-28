@@ -123,7 +123,7 @@ class Data extends ChangeNotifier {
       email: 'angela@gmail.com',
       age: 29,
       bio: 'A Passionate Tourguide who travelled to more than 50 countries!',
-      languages: ['english', 'spanish', 'arabic'],
+      languages: ['english', 'spanish'],
       since: 2018,
       displayPicture: 'images/angela.jpg',
       rating: 4.75,
@@ -187,11 +187,11 @@ class Data extends ChangeNotifier {
       price: 500,
       meetingPoint: 'Tahrir Square',
       location: 'Pyramids, Giza',
-      language: 'english',
+      language: 'English',
       description:
           'We will explore the Pyramids, Sphinx and a lot more of the magical land of Egypt',
       places: ['Pyramids', 'Sphinx'],
-      pictures: ['images/img3.png', 'images/img8.png'],
+      pictures: ['images/pyramid1.jpg', 'images/pyramid2.jpg'],
       rating: 4.5,
       peopleAllowed: 15,
       date: DateTime.now().toString(),
@@ -209,10 +209,10 @@ class Data extends ChangeNotifier {
       price: 6000,
       meetingPoint: 'Talaat Harb Square',
       location: 'Luxor',
-      language: 'english',
+      language: 'English',
       description: 'We will explore the mysterious land of Luxor',
       places: ['Pyramids', 'Sphinx'],
-      pictures: ['images/img5.jpg', 'images/img12.jpg', 'images/img14.jpg'],
+      pictures: ['images/luxor1.jpg', 'images/luxor2.jpg', 'images/luxor3.jpg'],
       rating: 2.2,
       peopleAllowed: 20,
       messages: [],
@@ -230,16 +230,16 @@ class Data extends ChangeNotifier {
     tourguide: 'hassanID',
     tourID: 'cairoID',
     date: DateTime.now().toString(),
-    price: 6000,
+    price: 200,
     meetingPoint: 'Cairo University Campus',
     location: 'Cairo',
-    language: 'english',
+    language: 'English',
     description:
         'We will visit the Egyptain museum and have a wonderful Nile cruise',
     places: ['Nile', 'Egyptain Museum'],
     pictures: [
+      'images/cairo1.jpg',
       'images/The-Museum-of-Egyptian-Antiquities-also-known-as-The-Egyptian-Museum.jpg',
-      'images/img9.png',
     ],
     rating: 4.5,
     peopleAllowed: 20,
@@ -254,15 +254,15 @@ class Data extends ChangeNotifier {
       name: 'Sharm El Sheikh Trip',
       tourguide: 'angelaID',
       tourID: 'sharmID',
-      price: 6000,
+      price: 900,
       date: DateTime.now().toString(),
       meetingPoint: 'Talaat Harb Square',
       location: 'Luxor',
-      language: 'english',
+      language: 'English',
       description:
           'We will explore the island of dreams known as Sharm EL Sheikh',
       places: ['Sue Square', 'Beach'],
-      pictures: ['images/img7.jpg'],
+      pictures: ['images/sharm1.jpg', 'images/sharm2.jpg'],
       rating: 4.75,
       peopleAllowed: 20,
       tourguideName: 'inanc',
@@ -275,10 +275,58 @@ class Data extends ChangeNotifier {
         'images/milka.jpg'
       ]);
 
+  static Tour tour5 = Tour(
+      name: 'Alexandria Trip',
+      tourguide: 'inancID',
+      tourID: 'alexID',
+      price: 340,
+      date: DateTime.now().toString(),
+      meetingPoint: 'Raml Station',
+      location: 'Alexandria',
+      language: 'English',
+      description: 'We will explore the beautiful city of Alexandria',
+      places: ['Qayt Bay Castle', 'Alexandrian Library'],
+      pictures: ['images/alex1.jpg', 'images/alex2.jpg'],
+      rating: 4.75,
+      peopleAllowed: 20,
+      tourguideName: 'inanc',
+      tourists: ['stanID', 'milkaID', 'margreetID'],
+      tourGuidePic: 'images/inanc.jpg',
+      messages: [],
+      touristsPictures: [
+        'images/stan.jpg',
+        'images/milka.jpg',
+        'images/margreet.jpg'
+      ]);
+
+  static Tour tour6 = Tour(
+      name: 'Aswan Trip',
+      tourguide: 'angelaID',
+      tourID: 'aswanID',
+      price: 750,
+      date: DateTime.now().toString(),
+      meetingPoint: 'Talaat Harb Square',
+      location: 'Aswan',
+      language: 'English',
+      description: 'We will explore the beautiful city of Aswan',
+      places: ['Philae Temple', 'Aswan Dam'],
+      pictures: ['images/aswan1.jpg', 'images/aswan2.jpg'],
+      rating: 4.75,
+      peopleAllowed: 10,
+      tourguideName: 'angela',
+      tourists: ['karimID', 'milkaID', 'margreetID'],
+      tourGuidePic: 'images/angela.jpg',
+      messages: [],
+      touristsPictures: [
+        'images/karim.jpg',
+        'images/milka.jpg',
+        'images/margreet.jpg'
+      ]);
+
   var dummyTourists = [tourist1, tourist2, tourist3, tourist4, tourist5];
   var dummyTourGuides = [tourguide1, tourguide2, tourguide3];
-  var dummyTours = [tour1, tour2, tour3, tour4];
-  var dummyViewTours = [tour1, tour2, tour3, tour4];
+  var dummyTours = [tour1, tour2, tour3, tour4, tour5, tour6];
+  var dummyViewTours = [tour1, tour2, tour3, tour4, tour5, tour6];
 
   void addTouristToTour(String tourID, String touristID) {
     var tour = dummyTours.where((tour) => tourID == tour.tourID).toList()[0];

@@ -82,7 +82,7 @@ class TouristTourguideProfileScreen extends StatelessWidget {
     List<Widget> listOfLanaguges = new List<Widget>();
     for (var i = 0; i < tourguide.languages.length; i++) {
       listOfLanaguges.add(new Text(
-        tourguide.languages[i] + " ",
+        tourguide.languages[i].toUpperCase() + " ",
         style: TextStyle(fontSize: 16.0),
       ));
     }
